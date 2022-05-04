@@ -1,0 +1,56 @@
+{
+  "retail-sellers": [
+    {
+      "id": 1,
+      "name": "RetailSeller1",
+      "password": "2xczcx2",
+      "order": [
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "name": "aaaaaaaa",
+      "password": "2sss0",
+      "order": [
+        1,
+        2
+      ]
+    }
+  ],
+  "wholesalers": [
+    {
+      "id": 1,
+      "name": "Wholesaler1Name",
+      "password": "asdsad22"
+    },
+    {
+      "id": 2,
+      "name": "Wholesaler2Name",
+      "password": "20sdsd"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "ProductName2",
+      "description": "descripción del producto 2222222222222 22222222222222222 22222222222222222222222222 222222222222222222222222222222 222222222222222222",
+      "wholesalerId": "1",
+      "price": 70
+    },
+    {
+      "id": 2,
+      "wholesalerId": 2,
+      "name": "ProductName223",
+      "description": "asdkuhjdsjkhasdkj",
+      "price": 70
+    },
+    {
+      "id": 3,
+      "wholesalerId": 2,
+      "name": "asdsadasd",
+      "description": "asdasd",
+      "price": 22
+    }
+  ]
+}
