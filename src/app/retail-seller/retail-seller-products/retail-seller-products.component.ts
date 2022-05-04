@@ -57,13 +57,19 @@ export class RetailSellerProductsComponent implements OnInit ,AfterViewInit {
 
       this.retailSellersService.getById(this.id).subscribe((retailResponse)=>{
         this.retailSellerActual=retailResponse;
-        for(let order of this.retailSellerActual.order){
-          if(this.productsData.find(x=>x.id==order)!=undefined){
-            this.productsData.find(x=> x.id==order)!.canAddToCar=false;
+        if(this.retailSellerActual.order){
+          for(let order of this.retailSellerActual.order){
+            if(this.productsData.find(x=>x.id==order)!=undefined){
+              this.productsData.find(x=> x.id==order)!.canAddToCar=false;
+            }
+            else{
+              //Borrar order
+            }
           }
-          else{
-            //Borrar order
-          }
+        }
+        else{
+          this.retailSellerActual.order=[];
+          this.retailSellersService.update(this.id,this.retailSellerActual).subscribe();
         }
       })
     });

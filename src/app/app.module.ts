@@ -57,9 +57,13 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {
   WholesalerProfileDialogUpdateComponent
 } from "./wholesaler/wholesaler-profile/wholesaler-profile-dialog-update/wholesaler-profile-dialog-update.component";
+import {
+  RetailSellerPaymentDialogUpdateComponent
+} from "./retail-seller/retail-seller-payment/retail-seller-payment-dialog-update/retail-seller-payment-dialog-update.component";
 
 @NgModule({
   declarations: [
+    RetailSellerPaymentDialogUpdateComponent,
     WholesalerProfileComponent,
     WholesalerProfileDialogUpdateComponent,
     RetailSellerProfileDialogUpdateComponent,
@@ -113,6 +117,7 @@ import {
   ],
   bootstrap: [AppComponent],
   entryComponents:[
+    RetailSellerPaymentDialogUpdateComponent,
     WholesalerProfileDialogUpdateComponent,
     RetailSellerProductsDialogComponent,
     RetailSellerProductsDialogDeleteComponent,

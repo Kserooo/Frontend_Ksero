@@ -1,0 +1,75 @@
+.general-card{
+  height: 620px;
+
+}
+.container{
+  padding-left: 5%;
+  padding-top: 20px;
+  display: flex;
+  font-family: 'Confortaa', cursive;
+}
+.order{
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: lavenderblush;
+  width: 55%;
+  height: 250px;
+  font-family: 'Confortaa', cursive;
+}
+.payment-summary{
+  margin-top: 10px;
+  margin-left: 5%;
+  border-radius: 5px;
+  background-color: lavenderblush;
+  width: 35%;
+  height: 250px;
+  font-family: 'Confortaa', cursive;
+}
+.tittles{
+  padding-left: 20px;
+  padding-top: 10px;
+}
+.container2{
+  padding-left: 5%;
+  padding-top: 20px;
+  display: flex;
+  font-family: 'Confortaa', cursive;
+}
+.delivery{
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: lavenderblush;
+  width: 55%;
+  height: 200px;
+}
+.aditional-services{
+  margin-top: 10px;
+  margin-left: 5%;
+  border-radius: 5px;
+  background-color: lavenderblush;
+  width: 35%;
+  height: 200px;
+}
+.card-order{
+  margin: 10px;
+}
+.card-order-content{
+  display: flex;
+}
+.p-name{
+  margin-left:10px;
+  font-family: 'Confortaa', cursive;
+}
+.p-price{
+  margin-left:40%;
+  font-family: 'Confortaa', cursive;
+}
+.p-general-2{
+  font-family: 'Confortaa', cursive;
+}
+.mat-button{
+  left:30%;
+  font-family: 'Confortaa', cursive;
+  background-color: #673ab7;
+  color:white;
+}

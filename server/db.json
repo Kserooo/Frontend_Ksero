@@ -2,32 +2,100 @@
   "retail-sellers": [
     {
       "id": 1,
-      "name": "RetailSeller1",
+      "firstName": "RetailSeller1",
+      "lastName": "aa",
+      "birthday": "1999-05-22",
+      "phone": "5645610652",
+      "email": "gfgfd@gfgfd.com",
+      "address": "fgfdfdgfd",
+      "description": "fdsgjsdfdsufnhs kfhksdfdsfdsksdksd ksdksdksd ksd",
+      "username": "asddddasd",
       "password": "2xczcx2",
       "order": [
         2
-      ]
+      ],
+      "paymentName": "asdasd",
+      "paymentPhone": "12312321",
+      "paymentEmail": "asdasdasddsa",
+      "paymentCardNumber": "1312321321",
+      "paymentCVV": "123213213213",
+      "paymentExpirationDate": "2022-05-04"
     },
     {
       "id": 2,
-      "name": "aaaaaaaa",
+      "firstName": "payment1",
+      "lastName": "aaxxdxsaddsxasasd",
+      "birthday": "1999-07-12",
+      "phone": "5645610652",
+      "email": "gfgfd@gfgfd.com",
+      "address": "fgfdfdgfd",
+      "description": "fdsgjsdfdsufnhs kfhksdfdsfdsksdksd ksdksdksd ksd",
+      "username": "asdasdas",
       "password": "2sss0",
       "order": [
         1,
         2
-      ]
+      ],
+      "paymentName": "asdasdasd",
+      "paymentPhone": "12321321",
+      "paymentEmail": "asdasdsda",
+      "paymentCardNumber": "dasasdasd",
+      "paymentCVV": "asdasdasd",
+      "paymentExpirationDate": "2022-05-12"
+    },
+    {
+      "username": "test1",
+      "password": "asdqwe2131231",
+      "id": 3,
+      "firstName": "asdasdads",
+      "lastName": "sdsddas",
+      "phone": "1231231",
+      "birthday": "2022-05-12",
+      "email": "dasas",
+      "address": "asdasd",
+      "description": "asdasdasdasdas"
+    },
+    {
+      "username": "asd123",
+      "password": "asd123",
+      "id": 4
+    },
+    {
+      "username": "asdasdxa",
+      "password": "2xczcx2xcxz",
+      "id": 5,
+      "order": []
     }
   ],
   "wholesalers": [
     {
       "id": 1,
-      "name": "Wholesaler1Name",
+      "firstName": "Wholesaler1Name",
+      "lastName": "asdsadsada",
+      "birthday": "1999-05-27",
+      "phone": "5645610652",
+      "email": "gfgfd@gfgfd.com",
+      "address": "fgfdfdgfd",
+      "description": "fdsgjsdfdsufnhs kfhksdfdsfdsksdksd ksdksdksd ksd",
+      "username": "wholesaler1",
       "password": "asdsad22"
     },
     {
       "id": 2,
-      "name": "Wholesaler2Name",
+      "firstName": "Wholesaler2Name",
+      "lastName": "afdfdafda",
+      "birthday": "1999-05-28",
+      "phone": "564561012313",
+      "email": "gfgfd@gfgfd.com",
+      "address": "fgfdfdgfd",
+      "description": "fdsgjsdfdsufnhs kfhksdfdsfdsksdksd ksdksdksd ksd",
+      "username": "wholesaler2username",
       "password": "20sdsd"
+    },
+    {
+      "username": "asdasdasda",
+      "password": "1232312",
+      "id": 3
     }
   ],
   "products": [
@@ -35,7 +103,7 @@
       "id": 1,
       "name": "ProductName2",
       "description": "descripción del producto 2222222222222 22222222222222222 22222222222222222222222222 222222222222222222222222222222 222222222222222222",
-      "wholesalerId": "1",
+      "wholesalerId": 1,
       "price": 70
     },
     {
@@ -51,6 +119,23 @@
       "name": "asdsadasd",
       "description": "asdasd",
       "price": 22
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "retailSellerId": 1,
+      "productId": 2
+    },
+    {
+      "id": 2,
+      "retailSellerId": 2,
+      "productId": 1
+    },
+    {
+      "id": 3,
+      "retailSellerId": 2,
+      "productId": 3
     }
   ]
 }

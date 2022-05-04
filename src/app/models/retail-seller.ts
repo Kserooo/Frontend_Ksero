@@ -10,4 +10,10 @@ export interface RetailSeller {
   username: string;
   password: string;
   order: number[];
+  paymentName: string;
+  paymentPhone: string;
+  paymentEmail: string;
+  paymentCardNumber: string;
+  paymentExpirationDate: string;
+  paymentCVV: string;
 }

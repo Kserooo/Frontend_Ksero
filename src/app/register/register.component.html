@@ -1,3 +1,20 @@
 <app-home-navbar></app-home-navbar>
 
-<p>register works!</p>
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card fxFlex="25">
+    <h2>Register in Ksero</h2>
+    <form fxLayoutAlign="stretch" fxLayout="column">
+      <mat-form-field>
+        <input matInput placeholder="Username" autocomplete="off" [(ngModel)]="retailSellerData.username" name="username">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Password" autocomplete="off" [(ngModel)]="retailSellerData.password" name="password">
+      </mat-form-field>
+      <p *ngIf="warningAlert">Usuario ya registrado</p>
+      <button class = "margin-button" mat-raised-button color="primary" type="submit" (click)="SubmitRegisterRetailSeller()">Register as a Retail Seller</button>
+      <button class = "margin-button" mat-raised-button color="warn" type="submit" (click)="SubmitRegisterWholesaler()">Register as a Wholesaler</button>
+    </form>
+  </mat-card>
+
+</div>

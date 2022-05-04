@@ -4,10 +4,11 @@
     <mat-card-title>Pay</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-label class="tittles-in-color"><strong>Payee Details</strong></mat-label>
+    <mat-label class="tittles-in-color"><strong>Payment Details</strong></mat-label>
     <table class="example-full-width"><tr>
       <td>
-        <input matInput class="input-box" type="text" placeholder="Name" name="Name"  value="" size="50">
+        <input matInput class="input-box" type="text" placeholder="Name" name="Name"
+               [value]="retailSeller.paymentName?retailSeller.paymentName:''" [(ngModel)]="retailSeller.paymentName" size="50">
       </td>
     </tr>
     </table>
@@ -23,14 +24,16 @@
           <mat-option value="Venezuela">+58</mat-option>
         </mat-select>
       </td><td>
-        <input matInput class="input-box" placeholder="Cellphone Number" name="Number"  value="" size="39">
+        <input matInput class="input-box" placeholder="Cellphone Number" name="Number"
+               [value]="retailSeller.paymentPhone?retailSeller.paymentPhone:''" [(ngModel)]="retailSeller.paymentPhone" size="39">
       </td> </tr>
     </table>
 
     <table class="example-full-width">
       <tr>
         <td>
-          <input matInput class="input-box" type="email" placeholder="Email" name="Email"  value="" size="50">
+          <input matInput class="input-box" type="email" placeholder="Email" name="Email"
+                 [value]="retailSeller.paymentEmail?retailSeller.paymentEmail:''" [(ngModel)]="retailSeller.paymentEmail" size="50">
         </td>
       </tr>
     </table>
@@ -38,25 +41,27 @@
     <mat-label class="tittles-in-color"><strong>Card Details</strong></mat-label>
     <table class="example-full-width" ><tr>
       <td>
-        <input matInput  class="input-box"  placeholder="Card Number" name="Card Number"  value="" size="40">
+        <input matInput  class="input-box"  placeholder="Card Number" name="Card Number"
+               [value]="retailSeller.paymentCardNumber?retailSeller.paymentCardNumber:''" [(ngModel)]="retailSeller.paymentCardNumber" size="40">
       </td>
       <td>
         <img mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png">
       </td>
     </tr></table>
 
-    <mat-label class="tittles-in-color"><strong>Card Details</strong></mat-label>
     <table class="example-full-width" ><tr>
       <td>
-        <input matInput  class="input-box" type="date" placeholder="Expirates Date" name="Expirates Date"  value="" size="40">
+        <input matInput  class="input-box" type="date" placeholder="Expirates Date" name="Expirates Date"
+               [value]="retailSeller.paymentExpirationDate?retailSeller.paymentExpirationDate:''" [(ngModel)]="retailSeller.paymentExpirationDate" size="40">
       </td>
       <td>
-        <input matInput class="input-box" placeholder="CVV" name="CVV"  value="" size="29">
+        <input matInput class="input-box" placeholder="CVV" name="CVV"
+               [value]="retailSeller.paymentCVV?retailSeller.paymentCVV:''" [(ngModel)]="retailSeller.paymentCVV" size="29">
       </td>
     </tr></table>
 
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>Proceed to Pay</button>
+      <button mat-button (click)="openDialogUpdate(retailSeller)">Save changes</button>
   </mat-card-actions>
 </mat-card>
