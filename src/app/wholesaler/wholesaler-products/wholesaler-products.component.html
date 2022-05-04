@@ -1,0 +1,32 @@
+<app-wholesaler-navbar></app-wholesaler-navbar>
+
+<div class="grid-container">
+  <h1 class="mat-h1">Products</h1>
+  <button  mat-raised-button color="accent" (click)="openDialogAdd()">Add Item</button>
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile *ngFor="let product of productsData;" >
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{product.name}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>{{product.description}}</div>
+          <div>$/.{{product.price}}</div>
+          <button  mat-raised-button color="accent" (click)="openDialogUpdate(product)">Update Item</button>
+          <button  mat-raised-button color="warn" (click)="openDialogDelete(product)">Delete Item</button>
+          <!--<button  mat-raised-button color="accent" (click)="openDialog(product)" [disabled]="!product.canAddToCar" >Add to shopping car</button>
+          <button  mat-raised-button color="warn" (click)="openDialogDelete(product)" [disabled]="product.canAddToCar" >Delete item from shopping car</button>-->
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

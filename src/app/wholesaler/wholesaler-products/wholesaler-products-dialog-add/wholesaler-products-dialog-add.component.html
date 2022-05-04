@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <p>Would you like to add an item?</p>
+</div>
+
+<mat-form-field appearance="fill">
+  <mat-label>Name</mat-label>
+  <input matInput [(ngModel)]="data.name">
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label >Description</mat-label>
+  <textarea matInput [(ngModel)]="data.description"></textarea>
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label>Price</mat-label>
+  <input matInput type="Number" [(ngModel)]="data.price">
+</mat-form-field>
+<br>
+
+
+<div mat-dialog-actions>
+
+  <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>
+  <button *ngIf="data" mat-raised-button color="accent" [mat-dialog-close]="data"
+          [disabled]="data.name==null||data.name.length==0||data.description==null||
+          data.description.length==0||data.price==null||data.price<=0" >Ok</button>
+</div>

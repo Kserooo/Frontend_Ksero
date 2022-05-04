@@ -3,16 +3,16 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Product} from "../../../models/product";
 
 @Component({
-  selector: 'app-retail-seller-products-dialog',
-  templateUrl: './retail-seller-products-dialog.component.html',
+  selector: 'app-retail-seller-profile-dialog-update',
+  templateUrl: './retail-seller-profile-dialog-update.component.html',
 })
 
 
 
-export class RetailSellerProductsDialogComponent {
+export class RetailSellerProfileDialogUpdateComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<RetailSellerProductsDialogComponent>,
+    public dialogRef: MatDialogRef<RetailSellerProfileDialogUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Product,
   ) {}
 

@@ -1,3 +1,68 @@
 <app-retail-seller-navbar></app-retail-seller-navbar>
 
-<p>retail-seller-profile works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Profile Information</mat-card-title>
+    <mat-card-subtitle>User-Profile</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2020/10/Valorant-Acto-3.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+
+    <table CELLSPACING="10" cellpadding="5"width="550" >
+      <tr>
+
+        <td width="35%"><strong>Name:</strong></td>
+        <td width="65%">
+          <input matInput class="input-box" placeholder="Name" name="Name"  [value]="retailSellerActual.firstName"
+                 [(ngModel)]="retailSellerActual.firstName" size="35">
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Last Name:</strong></td>
+        <td><input matInput class="input-box" placeholder="Last Name" name="Last Name" [value]="retailSellerActual.lastName"
+                   [(ngModel)]="retailSellerActual.lastName" size="35"> </td>
+
+      </tr>
+      <tr>
+        <td><strong>Birthday:</strong></td>
+        <td><input class="input-bir" type="date" name="Birthday" [value]="retailSellerActual.birthday" [(ngModel)]="retailSellerActual.birthday"></td>
+      </tr>
+      <tr>
+        <td><strong>Phone number:</strong></td>
+        <td><input matInput class="input-box" placeholder="Phone Number" name="Phone Number" [value]="retailSellerActual.phone"
+                   [(ngModel)]="retailSellerActual.phone" size="35"> </td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td><input matInput class="input-box" type="email" placeholder="Email" name="Email" [value]="retailSellerActual.email"
+                   [(ngModel)]="retailSellerActual.email" size="35"></td>
+      </tr>
+      <tr>
+        <td><strong>Address:</strong></td>
+        <td><input matInput class="input-box" placeholder="Address" name="Address" [value]="retailSellerActual.address"
+                   [(ngModel)]="retailSellerActual.address" size="35"> </td>
+      </tr>
+      <tr>
+        <td><strong>Password:</strong></td>
+        <td><input matInput class="input-box" type="password" placeholder="Password" name="Email" [value]="retailSellerActual.password"
+                   [(ngModel)]="retailSellerActual.password" size="35" ></td>
+      </tr>
+      <tr>
+        <td><strong>Additional information:</strong></td>
+        <td>
+            <textarea placeholder="Aditional Information" class="text-tarea" name="Aditional Information" cols="35" rows="5"
+                      [(ngModel)]="retailSellerActual.description">{{retailSellerActual.description}}
+            </textarea>
+        </td>
+      </tr>
+    </table>
+
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="openDialog(retailSellerActual)">SAVE CHANGES</button>
+  </mat-card-actions>
+
+
+</mat-card>

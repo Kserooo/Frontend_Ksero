@@ -1,5 +1,25 @@
 <app-home-navbar></app-home-navbar>
 
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card fxFlex="25">
+    <h2>Welcome to Ksero</h2>
+    <form fxLayoutAlign="stretch" fxLayout="column">
+      <mat-form-field>
+        <input matInput placeholder="Username" autocomplete="off" [(ngModel)]="user.username" name="username">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Password" autocomplete="off" [(ngModel)]="user.password" name="password">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" (click)="SubmitLogin()">Login</button>
+
+      <mat-icon>email | call</mat-icon>
+    </form>
+  </mat-card>
+
+</div>
+
 <a mat-button [routerLink]="['/retail-seller',id,'profile']" mat-raised-button color="primary">RetailSeller</a>
 <br>
 <a mat-button [routerLink]="['/wholesaler',id,'profile']" mat-raised-button color="warn">WholeSaler</a>

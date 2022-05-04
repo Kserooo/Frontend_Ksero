@@ -1,0 +1,44 @@
+<app-wholesaler-navbar></app-wholesaler-navbar>
+
+<h1 class="title-config">My Orders</h1>
+
+<mat-grid-list cols="2" rowHeight="2:1" >
+  <mat-grid-tile class = "grid-config" *ngFor="let product of productsData; let i = index" [attr.data-index]="i">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{i}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Order data for the Wholesaler
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+
+        </mat-expansion-panel-header>
+
+        <h4 class="h4-config" *ngIf="retailSellerData[i]"> Retail-Seller Username: {{retailSellerData[i].username}} </h4>
+        <h4 class="h4-config" *ngIf="retailSellerData[i]"> Retail-Seller Address: {{retailSellerData[i].address}}</h4>
+      </mat-expansion-panel>
+
+      <!-- Product Panel -->
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Product Info
+          </mat-panel-title>
+          <mat-panel-description>
+            Retail-Seller Product List
+            <mat-icon>list</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <h4 class="h4-config"> Product name: {{product.name}} </h4>
+        <h4 class="h4-config"> Description: {{product.description}} </h4>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-grid-tile>
+
+
+</mat-grid-list>

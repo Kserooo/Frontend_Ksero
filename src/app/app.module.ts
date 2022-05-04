@@ -48,9 +48,21 @@ import {
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatSelectModule} from "@angular/material/select";
+import {
+  RetailSellerProfileDialogUpdateComponent
+} from "./retail-seller/retail-seller-profile/retail-seller-profile-dialog-update/retail-seller-profile-dialog-update.component";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {
+  WholesalerProfileDialogUpdateComponent
+} from "./wholesaler/wholesaler-profile/wholesaler-profile-dialog-update/wholesaler-profile-dialog-update.component";
 
 @NgModule({
   declarations: [
+    WholesalerProfileComponent,
+    WholesalerProfileDialogUpdateComponent,
+    RetailSellerProfileDialogUpdateComponent,
     WholesalerProductsDialogAddComponent,
     WholesalerProductsDialogDeleteComponent,
     WholesalerProductsDialogUpdateComponent,
@@ -71,27 +83,29 @@ import {MatInputModule} from "@angular/material/input";
     HomeNavbarComponent,
     WholesalerNavbarComponent,
   ],
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    RouterModule,
-    MatToolbarModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    FormsModule,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        HttpClientModule,
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        LayoutModule,
+        RouterModule,
+        MatToolbarModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        FormsModule,
+        FlexLayoutModule,
+        MatSelectModule,
+        MatExpansionModule,
 
-
-  ],
+    ],
   providers: [
     ProductsService,
     WholesalersService,
@@ -99,11 +113,13 @@ import {MatInputModule} from "@angular/material/input";
   ],
   bootstrap: [AppComponent],
   entryComponents:[
+    WholesalerProfileDialogUpdateComponent,
     RetailSellerProductsDialogComponent,
     RetailSellerProductsDialogDeleteComponent,
     WholesalerProductsDialogAddComponent,
     WholesalerProductsDialogDeleteComponent,
     WholesalerProductsDialogUpdateComponent,
+    RetailSellerProfileDialogUpdateComponent,
   ]
 })
 export class AppModule { }

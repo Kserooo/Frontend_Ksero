@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
-import {Product} from "../../models/product";
+import {Order} from "../../models/order";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class OrdersService {
 
   // Endpoint
-  basePath = 'http://localhost:3000/products';
+  basePath = 'http://localhost:3000/orders';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -34,39 +34,34 @@ export class ProductsService {
   }
 
   // Create Student
-  create(item: any): Observable<Product> {
-    return this.http.post<Product>(this.basePath, JSON.stringify(item), this.httpOptions)
+  create(item: any): Observable<Order> {
+    return this.http.post<Order>(this.basePath, JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
   // Get Student by id
-  getById(id: any): Observable<Product> {
-    return this.http.get<Product>(`${this.basePath}/${id}`, this.httpOptions)
+  getById(id: any): Observable<Order> {
+    return this.http.get<Order>(`${this.basePath}/${id}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
-  getByWholesalerId(id: any):Observable<Product>{
-    return this.http.get<Product>(`${this.basePath}/?wholesalerId=${id}`, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError));
-  }
+
 
   // Get All
-  getAll(): Observable<Product> {
-    return this.http.get<Product>(this.basePath, this.httpOptions)
+  getAll(): Observable<Order> {
+    return this.http.get<Order>(this.basePath, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
   // Update
-  update(id: any, item: any): Observable<Product> {
-    return this.http.put<Product>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
+  update(id: any, item: any): Observable<Order> {
+    return this.http.put<Order>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
