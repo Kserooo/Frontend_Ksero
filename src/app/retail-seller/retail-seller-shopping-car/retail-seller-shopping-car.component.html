@@ -1,0 +1,37 @@
+<app-retail-seller-navbar></app-retail-seller-navbar>
+
+<mat-card class="general-card">
+  <mat-card-title>Shopping car</mat-card-title>
+  <mat-card-content>
+    <div class="container">
+
+      <div class="order">
+        <p class="tittles">Order</p>
+        <mat-grid-list cols="2" rowHeight="350px">
+          <mat-card class="card-order" *ngFor="let product of productsData; index as i">
+            <mat-card-content class="card-order-content">
+              <div class="p-name">Product Name: {{product.name}}</div>
+              <div class="p-price">Product Price: {{product.price}} <br>
+                Product Quantity: {{shoppingCarOrder[i].quantity}} <br>
+                Product Total Price: {{product.price*shoppingCarOrder[i].quantity}}</div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-list>
+
+      </div>
+
+      <div class="payment-summary">
+        <p class="tittles">Payment Summary</p>
+        <mat-card class="card-order">
+          <mat-card-content >
+            <div class="p-general-2">Sum of products: {{sumProducts}}</div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="openDialogSubmit()">Proceed to pay</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

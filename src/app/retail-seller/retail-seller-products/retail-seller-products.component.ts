@@ -15,6 +15,9 @@ import {RetailSeller} from "../../models/retail-seller";
 import {
   RetailSellerProductsDialogDeleteComponent
 } from "./retail-seller-products-dialog-delete/retail-seller-products-dialog-delete.component";
+import {SenderService} from "../../sender.service";
+import {ToastrService} from "ngx-toastr";
+import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 
 @Component({
   selector: 'app-retail-seller-products',
@@ -22,50 +25,46 @@ import {
   styleUrls: ['./retail-seller-products.component.css']
 })
 export class RetailSellerProductsComponent implements OnInit ,AfterViewInit {
+  sliderValue: number[];
+  searchKey: string;
   id: string;
   productsData: Product[];
   wholesalersData: Wholesaler[];
-  retailSellerData: RetailSeller[];
   retailSellerActual: RetailSeller;
+  isSliderToggleChecked: boolean[];
+  productsQuantity: number[];
 
   constructor(private breakPointObserver: BreakpointObserver, private productsService: ProductsService,
               private wholesalersService:WholesalersService, private dialog: MatDialog,
-              private retailSellersService: RetailSellersService, private route:ActivatedRoute
+              private retailSellersService: RetailSellersService, private route: ActivatedRoute,
+              public senderService: SenderService, private toastr: ToastrService,
               ) {
-    this.productsData=[] as Product[];
-    this.wholesalersData=[] as Wholesaler[];
-    this.retailSellerData = [] as RetailSeller[];
+    this.searchKey = '';
+    this.sliderValue = [] as number [];
+    this.productsData = [] as Product[];
+    this.wholesalersData = [] as Wholesaler[];
     this.id=this.route.snapshot.paramMap.get('id')!;
-    this.retailSellerActual= {} as RetailSeller;
+    this.retailSellerActual = {} as RetailSeller;
+    this.isSliderToggleChecked = [] as boolean[];
+    this.productsQuantity = [] as number[];
   }
 
   ngOnInit(): void {
     this.productsService.getAll().subscribe((response:any)=>{
       this.productsData=response;
       for(let product of this.productsData){
-        product.canAddToCar=true;
-      }
-      console.log(response);
-    });
-    this.wholesalersService.getAll().subscribe((response:any)=>{
-      this.wholesalersData=response;
-      console.log(response);
-    });
-    this.retailSellersService.getAll().subscribe((response:any)=>{
-      console.log(response);
-      this.retailSellerData = response;
-
-      this.retailSellersService.getById(this.id).subscribe((retailResponse)=>{
-        this.retailSellerActual=retailResponse;
-        for(let order of this.retailSellerActual.order){
-          if(this.productsData.find(x=>x.id==order)!=undefined){
-            this.productsData.find(x=> x.id==order)!.canAddToCar=false;
-          }
-          else{
-            //Borrar order
-          }
+        this.sliderValue.push(1);
+        this.isSliderToggleChecked.push(true);
+        if(this.senderService.shoppingCarOrders.find(x=>x.productId==product.id)){
+          this.productsQuantity.push(this.senderService.shoppingCarOrders.find(x=>x.productId==product.id)!.quantity);
         }
-      })
+        else{
+          this.productsQuantity.push(0);
+        }
+        this.wholesalersService.getById(product.wholesalerId).subscribe((response2: any)=>{
+          this.wholesalersData.push(response2);
+        })
+      }
     });
 
   }
@@ -75,43 +74,69 @@ export class RetailSellerProductsComponent implements OnInit ,AfterViewInit {
 
 
 
-  openDialog(data: Product): void{
+  openDialogAddToCar(data: Product, quantity: number, index: number): void{
 
     const dialogRef=this.dialog.open(RetailSellerProductsDialogComponent,{
-      data:data
+      data: {
+        product: data,
+        quantity: quantity
+      }
     });
 
-    dialogRef.afterClosed().subscribe(result =>{
+    dialogRef.afterClosed().subscribe((result: any) =>{
       if(result!=undefined){
-        let actualProduct = result;
-        this.productsData.find(x=> x.id==actualProduct.id)!.canAddToCar=false;
-        let retailSellerAux= this.retailSellerActual;
+        if(this.senderService.shoppingCarOrders.find(x=>x.productId==result.product.id)){
+          this.productsQuantity[index]=this.senderService.shoppingCarOrders.find(x=>x.productId==result.product.id)!.quantity+=result.quantity;
 
-        retailSellerAux.order.push(actualProduct.id);
-        this.retailSellersService.update(this.id,retailSellerAux).subscribe(response=>{
-          console.log("Order Added");
-        });
+        }
+        else{
+          this.senderService.shoppingCarOrders.push({productId:result.product.id, quantity:result.quantity});
+          this.productsQuantity[index]=result.quantity;
+        }
+
+        this.toastr.success('Added to the car', 'Success');
       }
     });
   }
 
-  openDialogDelete(data:Product): void{
+  openDialogDeleteOfCar(data: Product, quantity: number, index: number): void{
 
     const dialogRef=this.dialog.open(RetailSellerProductsDialogDeleteComponent,{
-      data:data
-    });
-
-    dialogRef.afterClosed().subscribe(result =>{
-      if(result!=undefined){
-        let actualProduct = result;
-        this.productsData.find(x=> x.id==actualProduct.id)!.canAddToCar=true;
-        let retailSellerAux= this.retailSellerActual;
-        console.log(actualProduct.id);
-        retailSellerAux.order=retailSellerAux.order.filter(data=>data!=actualProduct.id);
-        this.retailSellersService.update(this.id,retailSellerAux).subscribe(response=>{
-          console.log("Order Deleted");
-        });
+      data: {
+        product: data,
+        quantity: quantity
       }
     });
+
+    dialogRef.afterClosed().subscribe((result: any) =>{
+      if(result!=undefined) {
+        if(this.senderService.shoppingCarOrders.find(x=>x.productId==result.product.id)!.quantity==quantity){
+          this.senderService.shoppingCarOrders = this.senderService.shoppingCarOrders.filter(x=>x.productId!=result.product.id);
+          this.productsQuantity[index]=0;
+        }
+        else{
+          this.senderService.shoppingCarOrders.find(x=>x.productId==result.product.id)!.quantity-=quantity;
+          this.productsQuantity[index]-=quantity;
+        }
+        //this.productsData.find(x=>x.id==result.id)!.canAddToCar=true;
+        this.toastr.success('Deleted from the car', 'Success');
+      }
+    });
+  }
+  slideToggleChange(event: MatSlideToggleChange, product: Product, index: number){
+    if(!event.checked){
+      if(this.senderService.shoppingCarOrders.find(x=> x.productId == product.id)){
+        this.sliderValue[index] = this.senderService.shoppingCarOrders.find(x=> x.productId == product.id)!.quantity;
+        console.log(this.sliderValue[index])
+      }
+      else{
+        this.sliderValue[index] = 0;
+      }
+    }
+    else{
+      if(this.sliderValue[index] == 0){
+        this.sliderValue[index] = 1;
+      }
+    }
   }
 }

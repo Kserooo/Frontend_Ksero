@@ -10,6 +10,7 @@ import {RetailSellerPaymentComponent} from "./retail-seller/retail-seller-paymen
 import {RetailSellerShoppingCarComponent} from "./retail-seller/retail-seller-shopping-car/retail-seller-shopping-car.component";
 import {WholesalerProductsComponent} from "./wholesaler/wholesaler-products/wholesaler-products.component";
 import {WholesalerOrdersComponent} from "./wholesaler/wholesaler-orders/wholesaler-orders.component";
+import {RetailSellerOrdersComponent} from "./retail-seller/retail-seller-orders/retail-seller-orders.component";
 
 const routes: Routes = [
 
@@ -22,7 +23,8 @@ const routes: Routes = [
       { path: 'profile', component: RetailSellerProfileComponent},
       { path: 'products', component: RetailSellerProductsComponent},
       { path: 'payment', component: RetailSellerPaymentComponent},
-      { path: 'shopping-car', component: RetailSellerShoppingCarComponent}
+      { path: 'shopping-car', component: RetailSellerShoppingCarComponent},
+      { path: 'orders', component: RetailSellerOrdersComponent}
     ]
   },
   { path: 'wholesaler/:id', children:[

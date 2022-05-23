@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Reject</h1>
+<div mat-dialog-content>
+  <p>Would you like to reject the order of {{data.quantity}} {{data.name}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

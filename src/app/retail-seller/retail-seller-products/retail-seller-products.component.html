@@ -1,28 +1,54 @@
 <app-retail-seller-navbar></app-retail-seller-navbar>
 
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
+  <h1 class="mat-h1">Products available</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="searchKey">
+  </mat-form-field>
   <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let product of productsData;" >
+    <mat-grid-tile *ngFor="let product of productsData | filter:searchKey:'name';" >
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
             {{product.name}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>{{product.description}}</div>
-          <div *ngIf="wholesalersData[product.wholesalerId-1]">{{wholesalersData[product.wholesalerId-1].name}}</div>
-          <div>$/.{{product.price}}</div>
-          <button  mat-raised-button color="accent" (click)="openDialog(product)" [disabled]="!product.canAddToCar" >Add to shopping car</button>
-          <button  mat-raised-button color="warn" (click)="openDialogDelete(product)" [disabled]="product.canAddToCar" >Delete item from shopping car</button>
+          <div *ngIf="wholesalersData[productsData.indexOf(product)]">{{wholesalersData[productsData.indexOf(product)].firstName}}</div>
+          <div>Unit Price: $/.{{product.price}}</div>
+          <div>Selected Price: $/.{{product.price*sliderValue[productsData.indexOf(product)]}}</div>
+          <div>Products Added: {{productsQuantity[productsData.indexOf(product)]}} (S/.{{productsQuantity[productsData.indexOf(product)]*product.price}})</div>
+          <mat-form-field class="example-margin example-width" appearance="fill">
+            <mat-label>Value</mat-label>
+            <input matInput type="number" [(ngModel)]="sliderValue[productsData.indexOf(product)]">
+          </mat-form-field>
+          <mat-slider
+            [(ngModel)]="sliderValue[productsData.indexOf(product)]"
+            thumbLabel
+            step="1"
+            min="0"
+            [color]="isSliderToggleChecked[productsData.indexOf(product)]?'primary':'warn'"
+            [max]="isSliderToggleChecked[productsData.indexOf(product)]?100:productsQuantity[productsData.indexOf(product)]"
+            aria-label="units"></mat-slider>
+          <br>
+          <mat-slide-toggle
+            color="primary"
+            (change)="slideToggleChange($event, product, productsData.indexOf(product))"
+            [(ngModel)]="isSliderToggleChecked[productsData.indexOf(product)]">
+            {{isSliderToggleChecked[productsData.indexOf(product)]?"Add Products":"Delete Products"}}</mat-slide-toggle>
+          <br>
+          <button  mat-raised-button color="warn"
+                   *ngIf="!isSliderToggleChecked[productsData.indexOf(product)]"
+                   (click)="openDialogDeleteOfCar(product, sliderValue[productsData.indexOf(product)], productsData.indexOf(product))"
+                   [disabled]="sliderValue[productsData.indexOf(product)]>0?false:true"
+                    >Delete {{sliderValue[productsData.indexOf(product)]}} products</button>
+          <button  mat-raised-button color="primary"
+                   *ngIf="isSliderToggleChecked[productsData.indexOf(product)]"
+                   (click)="openDialogAddToCar(product, sliderValue[productsData.indexOf(product)], productsData.indexOf(product))"
+                   [disabled]="sliderValue[productsData.indexOf(product)]>0?false:true"
+                   >Add {{sliderValue[productsData.indexOf(product)]}} products</button>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

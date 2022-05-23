@@ -1,0 +1,26 @@
+<app-retail-seller-navbar></app-retail-seller-navbar>
+<h2 class="spacing">Acepted Orders</h2>
+<mat-card class="example-card" *ngFor="let acceptedOrder of acceptedOrders">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Order #{{acceptedOrders.indexOf(acceptedOrder)+1}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h2>--------------------------------------</h2>
+    <h2>Product Id: {{acceptedOrder.productId}}</h2>
+    <h3>Quantity:  {{acceptedOrder.quantity}}</h3>
+  </mat-card-content>
+</mat-card>
+
+<h2 class="spacing">Pending Orders</h2>
+<mat-card class="example-card" *ngFor="let pendingOrder of pendingOrders">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Order #{{pendingOrders.indexOf(pendingOrder)+1}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h2>--------------------------------------</h2>
+    <h2>Product Id: {{pendingOrder.productId}}</h2>
+    <h3>Quantity: {{pendingOrder.quantity}}</h3>
+  </mat-card-content>
+</mat-card>
