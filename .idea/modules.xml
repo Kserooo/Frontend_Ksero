@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Frontend_Ksero.iml" filepath="$PROJECT_DIR$/.idea/Frontend_Ksero.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/FrontendKsero.iml" filepath="$PROJECT_DIR$/.idea/FrontendKsero.iml" />
     </modules>
   </component>
 </project>
