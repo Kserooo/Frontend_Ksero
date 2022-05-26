@@ -1,6 +1,6 @@
-import {Component, Inject} from "@angular/core";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Product} from "../../../models/product";
+import {Component} from "@angular/core";
+import { MatDialogRef} from "@angular/material/dialog";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-wholesaler-products-dialog-add',
@@ -11,9 +11,14 @@ import {Product} from "../../../models/product";
 
 export class WholesalerProductsDialogAddComponent {
 
+  productFormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required])
+  });
+
   constructor(
     public dialogRef: MatDialogRef<WholesalerProductsDialogAddComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Product,
   ) {}
 
   onNoClick(): void {

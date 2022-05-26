@@ -9,59 +9,97 @@
   <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2020/10/Valorant-Acto-3.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
 
-    <table CELLSPACING="10" cellpadding="5"width="550" >
-      <tr>
+    <form [formGroup]="userFormGroup">
+      <table CELLSPACING="10" cellpadding="5"width="550" >
+        <tr>
 
-        <td width="35%"><strong>Name:</strong></td>
-        <td width="65%">
-          <input matInput class="input-box" placeholder="Name" name="Name"  [value]="retailSellerActual.firstName"
-                 [(ngModel)]="retailSellerActual.firstName" size="35">
-        </td>
-      </tr>
-      <tr>
-        <td><strong>Last Name:</strong></td>
-        <td><input matInput class="input-box" placeholder="Last Name" name="Last Name" [value]="retailSellerActual.lastName"
-                   [(ngModel)]="retailSellerActual.lastName" size="35"> </td>
+          <td width="35%"><strong>Name:</strong></td>
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName">
+              <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('required')">
+              first name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </tr>
+        <tr>
+          <td><strong>Last Name:</strong></td>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName">
+            <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('required')">
+              last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
 
-      </tr>
-      <tr>
-        <td><strong>Birthday:</strong></td>
-        <td><input class="input-bir" type="date" name="Birthday" [value]="retailSellerActual.birthday" [(ngModel)]="retailSellerActual.birthday"></td>
-      </tr>
-      <tr>
-        <td><strong>Phone number:</strong></td>
-        <td><input matInput class="input-box" placeholder="Phone Number" name="Phone Number" [value]="retailSellerActual.phone"
-                   [(ngModel)]="retailSellerActual.phone" size="35"> </td>
-      </tr>
-      <tr>
-        <td><strong>Email:</strong></td>
-        <td><input matInput class="input-box" type="email" placeholder="Email" name="Email" [value]="retailSellerActual.email"
-                   [(ngModel)]="retailSellerActual.email" size="35"></td>
-      </tr>
-      <tr>
-        <td><strong>Address:</strong></td>
-        <td><input matInput class="input-box" placeholder="Address" name="Address" [value]="retailSellerActual.address"
-                   [(ngModel)]="retailSellerActual.address" size="35"> </td>
-      </tr>
-      <tr>
-        <td><strong>Password:</strong></td>
-        <td><input matInput class="input-box" type="password" placeholder="Password" name="Email" [value]="retailSellerActual.password"
-                   [(ngModel)]="retailSellerActual.password" size="35" ></td>
-      </tr>
-      <tr>
-        <td><strong>Additional information:</strong></td>
-        <td>
-            <textarea placeholder="Aditional Information" class="text-tarea" name="Aditional Information" cols="35" rows="5"
-                      [(ngModel)]="retailSellerActual.description">{{retailSellerActual.description}}
-            </textarea>
-        </td>
-      </tr>
-    </table>
+        </tr>
+        <tr>
+          <td><strong>Birthday:</strong></td>
+          <mat-form-field appearance="fill">
+            <mat-label>Birthday</mat-label>
+            <input matInput type="date" formControlName="birthday">
+            <mat-error *ngIf="userFormGroup.get('birthday')?.hasError('required')">
+              birthday is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </tr>
+        <tr>
+          <td><strong>Phone number:</strong></td>
+          <mat-form-field appearance="fill">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone">
+            <mat-error *ngIf="userFormGroup.get('phone')?.hasError('required')">
+              phone is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </tr>
+        <tr>
+          <td><strong>Email:</strong></td>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="userFormGroup.get('email')?.hasError('required')">
+              email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </tr>
+        <tr>
+          <td><strong>Address:</strong></td>
+          <mat-form-field appearance="fill">
+            <mat-label>Adress</mat-label>
+            <input matInput formControlName="address">
+            <mat-error *ngIf="userFormGroup.get('address')?.hasError('required')">
+              address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </tr>
+        <tr>
+          <td><strong>Password:</strong></td>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="userFormGroup.get('password')?.hasError('required')">
+              password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </tr>
+        <tr>
+          <td><strong>Additional information:</strong></td>
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+            <mat-error *ngIf="userFormGroup.get('description')?.hasError('required')">
+              description is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
 
+        </tr>
+      </table>
+    </form>
 
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="openDialog(retailSellerActual)">SAVE CHANGES</button>
+    <button mat-button (click)="openDialog()">SAVE CHANGES</button>
   </mat-card-actions>
 
 

@@ -2,13 +2,13 @@
 
 <h1 class="title-config">My Orders</h1>
 
-<mat-grid-list cols="2" rowHeight="2:1" >
-  <mat-grid-tile class = "grid-config" *ngFor="let product of productsData; let i = index" [attr.data-index]="i">
+<mat-grid-list cols="2" rowHeight="2:1.5" >
+  <mat-grid-tile class = "grid-config" *ngFor="let product of productsData;">
     <mat-accordion class="example-headers-align">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{i}}
+            {{productsData.indexOf(product)}}
           </mat-panel-title>
           <mat-panel-description>
             Order data for the Wholesaler
@@ -17,8 +17,10 @@
 
         </mat-expansion-panel-header>
 
-        <h4 class="h4-config" *ngIf="retailSellerData[i]"> Retail-Seller Username: {{retailSellerData[i].username}} </h4>
-        <h4 class="h4-config" *ngIf="retailSellerData[i]"> Retail-Seller Address: {{retailSellerData[i].address}}</h4>
+        <h4 class="h4-config" *ngIf="retailSellerData[productsData.indexOf(product)]">
+          Retail-Seller Username: {{retailSellerData[productsData.indexOf(product)].username}} </h4>
+        <h4 class="h4-config" *ngIf="retailSellerData[productsData.indexOf(product)]">
+          Retail-Seller Address: {{retailSellerData[productsData.indexOf(product)].address}}</h4>
       </mat-expansion-panel>
 
       <!-- Product Panel -->
@@ -34,8 +36,14 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <h4 class="h4-config"> Product name: {{product.name}} </h4>
-        <h4 class="h4-config"> Description: {{product.description}} </h4>
+        <h4 class="h4-config"> Unit Price: $/.{{product.price}} </h4>
+        <h4 class="h4-config"> Quantity: {{ordersData[productsData.indexOf(product)].quantity}} </h4>
+        <h4 class="h4-config"> Total Price: $/.{{ordersData[productsData.indexOf(product)].quantity*product.price}} </h4>
       </mat-expansion-panel>
+      <button  mat-raised-button color="warn" style="width:50%;" (click)="openRejectDialog(productsData.indexOf(product))"
+      >Reject Order</button>
+      <button  mat-raised-button color="primary" style="width: 50%;" (click)="openAcceptDialog(productsData.indexOf(product))"
+      >Accept Order</button>
     </mat-accordion>
 
   </mat-grid-tile>

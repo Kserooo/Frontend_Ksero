@@ -1,0 +1,21 @@
+.mat-raised-button color {
+  background-color: white;
+}
+
+h2 {
+  text-align: center;
+}
+
+.mat-icon {
+  align-content: center;
+}
+
+.margin-button {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.background-image {
+  height: 100%;
+  background-image: url("http://wonderfulengineering.com/wp-content/uploads/2014/09/Purple-wallpaper-35.jpg%22");
+}

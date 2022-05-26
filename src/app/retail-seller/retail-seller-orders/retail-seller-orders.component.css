@@ -1,0 +1,19 @@
+.example-card {
+  max-width: 250px;
+  margin-top: 50px;
+  margin-left: 70px;
+  border: 2px solid #A38ACF;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.example-card:hover {
+  background-color: #E0DAE9;
+  transition: 0.2s;
+  border: 2px solid #2C1C55;
+}
+
+.spacing {
+  margin-top: 40px;
+  margin-left: 50px;
+}

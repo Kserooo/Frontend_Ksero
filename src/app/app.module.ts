@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from "./app-routing.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
@@ -46,7 +46,7 @@ import {
   WholesalerProductsDialogUpdateComponent
 } from "./wholesaler/wholesaler-products/wholesaler-products-dialog-update/wholesaler-products-dialog-update.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatSelectModule} from "@angular/material/select";
@@ -57,9 +57,34 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {
   WholesalerProfileDialogUpdateComponent
 } from "./wholesaler/wholesaler-profile/wholesaler-profile-dialog-update/wholesaler-profile-dialog-update.component";
+import {
+  RetailSellerPaymentDialogUpdateComponent
+} from "./retail-seller/retail-seller-payment/retail-seller-payment-dialog-update/retail-seller-payment-dialog-update.component";
+import {SenderService} from "./sender.service";
+import {
+  RetailSellerShoppingCarDialogSubmitComponent
+} from "./retail-seller/retail-seller-shopping-car/retail-seller-shopping-car-dialog-submit/retail-seller-shopping-car-dialog-submit.component";
+import {ToastrModule} from "ngx-toastr";
+import { FilterPipe } from './tools/filter.pipe';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {
+  WholesalerOrdersDialogAcceptComponent
+} from "./wholesaler/wholesaler-orders/wholesaler-orders-dialog-accept/wholesaler-orders-dialog-accept.component";
+import {
+  WholesalerOrdersDialogRejectComponent
+} from "./wholesaler/wholesaler-orders/wholesaler-orders-dialog-reject/wholesaler-orders-dialog-reject.component";
+import {RetailSellerOrdersService} from "./services/retail-seller-orders/retail-seller-orders.service";
+import { RetailSellerOrdersComponent } from './retail-seller/retail-seller-orders/retail-seller-orders.component';
+import {CookieService} from "ngx-cookie-service";
+import {JwtInterceptor} from "./auth/jwt-interceptor";
 
 @NgModule({
   declarations: [
+    WholesalerOrdersDialogRejectComponent,
+    WholesalerOrdersDialogAcceptComponent,
+    RetailSellerShoppingCarDialogSubmitComponent,
+    RetailSellerPaymentDialogUpdateComponent,
     WholesalerProfileComponent,
     WholesalerProfileDialogUpdateComponent,
     RetailSellerProfileDialogUpdateComponent,
@@ -82,37 +107,56 @@ import {
     RetailSellerNavbarComponent,
     HomeNavbarComponent,
     WholesalerNavbarComponent,
+    FilterPipe,
+    RetailSellerOrdersComponent,
   ],
-    imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        HttpClientModule,
-        AppRoutingModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatGridListModule,
-        MatCardModule,
-        MatMenuModule,
-        MatIconModule,
-        MatButtonModule,
-        LayoutModule,
-        RouterModule,
-        MatToolbarModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        FormsModule,
-        FlexLayoutModule,
-        MatSelectModule,
-        MatExpansionModule,
+  imports: [
+    ToastrModule.forRoot({
+      preventDuplicates: true
+    }),
+    MatSlideToggleModule,
+    MatSliderModule,
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
+    RouterModule,
+    MatToolbarModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatSelectModule,
+    MatExpansionModule,
+    ReactiveFormsModule,
 
-    ],
+  ],
   providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    RetailSellerOrdersService,
     ProductsService,
     WholesalersService,
     RetailSellersService,
+    SenderService,
   ],
   bootstrap: [AppComponent],
   entryComponents:[
+    WholesalerOrdersDialogRejectComponent,
+    WholesalerOrdersDialogAcceptComponent,
+    RetailSellerPaymentDialogUpdateComponent,
     WholesalerProfileDialogUpdateComponent,
     RetailSellerProductsDialogComponent,
     RetailSellerProductsDialogDeleteComponent,
@@ -120,6 +164,7 @@ import {
     WholesalerProductsDialogDeleteComponent,
     WholesalerProductsDialogUpdateComponent,
     RetailSellerProfileDialogUpdateComponent,
+    RetailSellerShoppingCarDialogSubmitComponent,
   ]
 })
 export class AppModule { }

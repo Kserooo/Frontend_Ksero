@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, retry, throwError} from "rxjs";
+import {catchError, Observable, of, retry, switchMap, throwError} from "rxjs";
 import {RetailSeller} from "../../models/retail-seller";
 
 @Injectable({
@@ -16,6 +16,9 @@ export class RetailSellersService {
       'Content-Type': 'application/json',
     })
   }
+
+  currentUser!: RetailSeller;
+  private _authenticated: boolean = false;
   constructor(private http: HttpClient) { }
 
   // API Error Handling
@@ -31,6 +34,34 @@ export class RetailSellersService {
     }
     // Return Observable with Error Message to Client
     return throwError(() => new Error('Something happened with request, please try again later'));
+  }
+
+  set accessToken(token: string)
+  {
+    localStorage.setItem('accessToken', token);
+  }
+
+  get accessToken(): string
+  {
+    return localStorage.getItem('accessToken') ?? '';
+  }
+
+  signIn(username: string, password: string){
+    return this.http.get<string>(`${this.basePath}?username=${username}&password=${password}`,)
+      .pipe(retry(2),catchError(this.handleError));
+  }
+
+  get isSignedIn(): boolean{
+    let accessToken = localStorage.getItem('accessToken');
+    return accessToken != null;
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
   }
 
   create(item: any): Observable<RetailSeller> {
@@ -79,4 +110,5 @@ export class RetailSellersService {
         retry(2),
         catchError(this.handleError));
   }
+
 }

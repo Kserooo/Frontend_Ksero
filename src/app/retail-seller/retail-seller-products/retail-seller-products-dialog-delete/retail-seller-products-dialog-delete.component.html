@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>Hi</h1>
+<h1 mat-dialog-title>Delete from car</h1>
 <div mat-dialog-content>
-  <p>Would you like to <span>delete</span> the item <b>{{data.name}}</b> from the car?</p>
+  <p>Would you like to <span>delete</span> {{data.quantity}} <b>{{data.product.name}}</b> from the car?</p>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>

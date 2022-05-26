@@ -1,6 +1,7 @@
-<h1 mat-dialog-title>Hi</h1>
+<h1 mat-dialog-title>Add to car</h1>
 <div mat-dialog-content>
-  <p>Would you like to add the item <b>{{data.name}}</b> to the car?</p>
+  <p>Would you like to add {{data.quantity}} <b>{{data.product.name}}</b> to the car?</p>
+  <p>It will cost S/.{{data.quantity.valueOf()*data.product.price}}</p>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>

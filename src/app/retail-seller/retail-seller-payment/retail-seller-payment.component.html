@@ -3,60 +3,112 @@
   <mat-card-header>
     <mat-card-title>Pay</mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    <mat-label class="tittles-in-color"><strong>Payee Details</strong></mat-label>
-    <table class="example-full-width"><tr>
-      <td>
-        <input matInput class="input-box" type="text" placeholder="Name" name="Name"  value="" size="50">
-      </td>
-    </tr>
-    </table>
 
-    <table class="example-full-width">
-      <tr><td>
-        <mat-select>
-          <mat-option value="Peru">+51</mat-option>
-          <mat-option value="Argentina">+54</mat-option>
-          <mat-option value="Brazil">+55</mat-option>
-          <mat-option value="Chile">+56</mat-option>
-          <mat-option value="Colombia">+57</mat-option>
-          <mat-option value="Venezuela">+58</mat-option>
-        </mat-select>
-      </td><td>
-        <input matInput class="input-box" placeholder="Cellphone Number" name="Number"  value="" size="39">
-      </td> </tr>
-    </table>
+  <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="userFormGroup">
 
-    <table class="example-full-width">
-      <tr>
+    <mat-card-content>
+      <mat-label class="tittles-in-color"><strong>Payment Details</strong></mat-label>
+      <table class="example-full-width"><tr>
         <td>
-          <input matInput class="input-box" type="email" placeholder="Email" name="Email"  value="" size="50">
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="paymentName" autocomplete="off">
+            <mat-error *ngIf="userFormGroup.get('paymentName')?.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="userFormGroup.get('paymentName')?.hasError('minlength')">
+              Name must have at least <strong>2</strong> characters
+            </mat-error>
+            <mat-error *ngIf="userFormGroup.get('paymentName')?.hasError('maxlength') &&
+                              !userFormGroup.get('paymentName')?.hasError('required')">
+              Name must have less than <strong>25</strong> characters
+            </mat-error>
+          </mat-form-field>
         </td>
       </tr>
-    </table>
+      </table>
 
-    <mat-label class="tittles-in-color"><strong>Card Details</strong></mat-label>
-    <table class="example-full-width" ><tr>
-      <td>
-        <input matInput  class="input-box"  placeholder="Card Number" name="Card Number"  value="" size="40">
-      </td>
-      <td>
-        <img mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png">
-      </td>
-    </tr></table>
+      <table class="example-full-width">
+        <tr><td>
 
-    <mat-label class="tittles-in-color"><strong>Card Details</strong></mat-label>
-    <table class="example-full-width" ><tr>
-      <td>
-        <input matInput  class="input-box" type="date" placeholder="Expirates Date" name="Expirates Date"  value="" size="40">
-      </td>
-      <td>
-        <input matInput class="input-box" placeholder="CVV" name="CVV"  value="" size="29">
-      </td>
-    </tr></table>
+        </td><td>
+          <mat-form-field appearance="fill">
+            <mat-label>Cellphone Number</mat-label>
+            <input matInput type="number" formControlName="paymentPhone" autocomplete="off">
+            <mat-error *ngIf="userFormGroup.get('paymentPhone')?.hasError('required')">
+              Cellphone is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="userFormGroup.get('paymentPhone')?.hasError('pattern')">
+              Cellphone must have <strong>9</strong> numbers
+            </mat-error>
+          </mat-form-field>
+        </td> </tr>
+      </table>
 
-  </mat-card-content>
+      <table class="example-full-width">
+        <tr>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="paymentEmail" autocomplete="off">
+              <mat-error *ngIf="userFormGroup.get('paymentEmail')?.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="userFormGroup.get('paymentEmail')?.hasError('email')">
+                Value must be an <strong>email</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <mat-label class="tittles-in-color"><strong>Card Details {{paymentCardNumberEncrypted}}</strong></mat-label>
+      <table class="example-full-width" ><tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Card Number</mat-label>
+            <input matInput type="number" formControlName="paymentCardNumber" autocomplete="off">
+            <mat-error *ngIf="userFormGroup.get('paymentCardNumber')?.hasError('required')">
+              Card Details is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="userFormGroup.get('paymentCardNumber')?.hasError('pattern')">
+              Value must be a <strong>card number</strong>
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <img mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png">
+        </td>
+      </tr></table>
+
+      <table class="example-full-width" ><tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Expired Date</mat-label>
+            <input matInput type="date" formControlName="paymentExpirationDate">
+            <mat-error *ngIf="userFormGroup.get('paymentExpirationDate')?.hasError('required')">
+              Expired Date is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>CVV</mat-label>
+            <input matInput type="number" formControlName="paymentCVV">
+            <mat-error *ngIf="userFormGroup.get('paymentCVV')?.hasError('required')">
+              CVV is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="userFormGroup.get('paymentCVV')?.hasError('pattern')">
+              CVV must have <strong>3</strong> numbers
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr></table>
+    </mat-card-content>
+
+  </form>
+
   <mat-card-actions>
-    <button mat-button>Proceed to Pay</button>
+    <button mat-button (click)="openDialogUpdate()">Save changes</button>
   </mat-card-actions>
 </mat-card>

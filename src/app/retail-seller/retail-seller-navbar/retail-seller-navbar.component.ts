@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-retail-seller-navbar',
@@ -8,11 +8,16 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class RetailSellerNavbarComponent implements OnInit {
   id:string ;
-  constructor(private route:ActivatedRoute) {
+  constructor(private route:ActivatedRoute, private router: Router) {
     this.id=this.route.snapshot.paramMap.get('id')!;
   }
 
   ngOnInit(): void {
+  }
+
+  Logout(): void{
+    this.router.navigate(['']);
+    localStorage.setItem('token','');
   }
 
 }

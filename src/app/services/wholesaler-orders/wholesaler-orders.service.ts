@@ -6,10 +6,10 @@ import {Order} from "../../models/order";
 @Injectable({
   providedIn: 'root'
 })
-export class OrdersService {
+export class WholesalerOrdersService {
 
   // Endpoint
-  basePath = 'http://localhost:3000/orders';
+  basePath = 'http://localhost:3000/wholesaler-orders';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -33,7 +33,6 @@ export class OrdersService {
     return throwError(() => new Error('Something happened with request, please try again later'));
   }
 
-  // Create Student
   create(item: any): Observable<Order> {
     return this.http.post<Order>(this.basePath, JSON.stringify(item), this.httpOptions)
       .pipe(
@@ -49,6 +48,12 @@ export class OrdersService {
         catchError(this.handleError));
   }
 
+  getByRetailSellerId(id: any): Observable<Order> {
+    return this.http.get<Order>(`${this.basePath}/?retailSellerId=${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
 
 
   // Get All

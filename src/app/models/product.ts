@@ -4,5 +4,4 @@ export interface Product {
   description: string;
   wholesalerId: number;
   price: number;
-  canAddToCar: boolean;
 }

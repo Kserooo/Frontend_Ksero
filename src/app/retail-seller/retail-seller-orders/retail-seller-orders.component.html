@@ -1,0 +1,35 @@
+<app-retail-seller-navbar></app-retail-seller-navbar>
+<h2 class="spacing">Acepted Orders</h2>
+<mat-grid-list cols="4" rowHeight="350px">
+  <mat-grid-tile *ngFor="let acceptedOrder of acceptedOrders">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Order #{{acceptedOrders.indexOf(acceptedOrder)+1}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>--------------------------------------</h2>
+        <h2 *ngIf="productsAccepted[acceptedOrders.indexOf(acceptedOrder)]">Product Name: {{productsAccepted[acceptedOrders.indexOf(acceptedOrder)].name}}</h2>
+        <h3>Quantity:  {{acceptedOrder.quantity}}</h3>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<h2 class="spacing">Pending Orders</h2>
+<mat-grid-list cols="4" rowHeight="350px">
+  <mat-grid-tile *ngFor="let pendingOrder of pendingOrders">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Order #{{pendingOrders.indexOf(pendingOrder)+1}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>--------------------------------------</h2>
+        <h2 *ngIf="productsPending[pendingOrders.indexOf(pendingOrder)]">Product Name: {{productsPending[pendingOrders.indexOf(pendingOrder)].name}}</h2>
+        <h3>Quantity: {{pendingOrder.quantity}}</h3>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+

@@ -4,6 +4,9 @@ import {Wholesaler} from "../models/wholesaler";
 import {RetailSellersService} from "../services/retail-sellers/retail-sellers.service";
 import {WholesalersService} from "../services/wholesalers/wholesalers.service";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {first} from "rxjs";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -12,20 +15,26 @@ import {Router} from "@angular/router";
 })
 
 export class LoginComponent implements OnInit  {
+  showInvalidUserError: boolean;
+  userFormGroup= new FormGroup({
+    username: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required])
+  });
   id: number;
-  user: RetailSeller;
   retailSellerFound: RetailSeller;
 
-  wholesalerData: Wholesaler;
   wholesalerFound: Wholesaler;
 
-  constructor(private retailSellerService: RetailSellersService, private wholesalerService: WholesalersService,
-              private route:Router) {
+  constructor(
+    private retailSellerService: RetailSellersService,
+    private wholesalerService: WholesalersService,
+    private route:Router,
+    private toastr: ToastrService
+  ) {
     this.id=2;
-    this.user = {} as RetailSeller;
     this.retailSellerFound = {} as RetailSeller;
-    this.wholesalerData = {} as Wholesaler;
     this.wholesalerFound = {} as Wholesaler;
+    this.showInvalidUserError = false;
   }
 
   ngOnInit(): void {
@@ -34,28 +43,29 @@ export class LoginComponent implements OnInit  {
 
 
   SubmitLogin(){
-    this.retailSellerService.getByUsername(this.user.username).subscribe((retailSelleresponse: any) => {
-      if (retailSelleresponse.length > 0) {
-        this.retailSellerFound = retailSelleresponse[0];
-        if (this.retailSellerFound.password == this.user.password) {
-          this.route.navigate(['/retail-seller',this.retailSellerFound.id,'profile'])
-          console.log("Login Successful as a Retail-Seller !!");
-        } else {
-          console.log("Wrong Username or Password !!");
+    if(!this.userFormGroup.invalid) {
+      this.retailSellerService.signIn(this.userFormGroup.get('username')?.value, this.userFormGroup.get('password')?.value)
+        .subscribe((response: any) => {
+        if(response.length!=0){
+          localStorage.setItem('token',"RetailSeller"+response[0].id);
+          this.toastr.success('Login Successful','Success');
+          this.route.navigate(['/retail-seller', response[0].id, 'profile']);
         }
-      }
-    })
+        else{
+          this.wholesalerService.signIn(this.userFormGroup.get('username')?.value, this.userFormGroup.get('password')?.value)
+            .subscribe((response: any)=>{
+              if(response.length!=0){
+                localStorage.setItem('token',"Wholesaler"+response[0].id);
+                this.toastr.success('Login Successful','Success');
+                this.route.navigate(['/wholesaler', response[0].id, 'profile']);
+              }
+              else{
+                this.toastr.error('Wrong username or password','Error');
+              }
+            })
+        }
+      })
+    }
 
-    this.wholesalerService.getByUsername(this.user.username).subscribe((wholeSaleresponse: any) => {
-      if (wholeSaleresponse.length > 0) {
-        this.wholesalerFound = wholeSaleresponse[0];
-        if (this.wholesalerFound.password == this.user.password) {
-          this.route.navigate(['/wholesaler',this.wholesalerFound.id,'profile']);
-          console.log("Login Successful as a WholeSaler !!");
-        } else {
-          console.log("Wrong Username or Password !!");
-        }
-      }
-    })
   }
 }

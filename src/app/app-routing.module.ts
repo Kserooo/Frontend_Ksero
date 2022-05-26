@@ -10,22 +10,46 @@ import {RetailSellerPaymentComponent} from "./retail-seller/retail-seller-paymen
 import {RetailSellerShoppingCarComponent} from "./retail-seller/retail-seller-shopping-car/retail-seller-shopping-car.component";
 import {WholesalerProductsComponent} from "./wholesaler/wholesaler-products/wholesaler-products.component";
 import {WholesalerOrdersComponent} from "./wholesaler/wholesaler-orders/wholesaler-orders.component";
+import {RetailSellerOrdersComponent} from "./retail-seller/retail-seller-orders/retail-seller-orders.component";
+import {RetailSellerGuard} from "./auth/guards/retail-seller/retail-seller.guard";
+import {WholesalerGuard} from "./auth/guards/wholesaler/wholesaler.guard";
+import {NoAuthGuard} from "./auth/guards/no-auth/no-auth.guard";
 
 const routes: Routes = [
 
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'register', component: RegisterComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'retail-seller/:id', children:[
+  { path: '', redirectTo: '', pathMatch: 'full'},
+
+
+  {
+    path: '',
+    canActivate: [NoAuthGuard],
+    canActivateChild: [NoAuthGuard],
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
+      { path: 'register', component: RegisterComponent},
+      { path: 'home', component: HomeComponent},
+      { path: 'login', component: LoginComponent},
+    ]
+  },
+
+  {
+    path: 'retail-seller/:id',
+    canActivate: [RetailSellerGuard],
+    canActivateChild: [RetailSellerGuard],
+    children:[
       { path: '', redirectTo: 'profile', pathMatch: 'full'},
       { path: 'profile', component: RetailSellerProfileComponent},
       { path: 'products', component: RetailSellerProductsComponent},
       { path: 'payment', component: RetailSellerPaymentComponent},
-      { path: 'shopping-car', component: RetailSellerShoppingCarComponent}
+      { path: 'shopping-car', component: RetailSellerShoppingCarComponent},
+      { path: 'orders', component: RetailSellerOrdersComponent}
     ]
   },
-  { path: 'wholesaler/:id', children:[
+  {
+    path: 'wholesaler/:id',
+    canActivate: [WholesalerGuard],
+    canActivateChild: [WholesalerGuard],
+    children:[
       { path: '', redirectTo: 'profile',pathMatch: 'full'},
       { path: 'profile', component: WholesalerProfileComponent},
       { path: 'products', component: WholesalerProductsComponent},

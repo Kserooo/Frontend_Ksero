@@ -13,7 +13,7 @@ export class RetailSellerProductsDialogDeleteComponent {
 
   constructor(
     public dialogRef: MatDialogRef<RetailSellerProductsDialogDeleteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Product,
+    @Inject(MAT_DIALOG_DATA) public data: { product: Product, quantity: number },
   ) {}
 
   onNoClick(): void {

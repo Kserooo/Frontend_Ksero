@@ -1,7 +1,7 @@
 .example-card {
   max-width: 550px;
   margin: 0 auto;
-  width: 40%;
+  width: 50%;
 }
 
 .example-header-image {
@@ -21,6 +21,7 @@
   text-indent: 10px;
   height: 25px;
   margin-top:5px ;
+  border-width: 1px;
   color: #666666;
 }
 .input-bir{

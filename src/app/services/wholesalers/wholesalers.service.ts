@@ -33,7 +33,16 @@ export class WholesalersService {
     return throwError(() => new Error('Something happened with request, please try again later'));
   }
 
-  // Create Student
+  signIn(username: string, password: string){
+    return this.http.get<string>(`${this.basePath}?username=${username}&password=${password}`,)
+      .pipe(retry(2),catchError(this.handleError));
+  }
+
+  get isSignedIn(): boolean{
+    let accessToken = localStorage.getItem('accessToken');
+    return accessToken != null;
+  }
+
   create(item: any): Observable<Wholesaler> {
     return this.http.post<Wholesaler>(this.basePath, JSON.stringify(item), this.httpOptions)
       .pipe(
@@ -41,7 +50,6 @@ export class WholesalersService {
         catchError(this.handleError));
   }
 
-  // Get Student by id
   getById(id: any): Observable<Wholesaler> {
     return this.http.get<Wholesaler>(`${this.basePath}/${id}`, this.httpOptions)
       .pipe(

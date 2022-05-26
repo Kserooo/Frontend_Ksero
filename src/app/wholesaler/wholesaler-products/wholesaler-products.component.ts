@@ -12,6 +12,7 @@ import {
 import {
   WholesalerProductsDialogDeleteComponent
 } from "./wholesaler-products-dialog-delete/wholesaler-products-dialog-delete.component";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-wholesaler-products',
@@ -23,7 +24,7 @@ export class WholesalerProductsComponent implements OnInit {
   productsData: Product[];
 
   constructor(private route: ActivatedRoute, private productsService: ProductsService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog, private toastr:ToastrService) {
     this.productsData=[] as Product[];
     this.id=this.route.snapshot.paramMap.get('id')!;
   }
@@ -40,13 +41,16 @@ export class WholesalerProductsComponent implements OnInit {
     productModel.id=0;
     productModel.wholesalerId=Number(this.id);
     const dialogRef=this.dialog.open(WholesalerProductsDialogAddComponent,{
-      data: productModel
     });
 
     dialogRef.afterClosed().subscribe(result =>{
       if(result!=undefined){
-        this.productsService.create(result).subscribe((response:any)=>{
+        productModel.name = result.name;
+        productModel.description = result.description;
+        productModel.price = result.price;
+        this.productsService.create(productModel).subscribe((response:any)=>{
           this.updateProductsData();
+          this.toastr.success('Product added','Success');
         });
 
       }
@@ -63,6 +67,7 @@ export class WholesalerProductsComponent implements OnInit {
         let actualProduct = result;
         this.productsService.delete(actualProduct.id).subscribe(()=>{
           this.updateProductsData();
+          this.toastr.success('Product deleted', 'Success');
         })
 
       }
@@ -82,10 +87,13 @@ export class WholesalerProductsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result =>{
       if(result!=undefined){
-        let actualProduct = result;
+        data.name = result.name;
+        data.description = result.description;
+        data.price = result.price;
 
-        this.productsService.update(actualProduct.id,result).subscribe(response=>{
+        this.productsService.update(data.id,data).subscribe(response=>{
           this.updateProductsData();
+          this.toastr.success('Product Edited','Success');
           console.log("Updated");
         })
       }

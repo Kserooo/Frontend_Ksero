@@ -9,11 +9,16 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class WholesalerNavbarComponent implements OnInit {
 
   id:string;
-  constructor(private route:ActivatedRoute) {
+  constructor(private route:ActivatedRoute, private router: Router) {
     this.id=this.route.snapshot.paramMap.get('id')!;
   }
 
   ngOnInit(): void {
+  }
+
+  Logout(): void{
+    this.router.navigate(['']);
+    localStorage.setItem('token','');
   }
 
 }
