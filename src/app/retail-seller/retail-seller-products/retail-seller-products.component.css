@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
 
 .grid-container {
-  margin: 20px;
+  padding: 20px;
+  background-color: hsl(240, 100%, 85%);
+  /* background: url("https://wallpaper.dog/large/5524984.png") ;*/
 }
 
 .dashboard-card {
@@ -16,8 +19,49 @@
   top: 5px;
   right: 10px;
 }
+.product-data{
+  text-align: left;
+  padding: 0rem 3rem 1rem 3rem;
+}
+.name_of_product{
+  padding: 1rem 0rem 0rem 2rem;
+}
+.mat-h1{
+  color:white;
+}
+.name_search{
+  color:white;
+}
 
-.dashboard-card-content {
+.value-form{
+  padding-left: 3rem;
+  width: 8rem;
+}
+.input-product{
+  width: 4rem;
+}
+span{
+  color:#673ab7;
+}
+.product-form{
+  float: left;
+}
+.product-slider{
+  float: left;
+}
+.header-container{
+  display: flex;
+}
+.available_title{
+  width: 50%;
+  margin:1rem 0rem 0rem 1rem;
+}
+.search{
+  width: 50%;
+  margin:0rem 1rem 0rem 0rem;
+  text-align: right;
+}
+.buttons{
   text-align: center;
 }
 
@@ -28,5 +72,6 @@
 /deep/ .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #f44336;
 }
-
-
+.dashboard-card{
+  border-radius: 1rem;
+}
