@@ -17,5 +17,6 @@ h2 {
 
 .background-image {
   height: 100%;
-  background-image: url("http://wonderfulengineering.com/wp-content/uploads/2014/09/Purple-wallpaper-35.jpg%22");
+  background-image: url("https://images.unsplash.com/photo-1460411794035-42aac080490a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGluayUyMGFuZCUyMHB1cnBsZSUyMHNreXxlbnwwfHwwfHw%3D&w=1000&q=80%22");
+  background-size: cover;
 }
