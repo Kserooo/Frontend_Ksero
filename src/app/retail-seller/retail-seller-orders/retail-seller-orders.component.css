@@ -7,6 +7,13 @@
   text-align: center;
 }
 
+.everything{
+  width:100%;
+  height: 100%;
+  background-color: hsl(240, 100%, 85%);
+  padding-top: 2rem;
+}
+
 .example-card:hover {
   background-color: #E0DAE9;
   transition: 0.2s;

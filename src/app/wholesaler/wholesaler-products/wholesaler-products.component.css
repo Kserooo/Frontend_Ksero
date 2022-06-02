@@ -3,6 +3,8 @@
   height: 100%;
   padding-top: 2rem;
   /*background-color: hsl(240, 100%, 85%)*/
+  background-color: hsl(240, 100%, 85%);
+  padding-top: 2rem;
 }
 .grid-container {
   margin: 20px;
@@ -59,4 +61,20 @@
   margin-left: 507px;
   margin-bottom: 30px;
   letter-spacing: 1px;
+}
+
+.header-container{
+  display: flex;
+}
+.title-container{
+  width: 50%;
+  margin:0rem 0rem 0rem 1rem;
+}
+.button-add{
+  width: 50%;
+  text-align: right;
+  margin:0rem 1rem 0rem 0rem;
+}
+.product-name{
+  margin-top: 1rem;
 }

@@ -1,7 +1,8 @@
 .general-card{
-  height: 620px;
-
+  height: 100%;
+  background-color: hsl(240, 100%, 85%);
 }
+
 .container{
   padding-left: 5%;
   padding-top: 20px;
