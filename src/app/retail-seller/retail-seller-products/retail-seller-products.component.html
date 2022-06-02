@@ -17,14 +17,15 @@
       <mat-grid-tile *ngFor="let product of productsData | filter:searchKey:'name';" >
         <mat-card class="dashboard-card">
           <mat-card-header>
-            <mat-card-title class="name_of_product">
+            <mat-card-title style="margin-bottom: 30px;
+                                   margin-top: 10px;" class="name_of_product">
               {{product.name}}
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
             <div class="product-data">
               <div><p><span><strong>Descripcion del producto:</strong></span> {{product.description}}</p></div>
-              <div *ngIf="wholesalersData[productsData.indexOf(product)]"><p><span><strong>Vendedor:</strong></span> {{wholesalersData[productsData.indexOf(product)].firstName}}</p></div>
+              <div *ngIf="wholesalersData[productsData.indexOf(product)]"><p><span><strong>Mayorista:</strong></span> {{wholesalersData[productsData.indexOf(product)].firstName}}</p></div>
               <div><p><span><strong>Unit Price:</strong></span> $/.{{product.price}}</p></div>
               <div><p><span><strong>Selected Price:</strong></span> $/.{{product.price*sliderValue[productsData.indexOf(product)]}}</p></div>
               <div><p><span><strong>Products Added:</strong></span> {{productsQuantity[productsData.indexOf(product)]}} (S/.{{productsQuantity[productsData.indexOf(product)]*product.price}})</p></div>

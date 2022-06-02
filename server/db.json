@@ -6,7 +6,7 @@
       "lastName": "Boston",
       "birthday": "2012-09-21",
       "phone": "916457963",
-      "email": "gravida.aliquam@protonmail.net",
+      "email": "gravida.aliquam@gmail.com",
       "address": "Ap #481-2687 Magna. Rd.",
       "username": "Retail1",
       "password": "3O5Z48K8MU",
@@ -18,7 +18,7 @@
       "lastName": "Greene",
       "birthday": "2013-07-22",
       "phone": "987568456",
-      "email": "massa@yahoo.net",
+      "email": "greene.adrianne@gmail.com",
       "address": "Ap #726-7669 Lorem Rd.",
       "username": "Retail2",
       "password": "4K2X23Q5WP",
@@ -32,11 +32,11 @@
     },
     {
       "id": 3,
-      "firstName": "Caleb",
+      "firstName": "Sergio",
       "lastName": "Pratt",
       "birthday": "2023-03-22",
       "phone": "987651425",
-      "email": "natoque@protonmail.org",
+      "email": "sergi00.pratt@gmail.com",
       "address": "9614 Tellus Av.",
       "username": "Retail3",
       "password": "9S3V74P1PK",
@@ -50,10 +50,10 @@
       "lastName": "Wise",
       "birthday": "2007-11-22",
       "phone": "948568278",
-      "email": "natoque.penatibus@aol.net",
+      "email": "johnny.simon@gmail.com",
       "address": "496-8027 Non Street",
       "username": "Wholesaler1",
-      "password": "5M6O02N5DR",
+      "password": "carc2106",
       "description": "Pede, malesuada vel. Rigori mortis"
     },
     {
@@ -62,7 +62,7 @@
       "lastName": "Graham",
       "birthday": "2006-12-22",
       "phone": "923648795",
-      "email": "mauris.non.dui@yahoo.couk",
+      "email": "fede.graham@gmail.com",
       "address": "186-7973 Nulla Rd.",
       "username": "Wholesaler2",
       "password": "0C8R30F3RB",
@@ -70,11 +70,11 @@
     },
     {
       "id": 3,
-      "firstName": "Vanesa",
+      "firstName": "Elias",
       "lastName": "Craft",
       "birthday": "2024-05-22",
       "phone": "946788878",
-      "email": "quis.arcu@yahoo.com",
+      "email": "elias.craf@gmail.com",
       "address": "703-6870 Sodales Ave",
       "username": "Wholesaler3",
       "password": "8H1G97O2JU",
@@ -86,7 +86,7 @@
       "id": 1,
       "wholesalerId": 1,
       "name": "Aceite",
-      "description": "Marca Primor. Libre de colesterol. Contenido Neto de 1 litro. Caja de 12 unidades ",
+      "description": "Marca Primor. Contenido Neto de 1 litro. Caja de 12 unidades ",
       "price": 80
     },
     {
@@ -109,6 +109,20 @@
       "name": "Leche",
       "description": "Marca SoyVida. Contenido 400g. Caja de 6 unidades",
       "price": 72
+    },
+    {
+      "id": 5,
+      "wholesalerId": 1,
+      "name": "Vino",
+      "description": "Marca Tabernero. Contenido Neto de 1 litro. Caja de 6 unidades",
+      "price": 25
+    },
+    {
+      "id": 6,
+      "wholesalerId": 1,
+      "name": "Galleta",
+      "description": "Marca Oreo. Contenido 200g. Caja de 36 unidades",
+      "price": 65
     }
   ],
   "wholesaler-orders": [
