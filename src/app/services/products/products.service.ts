@@ -9,7 +9,7 @@ import {Product} from "../../models/product";
 export class ProductsService {
 
   // Endpoint
-  basePath = 'http://localhost:3000/products';
+  basePath = 'http://ksero.herokuapp.com/api/v1/products';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -50,7 +50,7 @@ export class ProductsService {
   }
 
   getByWholesalerId(id: any):Observable<Product>{
-    return this.http.get<Product>(`${this.basePath}/?wholesalerId=${id}`, this.httpOptions)
+    return this.http.get<Product>(`${this.basePath}/wholesalerId/${id}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
