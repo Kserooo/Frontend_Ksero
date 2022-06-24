@@ -22,7 +22,9 @@ export class RegisterComponent implements OnInit , AfterViewInit{
     username: new FormControl('',[Validators.required,
       Validators.minLength(6), Validators.maxLength(15)]),
     password: new FormControl('',[Validators.required,
-      Validators.minLength(6), Validators.maxLength(15)])
+      Validators.minLength(6), Validators.maxLength(15)]),
+    email: new FormControl('',[Validators.required,
+      Validators.email])
   });
 
   constructor(private retailSellerService: RetailSellersService, private wholesalerService: WholesalersService,
