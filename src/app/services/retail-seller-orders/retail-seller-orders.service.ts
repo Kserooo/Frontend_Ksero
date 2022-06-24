@@ -9,7 +9,7 @@ import {Order} from "../../models/order";
 export class RetailSellerOrdersService {
 
   // Endpoint
-  basePath = 'http://localhost:3000/retail-seller-orders';
+  basePath = 'https://ksero.herokuapp.com/api/v1/retail-seller-orders';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -49,7 +49,7 @@ export class RetailSellerOrdersService {
   }
 
   getByRetailSellerId(id: any): Observable<Order> {
-    return this.http.get<Order>(`${this.basePath}/?retailSellerId=${id}`, this.httpOptions)
+    return this.http.get<Order>(`${this.basePath}/retailSellerId/${id}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
