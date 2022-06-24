@@ -9,7 +9,7 @@ import {Wholesaler} from "../../models/wholesaler";
 export class WholesalersService {
 
   // Endpoint
-  basePath = 'http://localhost:3000/wholesalers';
+  basePath = 'https://ksero.herokuapp.com/api/v1/wholesalers';
 
   httpOptions = {
     headers: new HttpHeaders({

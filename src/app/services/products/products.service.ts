@@ -9,7 +9,7 @@ import {Product} from "../../models/product";
 export class ProductsService {
 
   // Endpoint
-  basePath = 'http://ksero.herokuapp.com/api/v1/products';
+  basePath = 'https://ksero.herokuapp.com/api/v1/products';
 
   httpOptions = {
     headers: new HttpHeaders({
