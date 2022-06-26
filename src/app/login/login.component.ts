@@ -45,49 +45,26 @@ export class LoginComponent implements OnInit  {
 
 
   SubmitLogin(){
-    this.usersService.authenticateUser({
-      username: this.userFormGroup.get('username')?.value,
-      password: this.userFormGroup.get('password')?.value,
-    }).subscribe((response:any)=>{
-      console.log(response);
-      localStorage.setItem('token',response.token);
-      this.usersService.verifyTokenRetailSeller().subscribe((response2: any)=>{
-        this.retailSellerService.getByUsername(response.username).subscribe((response3: any)=>{
-          this.toastr.success('Login As Retail Seller Successful','Success');
-          this.route.navigate(['/retail-seller',response3.id,'profile']);
+    if(this.userFormGroup.valid){
+      this.usersService.authenticateUser({
+        username: this.userFormGroup.get('username')?.value,
+        password: this.userFormGroup.get('password')?.value,
+      }).subscribe((response:any)=>{
+        console.log(response);
+        localStorage.setItem('token',response.token);
+        this.usersService.verifyTokenRetailSeller().subscribe((response2: any)=>{
+          this.retailSellerService.getByUsername(response.username).subscribe((response3: any)=>{
+            this.toastr.success('Login As Retail Seller Successful','Success');
+            this.route.navigate(['/retail-seller',response3.id,'profile']);
+          })
         })
-      })
-      this.usersService.verifyTokenWholesaler().subscribe((response2: any)=>{
-        this.wholesalerService.getByUsername(response.username).subscribe((response3: any)=>{
-          this.toastr.success('Login As Wholesaler Successful','Success');
-          this.route.navigate(['/wholesaler',response3.id,'profile']);
+        this.usersService.verifyTokenWholesaler().subscribe((response2: any)=>{
+          this.wholesalerService.getByUsername(response.username).subscribe((response3: any)=>{
+            this.toastr.success('Login As Wholesaler Successful','Success');
+            this.route.navigate(['/wholesaler',response3.id,'profile']);
+          })
         })
-      })
-    })
-    return;
-    if(!this.userFormGroup.invalid) {
-      this.retailSellerService.signIn(this.userFormGroup.get('username')?.value, this.userFormGroup.get('password')?.value)
-        .subscribe((response: any) => {
-        if(response.length!=0){
-          localStorage.setItem('token',"RetailSeller"+response[0].id);
-          this.toastr.success('Login Successful','Success');
-          this.route.navigate(['/retail-seller', response[0].id, 'profile']);
-        }
-        else{
-          this.wholesalerService.signIn(this.userFormGroup.get('username')?.value, this.userFormGroup.get('password')?.value)
-            .subscribe((response: any)=>{
-              if(response.length!=0){
-                localStorage.setItem('token',"Wholesaler"+response[0].id);
-                this.toastr.success('Login Successful','Success');
-                this.route.navigate(['/wholesaler', response[0].id, 'profile']);
-              }
-              else{
-                this.toastr.error('Wrong username or password','Error');
-              }
-            })
-        }
       })
     }
-
   }
 }

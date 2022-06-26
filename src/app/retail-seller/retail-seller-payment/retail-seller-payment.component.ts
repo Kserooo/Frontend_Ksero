@@ -45,6 +45,7 @@ export class RetailSellerPaymentComponent implements OnInit {
   ngOnInit(): void {
     this.retailSellersService.getById(this.id).subscribe((response:any)=>{
       this.retailSeller=response;
+      console.log(this.retailSeller);
       this.userFormGroup.setValue({
         paymentName: this.retailSeller.paymentName ? this.retailSeller.paymentName : '',
         paymentPhone: this.retailSeller.paymentPhone ? this.retailSeller.paymentPhone : '',
@@ -77,6 +78,7 @@ export class RetailSellerPaymentComponent implements OnInit {
           this.retailSeller.paymentCardNumber=String(this.userFormGroup.get('paymentCardNumber')?.value);
           this.retailSeller.paymentExpirationDate=this.userFormGroup.get('paymentExpirationDate')?.value;
           this.retailSeller.paymentCVV=String(this.userFormGroup.get('paymentCVV')?.value);
+          console.log(this.retailSeller);
           this.retailSellersService.update(this.id,this.retailSeller).subscribe(response=>{
             this.toastr.success('Information Submitted','Success');
           })

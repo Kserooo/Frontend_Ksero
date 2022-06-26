@@ -67,7 +67,13 @@ export class RegisterComponent implements OnInit , AfterViewInit{
             description: "",
             username: this.userFormGroup.get('username')?.value,
             email: this.userFormGroup.get('email')?.value,
-            password: this.userFormGroup.get('password')?.value
+            password: this.userFormGroup.get('password')?.value,
+            paymentName: "",
+            paymentPhone: "",
+            paymentEmail: "",
+            paymentCardNumber: "",
+            paymentExpirationDate: "",
+            paymentCVV: ""
           }).subscribe((response3: any)=>{
             this.toastr.success('Account successfully registered', 'Success');
             this.route.navigate(['/retail-seller',response3.id,'profile']);
@@ -76,69 +82,43 @@ export class RegisterComponent implements OnInit , AfterViewInit{
 
       })
     }
-    /*if(this.userFormGroup.valid){
-      this.retailSellerService.getByUsername(this.userFormGroup.get('username')?.value).subscribe((response:any)=>{
-        if(response.length==0){
-          this.wholesalerService.getByUsername(this.userFormGroup.get('username')?.value).subscribe((response2:any)=>{
-            if(response2.length==0){
-              this.retailSellerService.create({
-                username: this.userFormGroup.get('username')?.value,
-                password: this.userFormGroup.get('password')?.value
-              }).subscribe((response3:any)=>{
-                this.toastr.success('Account successfully registered','Success');
-                localStorage.setItem('token',"RetailSeller"+response3.id);
-                this.route.navigate(['/retail-seller',response3.id,'profile']);
-              });
-            }
-            else{
-              this.toastr.error('Username actually registered','Error');
-            }
-          });
-        }
-        else{
-          this.toastr.error('Username actually registered','Error');
-        }
-      });
-    }
-    else{
-      this.toastr.error('Fix the errors first', 'Error');
-    }*/
   }
 
   SubmitRegisterWholesaler() {
-    let role: string[] = ["ROLE_WHOLESALER"];
-    this.usersService.registerUser({
-      username: this.userFormGroup.get('username')?.value,
-      email: this.userFormGroup.get('email')?.value,
-      password: this.userFormGroup.get('password')?.value,
-      roles: role
-    }).subscribe((response: any) => {
-      console.log(response);
-      this.usersService.authenticateUser({
+    if(this.userFormGroup.valid) {
+      let role: string[] = ["ROLE_WHOLESALER"];
+      this.usersService.registerUser({
         username: this.userFormGroup.get('username')?.value,
-        password: this.userFormGroup.get('password')?.value
-      }).subscribe((response2: any)=>{
-        console.log(response2);
-        localStorage.setItem('token',response2.token);
-        this.wholesalerService.create({
-          firstName: "",
-          lastName: "",
-          birthday: "",
-          phone: "",
-          address: "",
-          description: "",
+        email: this.userFormGroup.get('email')?.value,
+        password: this.userFormGroup.get('password')?.value,
+        roles: role
+      }).subscribe((response: any) => {
+        console.log(response);
+        this.usersService.authenticateUser({
           username: this.userFormGroup.get('username')?.value,
-          email: this.userFormGroup.get('email')?.value,
           password: this.userFormGroup.get('password')?.value
-        }).subscribe((response3: any)=>{
-          this.toastr.success('Account successfully registered', 'Success');
-          this.route.navigate(['/wholesaler',response3.id,'profile']);
-          console.log(response3);
+        }).subscribe((response2: any)=>{
+          console.log(response2);
+          localStorage.setItem('token',response2.token);
+          this.wholesalerService.create({
+            firstName: "",
+            lastName: "",
+            birthday: "",
+            phone: "",
+            address: "",
+            description: "",
+            username: this.userFormGroup.get('username')?.value,
+            email: this.userFormGroup.get('email')?.value,
+            password: this.userFormGroup.get('password')?.value
+          }).subscribe((response3: any)=>{
+            this.toastr.success('Account successfully registered', 'Success');
+            this.route.navigate(['/wholesaler',response3.id,'profile']);
+            console.log(response3);
+          })
         })
-      })
 
-    })
-    return;
+      })
+    }
     /*if(this.userFormGroup.valid){
       this.wholesalerService.getByUsername(this.userFormGroup.get('username')?.value).subscribe((response:any)=>{
         if(response.length==0){
