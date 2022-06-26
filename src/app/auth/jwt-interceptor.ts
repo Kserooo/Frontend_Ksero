@@ -5,7 +5,8 @@ import {
   HttpInterceptor, HttpRequest
 } from '@angular/common/http';
 import {Observable} from "rxjs";
-import {RetailSellersService} from "../services/retail-sellers/retail-sellers.service";
+import {UsersService} from "../services/users/users.service";
+
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
@@ -13,10 +14,10 @@ export class JwtInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let retailSellerService = this.injector.get(RetailSellersService)
+    let usersService = this.injector.get(UsersService)
     let token = req.clone({
       setHeaders:{
-        Authorization: `Bearer ${retailSellerService.getToken()}`
+        Authorization: `Bearer ${usersService.getToken()}`
       }
     })
     return next.handle(token);

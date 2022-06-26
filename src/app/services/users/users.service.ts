@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, of, retry, switchMap, throwError} from "rxjs";
 import {User} from "../../models/user";
+import {Product} from "../../models/product";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,15 @@ export class UsersService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     })
+  }
+
+  GetHttpOptionsWithToken(token: any){
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    }
   }
 
   currentUser!: User;
@@ -46,14 +56,22 @@ export class UsersService {
     return localStorage.getItem('accessToken') ?? '';
   }
 
-  signIn(username: string, password: string){
-    return this.http.get<string>(`${this.basePath}?username=${username}&password=${password}`,)
-      .pipe(retry(2),catchError(this.handleError));
-  }
-
   get isSignedIn(): boolean{
     let accessToken = localStorage.getItem('accessToken');
     return accessToken != null;
+  }
+  verifyTokenRetailSeller(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.basePath}/auth/verify-token-retail-seller`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  verifyTokenWholesaler(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.basePath}/auth/verify-token-wholesaler`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
   }
 
   loggedIn() {
@@ -64,51 +82,27 @@ export class UsersService {
     return localStorage.getItem('token');
   }
 
-  create(item: any): Observable<User> {
-    return this.http.post<User>(this.basePath, JSON.stringify(item), this.httpOptions)
+  authenticateUser(item: any): Observable<User> {
+    return this.http.post<User>(`${this.basePath}/auth/sign-in`, JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
-
-  getById(id: any): Observable<User> {
-    return this.http.get<User>(`${this.basePath}/${id}`, this.httpOptions)
+  registerUser(item: any): Observable<User> {
+    return this.http.post<User>(`${this.basePath}/auth/sign-up`, JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
-
 
   // Get All
-  getAll(): Observable<User> {
-    return this.http.get<User>(this.basePath, this.httpOptions)
+  getAllUsers(): Observable<User> {
+    return this.http.get<User>(`${this.basePath}/auth/get-all`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
-  getByUsername(username: any): Observable<User> {
-    return this.http.get<User>(`${this.basePath}/?username=${username}`, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError));
-  }
-
-  // Update
-  update(id: any, item: any): Observable<User> {
-    return this.http.put<User>(`${this.basePath}/${id}`, item, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError));
-  }
-
-  // Delete
-  delete(id: any) {
-    return this.http.delete(`${this.basePath}/${id}`, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError));
-  }
 
 }

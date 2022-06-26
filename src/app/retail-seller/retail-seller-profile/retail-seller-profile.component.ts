@@ -41,6 +41,7 @@ export class RetailSellerProfileComponent implements OnInit {
 
   getActualData():void{
     this.retailSellersService.getById(this.id).subscribe((response:any)=>{
+      console.log(response);
       this.retailSellerActual = response;
       this.userFormGroup.setValue({
         firstName: this.retailSellerActual.firstName ? this.retailSellerActual.firstName : '',

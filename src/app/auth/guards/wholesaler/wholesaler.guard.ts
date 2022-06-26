@@ -20,7 +20,9 @@ export class WholesalerGuard implements CanActivate, CanActivateChild {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const token = localStorage.getItem('token');
+    const token = "W";
+
+    return true;
 
     if(token && token.charAt(0)=='W'){
       return true;
@@ -32,7 +34,8 @@ export class WholesalerGuard implements CanActivate, CanActivateChild {
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const token = localStorage.getItem('token');
+    const token = "a";
+    return true;
 
     if(token && token.charAt(0)=='W'){
       return true;

@@ -9,13 +9,23 @@ import {Product} from "../../models/product";
 export class ProductsService {
 
   // Endpoint
-  basePath = 'http://ksero.herokuapp.com/api/v1/products';
+  basePath = 'https://ksero.herokuapp.com/api/v1/products';
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     })
   }
+
+  GetHttpOptionsWithToken(token: any){
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    }
+  }
+
   constructor(private http: HttpClient) { }
 
   // API Error Handling
