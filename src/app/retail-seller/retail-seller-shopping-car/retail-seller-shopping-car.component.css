@@ -1,30 +1,27 @@
 .general-card{
   height: 100%;
-  background-color: hsl(240, 100%, 85%);
+  background-color: hsl(245, 100%, 90%);
 }
 
 .container{
   padding-left: 5%;
   padding-top: 20px;
   display: flex;
-  font-family: 'Confortaa', cursive;
 }
 .order{
   margin-top: 10px;
   border-radius: 5px;
-  background-color: lavenderblush;
+  background-color: #FBEAFF;
   width: 55%;
-  height: 250px;
-  font-family: 'Confortaa', cursive;
+  height: auto;
 }
 .payment-summary{
   margin-top: 10px;
   margin-left: 5%;
   border-radius: 5px;
-  background-color: lavenderblush;
+  background-color: #FBEAFF;
   width: 35%;
-  height: 250px;
-  font-family: 'Confortaa', cursive;
+  height: 170px;
 }
 .tittles{
   padding-left: 20px;
@@ -34,7 +31,6 @@
   padding-left: 5%;
   padding-top: 20px;
   display: flex;
-  font-family: 'Confortaa', cursive;
 }
 .delivery{
   margin-top: 10px;
@@ -59,18 +55,14 @@
 }
 .p-name{
   margin-left:10px;
-  font-family: 'Confortaa', cursive;
 }
 .p-price{
   margin-left:40%;
-  font-family: 'Confortaa', cursive;
 }
 .p-general-2{
-  font-family: 'Confortaa', cursive;
 }
 .mat-button{
   left:30%;
-  font-family: 'Confortaa', cursive;
   background-color: #673ab7;
   color:white;
 }
