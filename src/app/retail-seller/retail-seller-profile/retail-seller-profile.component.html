@@ -14,12 +14,12 @@
         <table CELLSPACING="10" cellpadding="5"width="550" >
           <tr>
 
-            <td width="35%"><strong>Firs Name:</strong></td>
+            <td width="35%"><strong>Name:</strong></td>
             <mat-form-field appearance="fill">
               <mat-label>First Name</mat-label>
               <input matInput formControlName="firstName">
                 <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('required')">
-                First name is <strong>required</strong>
+                first name is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </tr>
@@ -29,7 +29,7 @@
               <mat-label>Last Name</mat-label>
               <input matInput formControlName="lastName">
               <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('required')">
-                Last name is <strong>required</strong>
+                last name is <strong>required</strong>
               </mat-error>
             </mat-form-field>
 
@@ -40,7 +40,7 @@
               <mat-label>Birthday</mat-label>
               <input matInput type="date" formControlName="birthday">
               <mat-error *ngIf="userFormGroup.get('birthday')?.hasError('required')">
-                Birthday is <strong>required</strong>
+                birthday is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </tr>
@@ -50,7 +50,7 @@
               <mat-label>Phone</mat-label>
               <input matInput formControlName="phone">
               <mat-error *ngIf="userFormGroup.get('phone')?.hasError('required')">
-                Phone is <strong>required</strong>
+                phone is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </tr>
@@ -60,7 +60,7 @@
               <mat-label>Email</mat-label>
               <input matInput formControlName="email">
               <mat-error *ngIf="userFormGroup.get('email')?.hasError('required')">
-                Email is <strong>required</strong>
+                email is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </tr>
@@ -70,7 +70,7 @@
               <mat-label>Adress</mat-label>
               <input matInput formControlName="address">
               <mat-error *ngIf="userFormGroup.get('address')?.hasError('required')">
-                Address is <strong>required</strong>
+                address is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </tr>
@@ -80,7 +80,7 @@
               <mat-label>Password</mat-label>
               <input matInput type="password" formControlName="password">
               <mat-error *ngIf="userFormGroup.get('password')?.hasError('required')">
-                Password is <strong>required</strong>
+                password is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </tr>
@@ -90,7 +90,7 @@
               <mat-label>Description</mat-label>
               <textarea matInput formControlName="description"></textarea>
               <mat-error *ngIf="userFormGroup.get('description')?.hasError('required')">
-                Description is <strong>required</strong>
+                description is <strong>required</strong>
               </mat-error>
             </mat-form-field>
 

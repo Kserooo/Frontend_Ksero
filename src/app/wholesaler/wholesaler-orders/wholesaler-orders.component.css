@@ -6,9 +6,8 @@
 
 .everything{
   width:100%;
-  min-height: 100%;
   height: auto;
-  background-color: hsl(245, 100%, 90%);
+  background-color: hsl(240, 100%, 85%);
   padding-top: 2rem;
 }
 
