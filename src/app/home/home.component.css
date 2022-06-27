@@ -2,6 +2,9 @@
   background-image: url('https://static.vecteezy.com/system/resources/previews/002/037/994/original/abstract-pink-background-with-beautiful-fluid-shapes-free-vector.jpg');
   height: 400px;
 }
+span{
+  color:#673ab7;
+}
 .mat-card-title{
   text-align: center;
   padding-top: 100px;
@@ -59,8 +62,8 @@
 .contributor-text{
   font-family: 'Confortaa', cursive;
   text-align: center;
-  padding:20px;
-  font-size: 13px;
+  padding:13px;
+  font-size: 14px;
 }
 
 .contributor-text-v2{
