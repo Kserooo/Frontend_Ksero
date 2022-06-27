@@ -61,6 +61,7 @@ export class RetailSellerProductsComponent implements OnInit ,AfterViewInit {
         else{
           this.productsQuantity.push(0);
         }
+        console.log(product.wholesalerId);
         this.wholesalersService.getById(product.wholesalerId).subscribe((response2: any)=>{
           this.wholesalersData.push(response2);
         })

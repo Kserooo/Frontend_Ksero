@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
 
 .grid-container {
   padding: 20px;
-  background-color: hsl(240, 100%, 85%);
+  background-color: hsl(245, 100%, 90%);
   /* background: url("https://wallpaper.dog/large/5524984.png") ;*/
 }
 
@@ -65,6 +64,10 @@ span{
   text-align: center;
 }
 
+/deep/ .mat-slide-toggle-content{
+  font-family: 'Press Start 2P', cursive;
+}
+
 /deep/ .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
   background-color: #f99992;
 }
@@ -72,6 +75,11 @@ span{
 /deep/ .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #f44336;
 }
-.dashboard-card{
-  border-radius: 1rem;
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background-color: #FBEAFF;
 }

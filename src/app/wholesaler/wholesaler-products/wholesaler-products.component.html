@@ -12,7 +12,7 @@
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
-              <p class="product-name">{{product.name}}</p>
+              <p class="product-name">Name: {{product.name}}</p>
               <br>
               <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
                 <mat-icon>more_vert</mat-icon>
@@ -24,8 +24,8 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
-            <div>{{product.description}}</div><br>
-            <div>$/.{{product.price}}</div><br>
+            <div>Description: {{product.description}}</div><br>
+            <div>Price: $/.{{product.price}}</div><br>
 
             <button  mat-raised-button color="warn" (click)="openDialogDelete(product)">Delete Item</button>
             <button  mat-raised-button color="primary" (click)="openDialogUpdate(product)">Edit Item</button>
