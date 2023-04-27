@@ -1,13 +1,18 @@
-<app-home-navbar></app-home-navbar>
 
-<div class="background-image">
-  <div fxLayoutAlign="center center" fxFlexFill>
-    <mat-card>
-      <h2 class="padding">Register in Ksero</h2>
+<div class="container-flex">
+  <div class="left-section">
+    <a href="https://ibb.co/yXwbr05"><img class="img-cart" src="https://i.ibb.co/Y3zqx28/carro.png" alt="carro" border="0"></a>
+    <h2 class="title-h2">KSERO</h2>
+  </div>
+
+  <div class="right-section">
+    <h2 class="login-h2">Register</h2>
+    <h3 class="subtitle-h3">Complete los campos para registrarse </h3>
+    <div class="right-section-container">
       <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="userFormGroup">
-        <mat-form-field appearance="fill">
+        <mat-form-field class="form-field">
           <mat-label>Username</mat-label>
-          <input matInput placeholder="Username" autocomplete="off" formControlName="username" >
+          <input matInput placeholder="Username" autocomplete="off" formControlName="username">
           <mat-error *ngIf="userFormGroup.get('username')?.hasError('required')">
             Username is <strong>required</strong>
           </mat-error>
@@ -19,10 +24,25 @@
             Username must have less than <strong>16</strong> characters
           </mat-error>
         </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill">
+
+        <mat-form-field class="form-field">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="email" autocomplete="off" formControlName="email">
+          <mat-error *ngIf="userFormGroup.get('email')?.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('email')?.hasError('minlength')">
+            Email must have at least <strong>6</strong> characters
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('email')?.hasError('maxlength') &&
+                            !userFormGroup.get('email')?.hasError('required')">
+            Email must have less than <strong>16</strong> characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
           <mat-label>Password</mat-label>
-          <input matInput autocomplete="off" formControlName="password" type="password">
+          <input matInput placeholder="password" autocomplete="off" formControlName="password" type="password">
           <mat-error *ngIf="userFormGroup.get('password')?.hasError('required')">
             Password is <strong>required</strong>
           </mat-error>
@@ -34,25 +54,12 @@
             Password must have less than <strong>16</strong> characters
           </mat-error>
         </mat-form-field>
-        <br>
-        <!--Email-->
-        <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" autocomplete="off" formControlName="email" >
-          <mat-error *ngIf="userFormGroup.get('email')?.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="userFormGroup.get('email')?.hasError('email')">
-            Data <strong>must</strong> be an email
-          </mat-error>
-        </mat-form-field>
-        <br>
-        <p *ngIf="warningAlert">Usuario ya registrado</p>
-        <button class = "margin-button" mat-raised-button color="primary" type="submit" (click)="SubmitRegisterRetailSeller()">Register as a Retail Seller</button>
-        <button class = "margin-button" mat-raised-button color="warn" type="submit" (click)="SubmitRegisterWholesaler()">Register as a Wholesaler</button>
+
+        <button class="button-login" (click)="SubmitRegisterRetailSeller()" mat-flat-button>RetailSeller</button>
+        <button class="button-login" (click)="SubmitRegisterWholesaler()" mat-flat-button>Wholesaler</button>
+        <h4 class="subtitle-h4" >Already have an account? <span (click)="redirect()" class="subtitle-span">Login</span></h4>
+
       </form>
-    </mat-card>
+    </div>
   </div>
-
-
 </div>

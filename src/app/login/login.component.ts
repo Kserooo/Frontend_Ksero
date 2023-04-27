@@ -18,7 +18,7 @@ import {ToastrService} from "ngx-toastr";
 export class LoginComponent implements OnInit  {
   showInvalidUserError: boolean;
   userFormGroup= new FormGroup({
-    username: new FormControl('',[Validators.required]),
+    username: new FormControl('',[Validators.required, Validators.maxLength(15)]),
     password: new FormControl('',[Validators.required])
   });
   id: number;
@@ -43,6 +43,9 @@ export class LoginComponent implements OnInit  {
 
   }
 
+  redirect(){
+    this.route.navigate(['/register']).then(r => console.log('redirect to register'));
+  }
 
   SubmitLogin(){
     if(this.userFormGroup.valid){

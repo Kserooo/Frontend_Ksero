@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit , AfterViewInit{
     password: new FormControl('',[Validators.required,
       Validators.minLength(6), Validators.maxLength(15)]),
     email: new FormControl('',[Validators.required,
-      Validators.email])
+      Validators.email]),
   });
 
   constructor(private retailSellerService: RetailSellersService, private wholesalerService: WholesalersService,
@@ -40,6 +40,10 @@ export class RegisterComponent implements OnInit , AfterViewInit{
   }
 
   ngAfterViewInit() {
+  }
+
+  redirect(){
+    this.route.navigate(['/login']).then(r => console.log('redirect to register'));
   }
 
   SubmitRegisterRetailSeller(){
@@ -119,32 +123,5 @@ export class RegisterComponent implements OnInit , AfterViewInit{
 
       })
     }
-    /*if(this.userFormGroup.valid){
-      this.wholesalerService.getByUsername(this.userFormGroup.get('username')?.value).subscribe((response:any)=>{
-        if(response.length==0){
-          this.retailSellerService.getByUsername(this.userFormGroup.get('username')?.value).subscribe((response2:any)=>{
-            if(response2.length==0){
-              this.wholesalerService.create({
-                username: this.userFormGroup.get('username')?.value,
-                password: this.userFormGroup.get('password')?.value
-              }).subscribe((response3:any)=>{
-                this.toastr.success('Account successfully registered','Success');
-                localStorage.setItem('token',"Wholesaler"+response3.id);
-                this.route.navigate(['/wholesaler',response3.id,'profile']);
-              });
-            }
-            else{
-              this.toastr.error('Username actually registered','Error');
-            }
-          })
-        }
-        else{
-          this.toastr.error('Username actually registered','Error');
-        }
-      });
-    }
-    else{
-      this.toastr.error('Fix the errors first', 'Error');
-    }*/
   }
 }

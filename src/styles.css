@@ -4,5 +4,5 @@ html, body { height: 100%; }
 body { margin: 0;  }
 
 *{
-  font-family: 'Cabin', 'Exo 2', sans-serif;
+  font-family: 'Cabin', 'Exo 2', 'Montserrat', sans-serif;
 }

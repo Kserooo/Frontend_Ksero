@@ -1,22 +1,169 @@
-  .mat-raised-button color {
-  background-color: white;
+.container-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
 }
 
-h2 {
+.container-icons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 100px;
+}
+
+.left-section {
+  background-color: rgba(98, 0, 238, 0.72);
+  width: 45%;
+  background-size: cover;
+  background-image:
+    linear-gradient(
+      rgba(103, 10, 236, 0.69),
+      rgba(103, 10, 238, 0.69 )
+    ),
+    url("https://eu-central-1.linodeobjects.com/contactcenterhub/2022/10/supermercados-768x432.jpg");
+  border-radius: 3px;
+}
+*{
+  scroll-behavior: smooth !important;
+  transition: 1s;
+}
+
+.right-section {
+  width: 55%;
+  background-color: white;
+  alignment: left;
+}
+
+.title-h2 {
+  margin: 0;
+  color: white;
+  letter-spacing: 3px;
+  font-size: 50px;
+  font-family: 'Exo2', sans-serif;
+  text-shadow: #737272 2px 0 10px;
   text-align: center;
 }
 
-.mat-icon {
-  align-content: center;
+.login-h2 {
+  color: #6200EE;
+  margin-left: 190px;
+  margin-top: 100px;
+  font-size: 28px;
 }
 
-.margin-button {
-  margin-bottom: 5px;
-  margin-top: 10px;
+.subtitle-h3 {
+  color: rgba(114, 114, 114, 0.94);
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 190px;
+  padding-top: 20px;
+  letter-spacing: 1px;
 }
 
-.background-image {
-  height: 100%;
-  background-size: cover;
-  background-image: url("https://images.unsplash.com/photo-1460411794035-42aac080490a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGluayUyMGFuZCUyMHB1cnBsZSUyMHNreXxlbnwwfHwwfHw%3D&w=1000&q=80%22");
+.subtitle-h4 {
+  color: rgba(96, 95, 95, 0.94);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.subtitle-span {
+  margin-left: 7px;
+  cursor: pointer;
+  padding-bottom: 5px;
+  color: #6200EE;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+.subtitle-span {
+  display: inline-block;
+  position: relative;
+  color: #6200EE;
+}
+
+.subtitle-span::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #6200EE;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.subtitle-span:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+form-field {
+  margin-left: 80px;
+}
+
+.right-section-container {
+  width: 400px;
+  height: 500px;
+  margin-left: 190px;
+  padding-top: 20px;
+}
+
+.img-cart {
+  color: white;
+  width: 190px;
+  height: 150px;
+  text-align: center;
+  padding: 250px 0 20px 230px;
+}
+
+.button-login {
+  background-color: rgba(93, 0, 227, 0.91);
+  color: white;
+  width: 410px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+.social-media-icons {
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;
+  margin-top: 130px;
+  margin-left: 65px;
+}
+
+.form-field {
+  padding-top: 15px;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #6200EE !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #6200EE !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #6200EE !important;
+}
+
+/*Mat Checkbox*/
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #6200EE !important;
+}
+
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: #6200EE !important;
 }

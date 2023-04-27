@@ -17,7 +17,7 @@ import {NoAuthGuard} from "./auth/guards/no-auth/no-auth.guard";
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
 
 
   {

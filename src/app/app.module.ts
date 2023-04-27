@@ -78,6 +78,7 @@ import {RetailSellerOrdersService} from "./services/retail-seller-orders/retail-
 import { RetailSellerOrdersComponent } from './retail-seller/retail-seller-orders/retail-seller-orders.component';
 import {CookieService} from "ngx-cookie-service";
 import {JwtInterceptor} from "./auth/jwt-interceptor";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -110,35 +111,36 @@ import {JwtInterceptor} from "./auth/jwt-interceptor";
     FilterPipe,
     RetailSellerOrdersComponent,
   ],
-  imports: [
-    ToastrModule.forRoot({
-      preventDuplicates: true
-    }),
-    MatSlideToggleModule,
-    MatSliderModule,
-    MatFormFieldModule,
-    MatInputModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    RouterModule,
-    MatToolbarModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    FormsModule,
-    FlexLayoutModule,
-    MatSelectModule,
-    MatExpansionModule,
-    ReactiveFormsModule,
+    imports: [
+        ToastrModule.forRoot({
+            preventDuplicates: true
+        }),
+        MatSlideToggleModule,
+        MatSliderModule,
+        MatFormFieldModule,
+        MatInputModule,
+        HttpClientModule,
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        LayoutModule,
+        RouterModule,
+        MatToolbarModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        FormsModule,
+        FlexLayoutModule,
+        MatSelectModule,
+        MatExpansionModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
 
-  ],
+    ],
   providers: [
     CookieService,
     {
