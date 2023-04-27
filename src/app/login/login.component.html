@@ -1,31 +1,5 @@
-<app-home-navbar></app-home-navbar>
 
-<div class="background-image">
-  <div fxLayoutAlign="center center" fxFlexFill>
-    <mat-card>
-      <h2>Login in Ksero</h2>
-      <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="userFormGroup">
-        <mat-form-field appearance="fill">
-          <mat-label>Username</mat-label>
-          <input matInput autocomplete="off" formControlName="username">
-          <mat-error *ngIf="userFormGroup.get('username')?.hasError('required')">
-            Username is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-        <br>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput autocomplete="off" formControlName="password" type="password">
-          <mat-error *ngIf="userFormGroup.get('password')?.hasError('required')">
-            Password is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-        <br>
-        <div *ngIf="showInvalidUserError">Wrong username or password</div>
-        <button mat-raised-button color="primary" type="submit" (click)="SubmitLogin()">Login</button>
-      </form>
-    </mat-card>
-
-  </div>
+<div class="left-section">
+  <img src="../../img/coche_3.png" alt="Ksero" class="img-cart"/>
+  <h2 class="title-h2">KSERO</h2>
 </div>
