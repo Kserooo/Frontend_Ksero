@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit  {
   }
 
   redirect(){
+
     this.route.navigate(['/register']).then(r => console.log('redirect to register'));
   }
 
