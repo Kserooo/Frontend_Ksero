@@ -9,7 +9,7 @@ import {RetailSeller} from "../../models/retail-seller";
 export class RetailSellersService {
 
   // Endpoint
-  basePath = 'https://ksero.herokuapp.com/api/v1/retail-sellers'
+  basePath = 'http://localhost:8080/api/v1/retail-sellers'
 
   httpOptions = {
     headers: new HttpHeaders({

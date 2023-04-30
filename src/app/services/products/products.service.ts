@@ -9,7 +9,7 @@ import {Product} from "../../models/product";
 export class ProductsService {
 
   // Endpoint
-  basePath = 'https://ksero.herokuapp.com/api/v1/products';
+  basePath = 'http://localhost:8080/api/v1/products';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -45,6 +45,7 @@ export class ProductsService {
 
   // Create Student
   create(item: any): Observable<Product> {
+    console.log('Item --> ', JSON.stringify(item));
     return this.http.post<Product>(this.basePath, JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(2),
