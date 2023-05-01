@@ -7,18 +7,17 @@
 
       <div class="order">
         <p class="tittles">({{counter}}) Productos Seleccionados</p>
-        <mat-grid-list cols="4">
           <mat-card class="card-order" *ngFor="let product of productsData; index as i">
-            <mat-card-content class="card-order-content">
+            <mat-card-content class="card-order-content flex justify-content-center align-items-center">
               <div class="quantity">
                 <input matInput type="number" class="input-product" min="1" max="9" step="1" value="{{shoppingCarOrder[i].quantity}}">
               </div>
-              <div class="img-content">
-                <img mat-card-image src="https://www.gloria.com.pe/images/lataa.png" alt="Photo of a Shiba Inu">
-              </div>
-              <div class="p-name">Nombre: {{product.name}} <br>
-                Marca: {{product.description}} <br>
-                Precio: ${{product.price}}.00 <br>
+              <div class="flex gap-2">
+                <img class="w-2" mat-card-image src="https://www.gloria.com.pe/images/lataa.png" alt="gloria">
+                <div class="p-name">Nombre: {{product.name}} <br>
+                  Marca: {{product.description}} <br>
+                  Precio: ${{product.price}}.00 <br>
+                </div>
               </div>
               <div class="buttons">
                 <button mat-button class="button-one" (click)="deleteProduct(1)">Delete</button>
@@ -26,7 +25,6 @@
               </div>
             </mat-card-content>
           </mat-card>
-        </mat-grid-list>
       </div>
 
       <div class="payment-summary">
