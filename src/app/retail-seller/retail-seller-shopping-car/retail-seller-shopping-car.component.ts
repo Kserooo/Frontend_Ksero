@@ -22,6 +22,7 @@ export class RetailSellerShoppingCarComponent implements OnInit {
   id: string;
   orderActual: Order;
   productsData: Product[];
+  counter: number;
   sumProducts: number;
   shoppingCarOrder: ShoppingCarOrder[];
   constructor(private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class RetailSellerShoppingCarComponent implements OnInit {
     this.shoppingCarOrder= [] as ShoppingCarOrder[];
     this.productsData=[] as Product[];
     this.sumProducts=0;
+    this.counter = 0;
   }
 
   ngOnInit(): void {
@@ -45,9 +47,16 @@ export class RetailSellerShoppingCarComponent implements OnInit {
     for(let order of this.senderService.shoppingCarOrders){
       this.productsService.getById(order.productId).subscribe((response: any)=>{
         this.productsData.push(response);
+        console.log(response);
         this.sumProducts+=response.price*order.quantity;
+        this.counter++;
       })
     }
+  }
+
+  deleteProduct(id: number){
+    //this.senderService.shoppingCarOrders = this.senderService.shoppingCarOrders.filter((order: any) => order.productId !== id);
+    //this.retrieveData();
   }
 
   openDialogSubmit(): void {

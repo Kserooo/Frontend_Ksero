@@ -1,19 +1,29 @@
 <app-retail-seller-navbar></app-retail-seller-navbar>
 
 <mat-card class="general-card">
-  <mat-card-title>Shopping car</mat-card-title>
+  <mat-card-title class="card-title">Shopping cart</mat-card-title>
   <mat-card-content>
     <div class="container">
 
       <div class="order">
-        <p class="tittles">Order</p>
-        <mat-grid-list cols="2">
+        <p class="tittles">({{counter}}) Productos Seleccionados</p>
+        <mat-grid-list cols="4">
           <mat-card class="card-order" *ngFor="let product of productsData; index as i">
             <mat-card-content class="card-order-content">
-              <div class="p-name">Product Name: {{product.name}}</div>
-              <div class="p-price">Product Price: {{product.price}} <br>
-                Product Quantity: {{shoppingCarOrder[i].quantity}} <br>
-                Product Total Price: {{product.price*shoppingCarOrder[i].quantity}}</div>
+              <div class="quantity">
+                <input matInput type="number" class="input-product" min="1" max="9" step="1" value="{{shoppingCarOrder[i].quantity}}">
+              </div>
+              <div class="img-content">
+                <img mat-card-image src="https://www.gloria.com.pe/images/lataa.png" alt="Photo of a Shiba Inu">
+              </div>
+              <div class="p-name">Nombre: {{product.name}} <br>
+                Marca: {{product.description}} <br>
+                Precio: ${{product.price}}.00 <br>
+              </div>
+              <div class="buttons">
+                <button mat-button class="button-one" (click)="deleteProduct(1)">Delete</button>
+                <button mat-button class="button-two">Save</button>
+              </div>
             </mat-card-content>
           </mat-card>
         </mat-grid-list>
@@ -22,11 +32,18 @@
       <div class="payment-summary">
         <p class="tittles">Payment Summary</p>
         <mat-card class="card-order">
-          <mat-card-content >
-            <div class="p-general-2">Sum of products: {{sumProducts}}</div>
+          <mat-card-content>
+            <p class="line-color"></p>
+            <div class="p-general-2">Subtotal: </div>
+            <div class="p-general-price"> ${{sumProducts}}.00 </div>
+            <p class="line-color"></p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button (click)="openDialogSubmit()">Proceed to pay</button>
+            <div class="p-general-envio">Envio: </div>
+            <div class="p-general-env-price"> $10.00 </div>
+            <div class="p-general-total">Total: </div>
+            <div class="p-general-total-price"> ${{sumProducts + 10}}.00 </div>
+            <button mat-button class="button-pay" style="margin-top: 40px;" (click)="openDialogSubmit()">Continuar Compra</button>
           </mat-card-actions>
         </mat-card>
       </div>
@@ -34,3 +51,4 @@
 
   </mat-card-content>
 </mat-card>
+
