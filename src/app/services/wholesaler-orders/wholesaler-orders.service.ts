@@ -9,11 +9,11 @@ import {Order} from "../../models/order";
 export class WholesalerOrdersService {
 
   // Endpoint
-  basePath = 'http://localhost:8080/api/v1/wholesalers-orders';
+  basePath = 'http://localhost:8090/api/v1/wholesaler-orders';
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     })
   }
   constructor(private http: HttpClient) { }

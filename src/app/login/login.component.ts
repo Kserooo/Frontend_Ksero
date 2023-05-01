@@ -4,10 +4,10 @@ import {Wholesaler} from "../models/wholesaler";
 import {RetailSellersService} from "../services/retail-sellers/retail-sellers.service";
 import {WholesalersService} from "../services/wholesalers/wholesalers.service";
 import {UsersService} from "../services/users/users.service";
-import {Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { Router } from "@angular/router";
+import { FormGroup, FormControl, Validators} from "@angular/forms";
 import {first} from "rxjs";
-import {ToastrService} from "ngx-toastr";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit  {
   constructor(
     private retailSellerService: RetailSellersService,
     private wholesalerService: WholesalersService,
-    private route:Router,
+    private route: Router,
     private toastr: ToastrService,
     private usersService: UsersService
   ) {
@@ -56,17 +56,13 @@ export class LoginComponent implements OnInit  {
       }).subscribe((response:any)=>{
         console.log(response);
         localStorage.setItem('token',response.token);
-        this.usersService.verifyTokenRetailSeller().subscribe((response2: any)=>{
-          this.retailSellerService.getByUsername(response.username).subscribe((response3: any)=>{
-            this.toastr.success('Login As Retail Seller Successful','Success');
-            this.route.navigate(['/retail-seller',response3.id,'profile']);
-          })
+        this.retailSellerService.getByUsername(response.username).subscribe((response3: any)=>{
+          this.toastr.success('Login As Retail Seller Successful','Success');
+          this.route.navigate(['/retail-seller',response3.id,'profile']);
         })
-        this.usersService.verifyTokenWholesaler().subscribe((response2: any)=>{
-          this.wholesalerService.getByUsername(response.username).subscribe((response3: any)=>{
-            this.toastr.success('Login As Wholesaler Successful','Success');
-            this.route.navigate(['/wholesaler',response3.id,'profile']);
-          })
+        this.wholesalerService.getByUsername(response.username).subscribe((response3: any)=>{
+          this.toastr.success('Login As Wholesaler Successful','Success');
+          this.route.navigate(['/wholesaler',response3.id,'profile']);
         })
       })
     }

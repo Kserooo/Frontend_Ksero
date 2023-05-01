@@ -10,7 +10,7 @@ import {Product} from "../../models/product";
 export class UsersService {
 
   // Endpoint
-  basePath = 'http://localhost:8080/api/v1/users';
+  basePath = 'http://localhost:8090/api/v1/users';
 
   httpOptions = {
     headers: new HttpHeaders({

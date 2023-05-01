@@ -9,7 +9,7 @@ import {Order} from "../../models/order";
 export class RetailSellerOrdersService {
 
   // Endpoint
-  basePath = 'http://localhost:8080/api/v1/retail-seller-orders'
+  basePath = 'http://localhost:8090/api/v1/retail-seller-orders'
 
   httpOptions = {
     headers: new HttpHeaders({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, retry, throwError} from "rxjs";
-import {Wholesaler} from "../../models/wholesaler";
+import { HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import { catchError, Observable, retry, throwError} from "rxjs";
+import { Wholesaler} from "../../models/wholesaler";
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,11 @@ import {Wholesaler} from "../../models/wholesaler";
 export class WholesalersService {
 
   // Endpoint
-  basePath = 'http://localhost:8080/api/v1/wholesalers';
+  basePath = 'http://localhost:8090/api/v1/wholesalers';
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     })
   }
   constructor(private http: HttpClient) { }
