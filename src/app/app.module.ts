@@ -79,6 +79,8 @@ import { RetailSellerOrdersComponent } from './retail-seller/retail-seller-order
 import {CookieService} from "ngx-cookie-service";
 import {JwtInterceptor} from "./auth/jwt-interceptor";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 @NgModule({
   declarations: [
@@ -139,7 +141,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         MatExpansionModule,
         ReactiveFormsModule,
         MatCheckboxModule,
-
+        MatAutocompleteModule
     ],
   providers: [
     CookieService,

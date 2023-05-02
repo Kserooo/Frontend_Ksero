@@ -20,20 +20,39 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./wholesaler-products.component.css']
 })
 export class WholesalerProductsComponent implements OnInit {
+  priceSelected: number;
   id: string;
   productsData: Product[];
+
+  //Options
+  companyOptions: String[];
+  typeOptions: String[];
 
   constructor(private route: ActivatedRoute, private productsService: ProductsService,
               private dialog: MatDialog, private toastr:ToastrService) {
     this.productsData=[] as Product[];
     this.id=this.route.snapshot.paramMap.get('id')!;
+    this.priceSelected = 0;
+    this.companyOptions = ["Gloria", "Nestle", "ALICORP", "Coca Cola"];
+    this.typeOptions = ["Lacteos", "Fideos", "Bebidas"];
+  }
+
+  formatLabel(value: number): string {
+    this.priceSelected = value;
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+
+    return `${value}`;
   }
 
   ngOnInit(): void {
     this.updateProductsData();
   }
 
-
+  onSliderChange(event: any): void {
+    console.log(event.value);
+  }
 
   openDialogAdd(): void{
     let productModel: Product;

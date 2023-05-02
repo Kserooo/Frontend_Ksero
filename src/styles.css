@@ -1,8 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500;800&display=swap');
+@import "primeflex/primeflex.css";
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 
 html, body { height: 100%; }
 body { margin: 0;  }
 
+:root {
+  --light-gray: #D9D9D9;
+}
+
 *{
   font-family: 'Cabin', 'Exo 2', 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none !important;
 }
