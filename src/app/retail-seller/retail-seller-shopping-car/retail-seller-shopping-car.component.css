@@ -194,9 +194,10 @@ input[type=number]
   float: left;
   display: block;
   padding: 0;
-  margin: 0;
-  padding-left: 20px;
+  margin-right: 10px;
   border: 1px solid #eee;
+  padding: 0;
+  text-align: center;
 }
 
 .quantity input:focus {
