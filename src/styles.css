@@ -3,6 +3,8 @@
 @import "primeflex/primeflex.css";
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 
+@import 'primeflex/primeflex.css';
+
 html, body { height: 100%; }
 body { margin: 0;  }
 
