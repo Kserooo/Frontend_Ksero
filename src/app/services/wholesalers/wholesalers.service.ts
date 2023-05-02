@@ -9,7 +9,7 @@ import { Wholesaler} from "../../models/wholesaler";
 export class WholesalersService {
 
   // Endpoint
-  basePath = 'http://localhost:8080/api/v1/wholesalers';
+  basePath = 'https://backendkseroapi-1682979685313.azurewebsites.net/api/v1/wholesalers';
 
   httpOptions = {
     headers: new HttpHeaders({
