@@ -18,6 +18,8 @@ export class WholesalerProfileComponent implements OnInit {
   id:string;
   wholesalerActual: Wholesaler;
 
+  name: string;
+
   userFormGroup = new FormGroup({
     firstName: new FormControl('',[Validators.required]),
     lastName: new FormControl('',[Validators.required]),
@@ -33,6 +35,7 @@ export class WholesalerProfileComponent implements OnInit {
               private dialog: MatDialog, private toastr: ToastrService) {
     this.id=this.route.snapshot.paramMap.get('id')!;
     this.wholesalerActual={} as Wholesaler;
+    this.name = "";
   }
 
   ngOnInit(): void {
