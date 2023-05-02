@@ -16,6 +16,7 @@ export class RetailSellerOrdersComponent implements OnInit {
   id: string;
   acceptedOrders: Order[];
   pendingOrders: Order[];
+  searchKey: string;
   productsAccepted: Product[];
   productsPending: Product[];
   constructor(private retailSellerOrdersService: RetailSellerOrdersService, private route: ActivatedRoute,
@@ -26,6 +27,7 @@ export class RetailSellerOrdersComponent implements OnInit {
     this.pendingOrders = [] as Order[];
     this.productsAccepted = [] as Product[];
     this.productsPending = [] as Product[];
+    this.searchKey = '';
   }
 
   ngOnInit(): void {

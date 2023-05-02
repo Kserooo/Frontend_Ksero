@@ -1,15 +1,41 @@
 .title-config {
   text-align: center;
   padding-bottom: 0px;
-  padding-top: 40px;
+  padding-top: 10px;
+}
+
+.example-card {
+  width: 400px;
+  margin-top: 50px;
+  margin-left: 70px;
+  border: 2px solid #b4b4b4;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.example-card-content {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.mat-card-image{
+  margin: 20px 20px 20px 20px;
+  height: 120px;
+  width: 120px;
 }
 
 .everything{
   width:100%;
   min-height: 100%;
   height: auto;
-  background-color: hsl(245, 100%, 90%);
+  background-color: hsl(0, 0%, 100%);
   padding-top: 2rem;
+}
+
+.search{
+  width: 50%;
+  margin-left: 40px;
 }
 
 .grid-config{
@@ -18,6 +44,10 @@
 
 .example-action-buttons {
   padding-bottom: 20px;
+}
+
+.mat-card-actions{
+  display: flex;
 }
 
 .h4-config {

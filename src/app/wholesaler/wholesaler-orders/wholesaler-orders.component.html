@@ -2,55 +2,49 @@
 
 
 <div class="everything">
-<h1 class="title-config">My Orders</h1>
+  <div class="search">
+    <mat-form-field class="lg:w-full" appearance="fill" >
+      <mat-label class="name_search">Search</mat-label>
+      <input matInput [(ngModel)]="searchKey">
+    </mat-form-field>
+  </div>
+  <h2 class="spacing" style="margin-left: 40px">Acepted Orders</h2>
+  <mat-grid-list cols="2" rowHeight="7:2">
+    <mat-grid-tile *ngFor="let acceptedOrder of acceptedOrders | filter: searchKey:'name'">
+      <mat-card class="example-card">
+        <mat-card-content class="example-card-content">
+          <img mat-card-image src="https://cdn-icons-png.flaticon.com/512/6203/6203085.png" alt="Photo of Shopping Cart">
+          <div>
+            <p>Pedido #{{acceptedOrders.indexOf(acceptedOrder)+1}}</p>
+            <p>Estado: Entregada</p>
+            <p *ngIf="productsAccepted[acceptedOrders.indexOf(acceptedOrder)]">Monto: ${{productsAccepted[acceptedOrders.indexOf(acceptedOrder)].price*acceptedOrder.quantity}}</p>
+            <p *ngIf="productsAccepted[acceptedOrders.indexOf(acceptedOrder)]">Product Name: {{productsAccepted[acceptedOrders.indexOf(acceptedOrder)].name}}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 
-<mat-grid-list cols="2" rowHeight="2:1.5" >
-  <mat-grid-tile class = "grid-config" *ngFor="let product of productsData;">
-    <mat-accordion class="example-headers-align">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{productsData.indexOf(product)}}
-          </mat-panel-title>
-          <mat-panel-description>
-            Order data for the Wholesaler
-            <mat-icon>account_circle</mat-icon>
-          </mat-panel-description>
-
-        </mat-expansion-panel-header>
-
-        <h4 class="h4-config" *ngIf="retailSellerData[productsData.indexOf(product)]">
-          Retail-Seller Username: {{retailSellerData[productsData.indexOf(product)].username}} </h4>
-        <h4 class="h4-config" *ngIf="retailSellerData[productsData.indexOf(product)]">
-          Retail-Seller Address: {{retailSellerData[productsData.indexOf(product)].address}}</h4>
-      </mat-expansion-panel>
-
-      <!-- Product Panel -->
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Product Info
-          </mat-panel-title>
-          <mat-panel-description>
-            Retail-Seller Product List
-            <mat-icon>list</mat-icon>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <h4 class="h4-config"> Product name: {{product.name}} </h4>
-        <h4 class="h4-config"> Unit Price: $/.{{product.price}} </h4>
-        <h4 class="h4-config"> Quantity: {{ordersData[productsData.indexOf(product)].quantity}} </h4>
-        <h4 class="h4-config"> Total Price: $/.{{ordersData[productsData.indexOf(product)].quantity*product.price}} </h4>
-      </mat-expansion-panel>
-      <button  mat-raised-button color="warn" style="width:50%;" (click)="openRejectDialog(productsData.indexOf(product))"
-      >Reject Order</button>
-      <button  mat-raised-button color="primary" style="width: 50%;" (click)="openAcceptDialog(productsData.indexOf(product))"
-      >Accept Order</button>
-    </mat-accordion>
-
-  </mat-grid-tile>
-
-
-</mat-grid-list>
-
+  <h2 class="spacing" style="margin-left: 40px">Pending Orders</h2>
+  <mat-grid-list cols="2" rowHeight="7:2">
+    <mat-grid-tile *ngFor="let product of productsData | filter: searchKey:'name'">
+      <mat-card class="example-card">
+        <mat-card-content class="example-card-content">
+          <img mat-card-image src="https://cdn-icons-png.flaticon.com/512/6203/6203085.png" alt="Photo of Shopping Cart">
+          <div>
+            <p>Pedido #{{productsData.indexOf(product)+1}}</p>
+            <p>Estado: Entregada</p>
+            <p>Monto: ${{ordersData[productsData.indexOf(product)].quantity*product.price}}</p>
+            <p>Product Name: {{product.name}}</p>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button  mat-raised-button color="primary" style="width:50%;" (click)="openRejectDialog(productsData.indexOf(product))"
+          >Reject Order</button>
+          <button  mat-raised-button color="primary" style="width: 50%;" (click)="openAcceptDialog(productsData.indexOf(product))"
+          >Accept Order</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
