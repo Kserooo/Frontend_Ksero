@@ -68,9 +68,8 @@
           <p>There is <strong>NO</strong> products. Add one please.</p>
         </div>
       </div>
-      <div [ngStyle]="{ 'display': productsData.length == 0? 'none':'flex'}" class="justify-content-center">
-        <div class="products grid p-cols-3 gap-3">
-          <div>
+      <div [ngStyle]="{ 'display': productsData.length == 0? 'none':'block'}" class="justify-content-center" style="width:65vw;">
+        <div  class="products grid p-cols-3 gap-3">
             <div *ngFor="let product of productsData;" class="">
               <mat-card class="overflow-hidden flex flex-column">
                 <div class="flex justify-content-center align-items-center product-illustration p-3">
@@ -91,8 +90,6 @@
                 </div>
               </mat-card>
             </div>
-
-          </div>
         </div>
       </div>
     </div>
