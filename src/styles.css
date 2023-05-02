@@ -32,6 +32,10 @@ li {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.p-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .justify-items-center {
   justify-items: center;
 }
