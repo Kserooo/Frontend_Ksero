@@ -39,3 +39,7 @@ li {
 .justify-items-center {
   justify-items: center;
 }
+
+.no-products i {
+  font-size: 40px;
+}
