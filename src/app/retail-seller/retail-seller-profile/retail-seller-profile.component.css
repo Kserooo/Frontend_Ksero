@@ -1,45 +1,55 @@
-.example-card {
-  max-width: 550px;
-  margin: 0 auto;
-  width: 50%;
-  border:1px solid #673ab7
+img.rounded {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
 
-.everything{
-  width:100%;
-  height: auto;
-  background-color: hsl(245, 100%, 90%);
-  padding-top: 2rem;
+.whole-profile > div:nth-child(1) {
+  width: 30%;
+  border-right: 1px solid lightgray;
 }
 
-.example-header-image {
-  background-image: url('https://cdn3.vectorstock.com/i/1000x1000/37/87/valorant-game-logo-icon-eps-10-gaming-streamer-vector-33193787.jpg');
-  background-size: cover;
+.whole-profile > div:nth-child(2) {
+  width: 70%;
+  height: calc(100vh - 65px);
+  border-left: 1px solid lightgray;
 }
 
-.mat-button{
-  margin: 0 auto;
+.whole-profile p {
+  font-size: 14px;
+}
+
+mat-form-field {
+  width: 85%;
+}
+
+form {
   width: 100%;
-  background-color: #673ab7;
+}
+
+ul, ul li{
+  width: 100%;
+}
+
+button.btn-section {
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 65%;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+button.btn-section:hover {
+  background-color: var(--primary-purple);
+  border: none;
+  border: 1px solid transparent;
   color: white;
 }
 
-.input-box{
-  border-radius: 4px;
-  text-indent: 10px;
-  height: 25px;
-  margin-top:5px ;
-  border-width: 1px;
-  color: #666666;
-}
-.input-bir{
-  text-indent: 5px;
-  color: #666666;
-  border-radius: 4px;
-  height: 25px;
-  width: 270px;
-}
-.text-tarea{
-  color: #666666;
-  border-radius: 4px;
+button.save {
+  background-color: var(--primary-purple);;
+  color: white;
 }

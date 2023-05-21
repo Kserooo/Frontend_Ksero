@@ -33,6 +33,9 @@ export class WholesalerOrdersComponent implements OnInit {
   retailSellerData: RetailSeller[];
   productsData: Product[];
   ordersData: Order[];
+  searchKey: string;
+  acceptedOrders: Order[];
+  productsAccepted: Product[];
 
   constructor(private retailSellerService: RetailSellersService, private productsService: ProductsService,
               private wholesalerOrdersService:WholesalerOrdersService, private route: ActivatedRoute,
@@ -41,6 +44,9 @@ export class WholesalerOrdersComponent implements OnInit {
     this.retailSellerData = [] as RetailSeller[];
     this.productsData = [] as Product[];
     this.ordersData = [] as Order[];
+    this.productsAccepted = [] as Product[];
+    this.acceptedOrders = [] as Order[];
+    this.searchKey = '';
     this.id=this.route.snapshot.paramMap.get('id')!;
   }
 
@@ -48,19 +54,29 @@ export class WholesalerOrdersComponent implements OnInit {
     this.retrieveData();
   }
 
-  retrieveData(): void{
+  retrieveData(): void {
     this.ordersData = [];
     this.productsData = [];
     this.retailSellerData = [];
-    this.wholesalerOrdersService.getAll().subscribe((response:any)=>{
-      for(let order of response){
-        this.productsService.getById(order.productId).subscribe((response2:any)=>{
-          if(response2.wholesalerId==this.id){
+    this.wholesalerOrdersService.getAll().subscribe((response: any) => {
+      for (let order of response) {
+        this.productsService.getById(order.productId).subscribe((response2: any) => {
+          if (response2.wholesalerId == this.id) {
             this.ordersData.push(order);
             this.productsData.push(response2);
-            this.retailSellerService.getById(order.retailSellerId).subscribe((response3: any)=>{
+            this.retailSellerService.getById(order.retailSellerId).subscribe((response3: any) => {
               this.retailSellerData.push(response3);
             })
+          }
+        })
+      }
+    })
+    this.retailSellerOrdersService.getAll().subscribe((response3: any) => {
+      for (let order1 of response3) {
+        this.productsService.getById(order1.productId).subscribe((response4: any) => {
+          if (response4.wholesalerId == this.id) {
+            this.acceptedOrders.push(order1);
+            this.productsAccepted.push(response4);
           }
         })
       }

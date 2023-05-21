@@ -9,7 +9,7 @@ import {Order} from "../../models/order";
 export class RetailSellerOrdersService {
 
   // Endpoint
-  basePath = 'http://localhost:8090/api/v1/retail-seller-orders'
+  basePath = 'https://backendkseroapi-1682979685313.azurewebsites.net/api/v1/retail-seller-orders'
 
   httpOptions = {
     headers: new HttpHeaders({

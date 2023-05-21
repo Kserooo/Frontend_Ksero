@@ -1,6 +1,11 @@
+*{
+  scroll-behavior: smooth !important;
+  transition: 1s;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .general-card{
   height: 100%;
-  background-color: hsl(245, 100%, 90%);
 }
 
 .container{
@@ -8,61 +13,232 @@
   padding-top: 20px;
   display: flex;
 }
+
 .order{
   margin-top: 10px;
   border-radius: 5px;
-  background-color: #FBEAFF;
+  background-color: white;
   width: 55%;
   height: auto;
 }
+
 .payment-summary{
   margin-top: 10px;
   margin-left: 5%;
   border-radius: 5px;
-  background-color: #FBEAFF;
+  background-color: white;
   width: 35%;
   height: 170px;
 }
+
 .tittles{
-  padding-left: 20px;
-  padding-top: 10px;
+  padding-left: 15px;
+  padding-top: 5px;
+  font-size: 17px;
 }
+
+.card-title{
+  padding-left: 25px;
+  padding-top: 20px;
+  font-size: 27px;
+}
+
+
 .container2{
   padding-left: 5%;
   padding-top: 20px;
   display: flex;
 }
+
 .delivery{
   margin-top: 10px;
   border-radius: 5px;
-  background-color: lavenderblush;
+  background-color: white;
   width: 55%;
   height: 200px;
 }
-.aditional-services{
-  margin-top: 10px;
-  margin-left: 5%;
-  border-radius: 5px;
-  background-color: lavenderblush;
-  width: 35%;
-  height: 200px;
-}
+
 .card-order{
   margin: 10px;
+  background-color: white;
+  border-radius: 10px;
+  border: rgba(0, 0, 0, 0.26) 1px solid;
 }
+
 .card-order-content{
   display: flex;
 }
+
+.img-content {
+  left: 10%;
+  width: 30px;
+  height: 30px;
+  margin: 15px 40px 10px 40px;
+}
+
 .p-name{
-  margin-left:10px;
+  left: 10%;
+  margin-left: 10px;
+  line-height: 25px;
 }
-.p-price{
-  margin-left:40%;
+
+.p-general-2 {
+  float: left;
+  font-weight: bold;
 }
-.p-general-2{
+
+.p-general-price{
+  text-align: right;
 }
-.mat-button{
-  left:30%;
+
+.p-general-envio {
+  margin-left: 10px;
+  float: left;
+  font-weight: bold;
+}
+
+.p-general-env-price{
+  margin-right: 10px;
+  text-align: right;
+}
+
+.p-general-total {
+  margin-left: 10px;
+  margin-top: 10px;
+  float: left;
+  font-weight: bold;
+}
+
+.p-general-total-price{
+  margin-right: 10px;
+  margin-top: 10px;
+  text-align: right;
+}
+
+.mat-button {
   background-color: #673ab7;
   color:white;
+}
+
+.button-pay{
+  left:35%;
+}
+
+.line-color{
+  border-bottom: 1px solid #BDBBBBFF;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width:90%;
+  text-align: center;
+}
+
+.input-product {
+
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.button-one {
+  width: 30px;
+  height: 40px;
+  border-radius: 10px;
+  margin-right: 10px;
+  padding: 0;
+}
+
+.button-two {
+  width: 30px;
+  height: 40px;
+  border-radius: 10px;
+  margin-right: 10px;
+  padding: 0;
+}
+
+.button-one:hover {
+  background-color: rgba(121, 84, 187, 0.85);
+  color: white;
+}
+
+.button-two:hover {
+  background-color: rgba(121, 84, 187, 0.85)  ;
+  color: white;
+}
+
+/* MAT INPUT BUTTON */
+
+.quantity {
+  position: relative;
+  height: 70px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+.quantity input {
+  width: 45px;
+  height: 42px;
+  line-height: 1.65;
+  float: left;
+  display: block;
+  padding: 0;
+  margin-right: 10px;
+  border: 1px solid #eee;
+  padding: 0;
+  text-align: center;
+}
+
+.quantity input:focus {
+  outline: 0;
+}
+
+.quantity-nav {
+  left: 10%;
+  float: left;
+  position: relative;
+  height: 42px;
+}
+
+.quantity-button {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+  width: 20px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  line-height: 1.7;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.quantity-button.quantity-up {
+  position: absolute;
+  height: 50%;
+  top: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quantity-button.quantity-down {
+  position: absolute;
+  bottom: -1px;
+  height: 50%;
 }

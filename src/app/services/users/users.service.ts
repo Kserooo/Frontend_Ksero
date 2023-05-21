@@ -10,7 +10,7 @@ import {Product} from "../../models/product";
 export class UsersService {
 
   // Endpoint
-  basePath = 'http://localhost:8090/api/v1/users';
+  basePath = 'https://backendkseroapi-1682979685313.azurewebsites.net/api/v1/users';
 
   httpOptions = {
     headers: new HttpHeaders({

@@ -1,24 +1,10 @@
 .everything{
   width:100%;
   height: 100%;
-  background-color: hsl(245, 100%, 90%);
+  background-color: hsl(0, 0%, 100%);
   padding-top: 2rem;
 }
-.grid-container {
-  margin: 20px;
-}
 
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-  border-radius: 1rem;
-  width: 500px;
-  height: 270px;
-  background-color: #FBEAFF;
-}
 
 .more-button {
   position: absolute;
@@ -26,9 +12,6 @@
   right: 10px;
 }
 
-.dashboard-card-content {
-  text-align: center;
-}
 
 .header-container{
   display: flex;
@@ -37,11 +20,7 @@
   width: 50%;
   margin:0rem 0rem 0rem 1rem;
 }
-.button-add{
-  width: 50%;
-  text-align: right;
-  margin:0rem 1rem 0rem 0rem;
-}
+
 .product-name{
   margin-top: 1rem;
 }
@@ -56,4 +35,55 @@
   margin-left: 507px;
   margin-bottom: 30px;
   letter-spacing: 1px;
+}
+
+/* Leo Styles */
+img.product-image {
+  width: 100px;
+}
+
+div.product-illustration {
+  background-color: var(--light-gray);
+}
+
+mat-card {
+  padding: 0;
+  height: 270px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 230px;
+}
+
+mat-card-content {
+  text-align: center;
+}
+
+mat-card-title {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+
+.products {
+  width: 80%;
+}
+
+.filter {
+  padding: 20px;
+  background-color: var(--light-gray);
+  border-radius: 12px;
+  width: 20%;
+}
+
+.filter p {
+  font-size: 14px;
+}
+
+
+mat-slider {
+  width: 200px;
+}
+
+mat-form-field {
+  width: 400px
 }

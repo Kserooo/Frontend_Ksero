@@ -13,5 +13,5 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMORFEED_99DA5 }}'
-          projectId: armorfeed-99da5
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KSERO_7597E }}'
+          projectId: ksero-7597e
