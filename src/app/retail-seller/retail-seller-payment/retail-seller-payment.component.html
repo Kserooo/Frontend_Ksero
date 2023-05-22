@@ -24,6 +24,9 @@
                                 !userFormGroup.get('paymentName')?.hasError('required')">
                 Name must have less than <strong>25</strong> characters
               </mat-error>
+              <mat-error *ngIf="userFormGroup.get('paymentName')?.hasError('pattern')">
+                Name must contain only characters and spaces, but not only spaces
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -40,7 +43,7 @@
                 Cellphone is <strong>required</strong>
               </mat-error>
               <mat-error *ngIf="userFormGroup.get('paymentPhone')?.hasError('pattern')">
-                Cellphone must have <strong>9</strong> numbers
+                Cellphone must have <strong>9</strong> numbers and start with <strong>9</strong>
               </mat-error>
             </mat-form-field>
           </td> </tr>
@@ -55,8 +58,8 @@
                 <mat-error *ngIf="userFormGroup.get('paymentEmail')?.hasError('required')">
                   Email is <strong>required</strong>
                 </mat-error>
-                <mat-error *ngIf="userFormGroup.get('paymentEmail')?.hasError('email')">
-                  Value must be an <strong>email</strong>
+                <mat-error *ngIf="userFormGroup.get('paymentEmail')?.hasError('pattern')">
+                  Value must be a valid<strong>email</strong>
                 </mat-error>
               </mat-form-field>
             </td>

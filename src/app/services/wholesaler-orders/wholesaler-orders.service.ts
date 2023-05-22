@@ -26,6 +26,7 @@ export class WholesalerOrdersService {
   // API Error Handling
   handleError(error: HttpErrorResponse) {
     let message: string = "An error occurred in our services. Try again later";
+    let typo: string = "Error";
     if (error.error instanceof ErrorEvent) {
       // Default error handling
       console.log(`An error occurred: ${error.error.message} `);
@@ -36,8 +37,14 @@ export class WholesalerOrdersService {
       console.error(
         `Backend returned code ${error.status}, body was: ${error.error}`
       );
+      message = `An error occured: ${error.error}`;
+      typo = (error.status === 500)?"Error": "Info";
     }
-    WholesalerOrdersService.toastr.error(message, "Error");
+    if(typo === "Error") {
+      WholesalerOrdersService.toastr.error(message, "Error");
+    } else {
+      WholesalerOrdersService.toastr.info(message, "Info");
+    }
     // Return Observable with Error Message to Client
     return throwError(() => new Error('Something happened with request, please try again later'));
   }

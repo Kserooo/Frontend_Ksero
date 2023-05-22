@@ -20,7 +20,7 @@ import {ToastrService} from "ngx-toastr";
 export class RegisterComponent implements OnInit , AfterViewInit{
   warningAlert:boolean;
 
-  emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+  emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
   userFormGroup= new FormGroup({
     username: new FormControl('',[Validators.required,
