@@ -40,7 +40,10 @@ export class LoginComponent implements OnInit  {
   }
 
   ngOnInit(): void {
+  }
 
+  ngAfterViewInit() {
+    UsersService.toastr = this.toastr;
   }
 
   redirect(){

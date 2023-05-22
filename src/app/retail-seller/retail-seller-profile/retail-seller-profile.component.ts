@@ -18,12 +18,16 @@ export class RetailSellerProfileComponent implements OnInit {
   id:string;
   retailSellerActual: RetailSeller;
 
+  phoneNumberRegexp: RegExp = /^9\d{8}$/;
+  nameRegexp: RegExp = /^(?!^\s+$)[a-zA-ZáÁéÉíÍóÓúÚñÑ\s]+$/;
+  emailRegexp: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
   userFormGroup = new FormGroup({
-    firstName: new FormControl('',[Validators.required]),
-    lastName: new FormControl('',[Validators.required]),
+    firstName: new FormControl('',[Validators.required, Validators.pattern(this.nameRegexp)]),
+    lastName: new FormControl('',[Validators.required, Validators.pattern(this.nameRegexp)]),
     birthday: new FormControl('',[Validators.required]),
-    phone: new FormControl('',[Validators.required]),
-    email: new FormControl('',[Validators.required]),
+    phone: new FormControl('',[Validators.required, Validators.pattern(this.phoneNumberRegexp)]),
+    email: new FormControl('',[Validators.required, Validators.pattern(this.emailRegexp)]),
     address: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required]),
     description: new FormControl('',[Validators.required])
@@ -41,7 +45,6 @@ export class RetailSellerProfileComponent implements OnInit {
 
   getActualData():void{
     this.retailSellersService.getById(this.id).subscribe((response:any)=>{
-      console.log(response);
       this.retailSellerActual = response;
       this.userFormGroup.setValue({
         firstName: this.retailSellerActual.firstName ? this.retailSellerActual.firstName : '',
@@ -53,6 +56,7 @@ export class RetailSellerProfileComponent implements OnInit {
         password: this.retailSellerActual.password ? this.retailSellerActual.password : '',
         description: this.retailSellerActual.description ? this.retailSellerActual.description : ''
       });
+      console.log(this.userFormGroup);
     })
   }
 
@@ -76,7 +80,8 @@ export class RetailSellerProfileComponent implements OnInit {
         if(result!=undefined){
           this.retailSellersService.update(Number(this.id),this.retailSellerActual).subscribe(response=>{
             this.toastr.success('Information Saved','Success')
-            this.getActualData();
+            //this.getActualData();
+            this.userFormGroup.markAllAsTouched();
           })
         }
       })

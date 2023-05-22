@@ -53,7 +53,6 @@ export class WholesalerOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.retrieveData();
   }
-
   retrieveData(): void {
     this.ordersData = [];
     this.productsData = [];

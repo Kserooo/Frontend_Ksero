@@ -3,6 +3,8 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, of, retry, switchMap, throwError} from "rxjs";
 import {User} from "../../models/user";
 import {Product} from "../../models/product";
+import { environment } from 'src/environments/environment';
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import {Product} from "../../models/product";
 export class UsersService {
 
   // Endpoint
-  basePath = 'https://backendkseroapi-1682979685313.azurewebsites.net/api/v1/users';
+  basePath = `${environment.serviceBasePath}/api/v1/users`;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,18 +31,31 @@ export class UsersService {
 
   currentUser!: User;
   private _authenticated: boolean = false;
-  constructor(private http: HttpClient) { }
-
+  public static toastr: ToastrService;
+  constructor(private http: HttpClient, private _toastr: ToastrService) {
+    UsersService.toastr = _toastr;
+   }
   // API Error Handling
   handleError(error: HttpErrorResponse) {
+    let message: string = "An error occurred in our services. Try again later";
+    let typo: string = "Error";
     if (error.error instanceof ErrorEvent) {
       // Default error handling
       console.log(`An error occurred: ${error.error.message} `);
+      message = `An error occurred: ${error.error.message} `;
+      
     } else {
       // Unsuccessful Response Error Code returned from Backend
       console.error(
         `Backend returned code ${error.status}, body was: ${error.error}`
       );
+      message = `An error occured: ${error.error}`;
+      typo = (error.status === 500)?"Error": "Info";
+    }
+    if(typo === "Error") {
+      UsersService.toastr.error(message, "Error");
+    } else {
+      UsersService.toastr.info(message, "Info");
     }
     // Return Observable with Error Message to Client
     return throwError(() => new Error('Something happened with request, please try again later'));

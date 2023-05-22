@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // serviceBasePath: "https://backendkseroapi-1682979685313.azurewebsites.net",
+  serviceBasePath: "http://localhost:8090"
 };
 
 /*
