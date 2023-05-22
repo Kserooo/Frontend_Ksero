@@ -27,18 +27,17 @@ export class WholesalerOrdersService {
   handleError(error: HttpErrorResponse) {
     let message: string = "An error occurred in our services. Try again later";
     let typo: string = "Error";
+    message = `An error occured: ${error.error}`;
+    typo = (error.status === 500)?"Error": "Info";
     if (error.error instanceof ErrorEvent) {
       // Default error handling
       console.log(`An error occurred: ${error.error.message} `);
-      message = `An error occurred: ${error.error.message} `;
       
     } else {
       // Unsuccessful Response Error Code returned from Backend
       console.error(
         `Backend returned code ${error.status}, body was: ${error.error}`
       );
-      message = `An error occured: ${error.error}`;
-      typo = (error.status === 500)?"Error": "Info";
     }
     if(typo === "Error") {
       WholesalerOrdersService.toastr.error(message, "Error");
