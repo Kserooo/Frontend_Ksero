@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  serviceBasePath: "https://backendkseroapi-1682979685313.azurewebsites.net"
 };

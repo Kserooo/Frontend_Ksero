@@ -69,9 +69,7 @@ export class RetailSellerProductsComponent implements OnInit ,AfterViewInit {
     });
 
   }
-  ngAfterViewInit() {
-
-  }
+  ngAfterViewInit() {}
 
 
 

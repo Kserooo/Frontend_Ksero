@@ -48,6 +48,9 @@
         <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('required')">
           First name is <strong>required</strong>
         </mat-error>
+        <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('pattern')">
+          First name must only contain characters from a to z or A to Z, and spaces but not only spaces
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Last Name</mat-label>
@@ -55,12 +58,18 @@
         <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('required')">
           Last name is <strong>required</strong>
         </mat-error>
+        <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('pattern')">
+          Last name must only contain characters from a to z or A to Z, and spaces but not only spaces
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email">
         <mat-error *ngIf="userFormGroup.get('email')?.hasError('required')">
           Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="userFormGroup.get('email')?.hasError('pattern')">
+          This is not a valid <strong>email</strong>
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -76,9 +85,12 @@
         <mat-error *ngIf="userFormGroup.get('phone')?.hasError('required')">
           Phone is <strong>required</strong>
         </mat-error>
+        <mat-error *ngIf="userFormGroup.get('phone')?.hasError('pattern')">
+          Phone number must have exactly 9 digits and start with 9
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Adress</mat-label>
+        <mat-label>Address</mat-label>
         <input matInput formControlName="address">
         <mat-error *ngIf="userFormGroup.get('address')?.hasError('required')">
           Address is <strong>required</strong>

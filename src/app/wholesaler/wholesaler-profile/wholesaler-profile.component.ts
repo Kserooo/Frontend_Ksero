@@ -20,12 +20,16 @@ export class WholesalerProfileComponent implements OnInit {
 
   name: string;
 
+  phoneNumberRegexp: RegExp = /^9\d{8}$/;
+  nameRegexp: RegExp = /^(?!^\s+$)[a-zA-ZáÁéÉíÍóÓúÚñÑ\s]+$/;
+  emailRegexp: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
   userFormGroup = new FormGroup({
-    firstName: new FormControl('',[Validators.required]),
-    lastName: new FormControl('',[Validators.required]),
+    firstName: new FormControl('',[Validators.required, Validators.pattern(this.nameRegexp)]),
+    lastName: new FormControl('',[Validators.required, Validators.pattern(this.nameRegexp)]),
     birthday: new FormControl('',[Validators.required]),
-    phone: new FormControl('',[Validators.required]),
-    email: new FormControl('',[Validators.required]),
+    phone: new FormControl('',[Validators.required, Validators.pattern(this.phoneNumberRegexp)]),
+    email: new FormControl('',[Validators.required, Validators.pattern(this.emailRegexp)]),
     address: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required]),
     description: new FormControl('',[Validators.required])

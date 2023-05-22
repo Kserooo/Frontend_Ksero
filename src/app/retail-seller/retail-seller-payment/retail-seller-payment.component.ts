@@ -21,6 +21,11 @@ export class RetailSellerPaymentComponent implements OnInit {
   id: string;
   retailSeller: RetailSeller;
   paymentCardNumberEncrypted: string;
+
+  phoneNumberRegexp: RegExp = /^9\d{8}$/;
+  nameRegexp: RegExp = /^(?!^\s+$)[a-zA-ZáÁéÉíÍóÓúÚñÑ\s]+$/;
+  emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  
   constructor(private retailSellersService: RetailSellersService, private route: ActivatedRoute,
               private dialog: MatDialog, private toastr: ToastrService) {
     this.retailSeller= {} as RetailSeller;
@@ -30,11 +35,11 @@ export class RetailSellerPaymentComponent implements OnInit {
 
   userFormGroup= new FormGroup({
     paymentName: new FormControl('',[Validators.required,
-      Validators.minLength(2), Validators.maxLength(25)]),
+      Validators.minLength(2), Validators.maxLength(25), Validators.pattern(this.nameRegexp)]),
     paymentPhone: new FormControl('',[Validators.required,
-      Validators.pattern('^[0-9]{9}$')]),
+      Validators.pattern(this.phoneNumberRegexp)]),
     paymentEmail: new FormControl('',[Validators.required,
-      Validators.email]),
+      Validators.pattern(this.emailRegex)]),
     paymentCardNumber: new FormControl('',[Validators.required,
       Validators.pattern('^[0-9]{16}$')]),
     paymentExpirationDate: new FormControl('',[Validators.required]),
