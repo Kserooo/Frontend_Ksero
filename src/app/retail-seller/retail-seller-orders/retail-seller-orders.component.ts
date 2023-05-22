@@ -34,6 +34,9 @@ export class RetailSellerOrdersComponent implements OnInit {
     this.retrieveData();
   }
 
+  ngAfterViewInit() {
+  }
+
   retrieveData(){
     this.acceptedOrders = [];
     this.pendingOrders = [];

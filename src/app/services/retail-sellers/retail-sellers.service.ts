@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, of, retry, switchMap, throwError} from "rxjs";
 import {RetailSeller} from "../../models/retail-seller";
+import { environment } from 'src/environments/environment';
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ import {RetailSeller} from "../../models/retail-seller";
 export class RetailSellersService {
 
   // Endpoint
-  basePath = 'https://backendkseroapi-1682979685313.azurewebsites.net/api/v1/retail-sellers'
+  basePath = `${environment.serviceBasePath}/api/v1/retail-sellers`;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,19 +21,26 @@ export class RetailSellersService {
 
   currentUser!: RetailSeller;
   private _authenticated: boolean = false;
-  constructor(private http: HttpClient) { }
+  public static toastr: ToastrService;
+  constructor(private http: HttpClient, private _toastr: ToastrService) {
+    RetailSellersService.toastr = _toastr;
+  }
 
   // API Error Handling
   handleError(error: HttpErrorResponse) {
+    let message: string = "An error occurred in our services. Try again later";
     if (error.error instanceof ErrorEvent) {
       // Default error handling
       console.log(`An error occurred: ${error.error.message} `);
+      message = `An error occurred: ${error.error.message} `;
+      
     } else {
       // Unsuccessful Response Error Code returned from Backend
       console.error(
         `Backend returned code ${error.status}, body was: ${error.error}`
       );
     }
+    RetailSellersService.toastr.error(message, "Error");
     // Return Observable with Error Message to Client
     return throwError(() => new Error('Something happened with request, please try again later'));
   }

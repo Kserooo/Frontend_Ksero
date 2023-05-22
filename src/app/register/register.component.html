@@ -41,6 +41,9 @@
                               !userFormGroup.get('email')?.hasError('required')">
               Email must have less than <strong>16</strong> characters
             </mat-error>
+            <mat-error *ngIf="userFormGroup.get('email')?.hasError('pattern')">
+              This is not a valid email
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="form-field">
