@@ -1,0 +1,55 @@
+img.rounded {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.whole-profile > div:nth-child(1) {
+  width: 30%;
+  border-right: 1px solid lightgray;
+}
+
+.whole-profile > div:nth-child(2) {
+  width: 70%;
+  height: calc(100vh - 65px);
+  border-left: 1px solid lightgray;
+}
+
+.whole-profile p {
+  font-size: 14px;
+}
+
+mat-form-field {
+  width: 85%;
+}
+
+form {
+  width: 100%;
+}
+
+ul, ul li{
+  width: 100%;
+}
+
+button.btn-section {
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 65%;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+button.btn-section:hover {
+  background-color: var(--primary-purple);
+  border: none;
+  border: 1px solid transparent;
+  color: white;
+}
+
+button.save {
+  background-color: var(--primary-purple);;
+  color: white;
+}

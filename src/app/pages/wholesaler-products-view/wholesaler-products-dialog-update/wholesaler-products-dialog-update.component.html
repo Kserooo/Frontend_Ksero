@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Edit Product</h1>
+<div mat-dialog-content>
+  <p>Would you like to update the item <b>{{data.name}}</b> </p>
+</div>
+
+<form [formGroup]="productFormGroup">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+    <mat-error *ngIf="productFormGroup.get('name')?.hasError('required')">
+      Product name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label >Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+    <mat-error *ngIf="productFormGroup.get('description')?.hasError('required')">
+      Description is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput type="number" formControlName="price">
+    <mat-error *ngIf="productFormGroup.get('price')?.hasError('required')">
+      Price is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <br>
+</form>
+
+<div mat-dialog-actions>
+
+  <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="productFormGroup.value" [disabled]="productFormGroup.invalid" cdkFocusInitial>Ok</button>
+</div>

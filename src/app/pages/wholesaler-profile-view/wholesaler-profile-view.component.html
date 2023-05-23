@@ -1,0 +1,116 @@
+<app-wholesaler-navbar></app-wholesaler-navbar>
+<div class="whole-profile flex">
+  <div class="flex flex-column justify-content-center align-items-center">
+    <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2020/10/Valorant-Acto-3.jpg"
+      class="rounded" />
+    <h2 class="py-2"> {{wholesalerActual.firstName}} {{wholesalerActual.lastName}} </h2>
+    <p class="mb-2">Welcome to Ksero!</p>
+    <hr width="70%" />
+    <ul class="mt-3 flex flex-column justify-content-center align-items-center gap-2">
+      <li class="flex justify-content-center">
+        <button class="btn-section flex justify-content-between">
+          <span>Account</span>
+          <i class="bi bi-caret-right-fill"></i>
+        </button>
+      </li>
+      <li class="flex justify-content-center">
+        <button class="btn-section flex justify-content-between">
+          <span>Notifications</span>
+          <i class="bi bi-caret-right-fill"></i>
+        </button>
+      </li>
+      <li class="flex justify-content-center">
+        <button class="btn-section flex justify-content-between">
+          <span>Appearence</span>
+          <i class="bi bi-caret-right-fill"></i>
+        </button>
+      </li>
+      <li class="flex justify-content-center">
+        <button class="btn-section flex justify-content-between">
+          <span>Privacy and Security</span>
+          <i class="bi bi-caret-right-fill"></i>
+        </button>
+      </li>
+      <li class="flex justify-content-center">
+        <button class="btn-section flex justify-content-between">
+          <span>Help and Support</span>
+          <i class="bi bi-caret-right-fill"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="flex flex-column justify-content-center align-items-center">
+    <h2 class="align-self-start mb-5 ml-4">Account Settings</h2>
+    <form [formGroup]="userFormGroup" class="grid p-cols-2 justify-items-center">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName">
+        <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('required')">
+          First name is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('pattern')">
+          First name must only contain characters from a to z or A to Z, and spaces but not only spaces
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName">
+        <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('required')">
+          Last name is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('pattern')">
+          Last name must only contain characters from a to z or A to Z, and spaces but not only spaces
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="userFormGroup.get('email')?.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="userFormGroup.get('email')?.hasError('pattern')">
+          This is not a valid <strong>email</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error *ngIf="userFormGroup.get('password')?.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+        <mat-error *ngIf="userFormGroup.get('phone')?.hasError('required')">
+          Phone is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="userFormGroup.get('phone')?.hasError('pattern')">
+          Phone number must have exactly 9 digits and start with 9
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address">
+        <mat-error *ngIf="userFormGroup.get('address')?.hasError('required')">
+          Address is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Birthday</mat-label>
+        <input matInput type="date" formControlName="birthday">
+        <mat-error *ngIf="userFormGroup.get('birthday')?.hasError('required')">
+          Birthday is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="userFormGroup.get('description')?.hasError('required')">
+          Description is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <button class="save" mat-button (click)="openDialog()">SAVE CHANGES</button>
+  </div>
+</div>
