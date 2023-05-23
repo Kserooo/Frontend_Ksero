@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <div class="logo flex align-items-center gap-2">
+    <h1>Ksero</h1> <img src="https://cdn-icons-png.flaticon.com/512/6203/6203085.png" alt="">
+  </div>
+  <div class="mat-spacer"></div>
+  <!-- App Options -->
+
+  <a mat-button [routerLink]="['/wholesaler',id,'profile']">Profile</a>
+  <a mat-button [routerLink]="['/wholesaler',id,'products']">Products</a>
+  <a mat-button [routerLink]="['/wholesaler',id,'orders']">Orders</a>
+  <a mat-button (click)="Logout()">Logout</a>
+
+</mat-toolbar>

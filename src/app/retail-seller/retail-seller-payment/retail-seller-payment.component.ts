@@ -3,11 +3,9 @@ import {RetailSeller} from "../../models/retail-seller";
 import {RetailSellersService} from "../../services/retail-sellers/retail-sellers.service";
 import {ActivatedRoute} from "@angular/router";
 import {
-  WholesalerProductsDialogUpdateComponent
-} from "../../wholesaler/wholesaler-products/wholesaler-products-dialog-update/wholesaler-products-dialog-update.component";
-import {
   RetailSellerPaymentDialogUpdateComponent
 } from "./retail-seller-payment-dialog-update/retail-seller-payment-dialog-update.component";
+
 import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
@@ -25,7 +23,7 @@ export class RetailSellerPaymentComponent implements OnInit {
   phoneNumberRegexp: RegExp = /^9\d{8}$/;
   nameRegexp: RegExp = /^(?!^\s+$)[a-zA-ZáÁéÉíÍóÓúÚñÑ\s]+$/;
   emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  
+
   constructor(private retailSellersService: RetailSellersService, private route: ActivatedRoute,
               private dialog: MatDialog, private toastr: ToastrService) {
     this.retailSeller= {} as RetailSeller;

@@ -1,0 +1,97 @@
+.initial-card{
+  background-image: url('https://static.vecteezy.com/system/resources/previews/002/037/994/original/abstract-pink-background-with-beautiful-fluid-shapes-free-vector.jpg');
+  height: 400px;
+}
+.mat-card-title{
+  text-align: center;
+  padding-top: 100px;
+  font-family: 'Oleo Script', cursive;
+  font-size: 150px;
+}
+.mat-card-subtitle{
+  text-align: center;
+  padding-top: 60px;
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+}
+.mat-button{
+  left: 45%;
+  color:white;
+  font-family: 'Confortaa', cursive;
+  background-color: #673ab7;
+}
+.content{
+  font-family: 'Confortaa', cursive;
+  padding-top: 60px;
+  text-align: center;
+}
+.content2{
+  font-family: 'Confortaa', cursive;
+  padding-top: 25px;
+  padding-left: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: #673ab7;
+}
+.second-card{
+  background-color: lavenderblush;
+  height: 400px;
+}
+.container{
+  padding-left: 20%;
+  padding-top: 20px;
+  display: flex;
+}
+.sub{
+  margin: 10px;
+  border-radius: 10px;
+  background-color: white;
+  width: 180px;
+  height: 250px;
+}
+
+.contributor-logo{
+  padding-left: 30%;
+  padding-top: 30%;
+  max-width: 100px;
+}
+
+.contributor-text{
+  text-align: center;
+  padding:20px;
+  font-size: 13px;
+}
+
+.contributor-text-v2{
+  font-family: 'Confortaa', cursive;
+  text-align: center;
+  font-size: 13px;
+}
+
+.third-card{
+  background-image: url('https://i.pinimg.com/originals/d4/59/01/d4590137c570db97c4f27746549b9f07.jpg');
+  height: 400px;
+}
+.container2{
+  padding-left: 27%;
+  padding-top: 20px;
+  display: flex;
+}
+.container3{
+  padding-left: 27%;
+  padding-top: 20px;
+  display: flex;
+}
+.sub2{
+  margin-left: 20px;
+  border-radius: 10px;
+  background-color: lavenderblush;
+  width: 270px;
+  height: 150px;
+}
+.beneficts-text{
+  font-family: 'Confortaa', cursive;
+  text-align: center;
+  padding:45px;
+  font-size: 13px;
+}

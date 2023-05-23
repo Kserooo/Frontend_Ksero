@@ -4,11 +4,11 @@ import {HomeComponent} from "./home/home.component";
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 import {RetailSellerProfileComponent} from "./retail-seller/retail-seller-profile/retail-seller-profile.component";
-import {WholesalerProfileComponent} from "./wholesaler/wholesaler-profile/wholesaler-profile.component";
+import {WholesalerProfileViewComponent} from "./pages/wholesaler-profile-view/wholesaler-profile-view.component";
 import {RetailSellerProductsComponent} from "./retail-seller/retail-seller-products/retail-seller-products.component";
 import {RetailSellerPaymentComponent} from "./retail-seller/retail-seller-payment/retail-seller-payment.component";
 import {RetailSellerShoppingCarComponent} from "./retail-seller/retail-seller-shopping-car/retail-seller-shopping-car.component";
-import {WholesalerProductsComponent} from "./wholesaler/wholesaler-products/wholesaler-products.component";
+import {WholesalerProductViewComponent} from "./pages/wholesaler-products-view/wholesaler-products-view.component";
 import {WholesalerOrdersComponent} from "./wholesaler/wholesaler-orders/wholesaler-orders.component";
 import {RetailSellerOrdersComponent} from "./retail-seller/retail-seller-orders/retail-seller-orders.component";
 import {RetailSellerGuard} from "./auth/guards/retail-seller/retail-seller.guard";
@@ -51,8 +51,8 @@ const routes: Routes = [
     canActivateChild: [WholesalerGuard],
     children:[
       { path: '', redirectTo: 'profile',pathMatch: 'full'},
-      { path: 'profile', component: WholesalerProfileComponent},
-      { path: 'products', component: WholesalerProductsComponent},
+      { path: 'profile', component: WholesalerProfileViewComponent},
+      { path: 'products', component: WholesalerProductViewComponent},
       { path: 'orders', component: WholesalerOrdersComponent},
     ]
   },
