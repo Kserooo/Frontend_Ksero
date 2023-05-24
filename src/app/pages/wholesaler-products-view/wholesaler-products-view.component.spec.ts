@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WholesalerProductViewComponent } from './wholesaler-product-view.component';
+import { WholesalerProductViewComponent } from './wholesaler-products-view.component';
 
 describe('WholesalerProductViewComponent', () => {
   let component: WholesalerProductViewComponent;

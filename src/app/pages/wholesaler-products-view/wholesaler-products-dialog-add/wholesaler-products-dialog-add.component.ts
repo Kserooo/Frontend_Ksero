@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-wholesaler-products-dialog-add',
+  styleUrls: ["./wholesaler-products-dialog-add.component.css"],
   templateUrl: './wholesaler-products-dialog-add.component.html',
 })
 

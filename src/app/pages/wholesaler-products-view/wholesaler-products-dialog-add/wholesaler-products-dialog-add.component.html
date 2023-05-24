@@ -1,36 +1,47 @@
-<h1 mat-dialog-title>Add Product</h1>
-<div mat-dialog-content>
-  <p>Would you like to add an item?</p>
-</div>
-<form [formGroup]="productFormGroup">
-  <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput formControlName="name">
-    <mat-error *ngIf="productFormGroup.get('name')?.hasError('required')">
-      Product name is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label >Description</mat-label>
-    <textarea matInput formControlName="description"></textarea>
-    <mat-error *ngIf="productFormGroup.get('description')?.hasError('required')">
-      Description is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Price</mat-label>
-    <input matInput type="number" formControlName="price">
-    <mat-error *ngIf="productFormGroup.get('price')?.hasError('required')">
-      Price is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-  <br>
-</form>
+<div class="add">
+  <h1 mat-dialog-title>Add Product</h1>
+  <div mat-dialog-content class="mb-4">
+    <p>Set here your product characteristics.</p>
+  </div>
+  <form [formGroup]="productFormGroup" class="flex flex-column">
+    <div class="flex gap-2" style="width: 100%;">
+      <mat-form-field appearance="outline" style="width: 50%;">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="productFormGroup.get('name')?.hasError('required')">
+          Product name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 50%;">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" formControlName="price" :min="0"/>
+        <mat-error *ngIf="productFormGroup.get('price')?.hasError('required')">
+          Price is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error
+        *ngIf="productFormGroup.get('description')?.hasError('required')"
+      >
+        Description is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
 
-<div mat-dialog-actions>
-
-  <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>
-  <button mat-raised-button color="accent" [mat-dialog-close]="productFormGroup.value" [disabled]="productFormGroup.invalid">Ok</button>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onNoClick()">
+      No Thanks
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      [mat-dialog-close]="productFormGroup.value"
+      [disabled]="productFormGroup.invalid"
+    >
+      Ok
+    </button>
+  </div>
 </div>

@@ -13,11 +13,13 @@ export class WholesalerProductsDialogDeleteComponent{
 
   constructor(
     public dialogRef: MatDialogRef<WholesalerProductsDialogDeleteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Product,
+    @Inject(MAT_DIALOG_DATA) public data: number,
   ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+
 
 }

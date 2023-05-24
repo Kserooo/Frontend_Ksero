@@ -1,0 +1,25 @@
+<mat-card class="overflow-hidden flex flex-column">
+  <div
+    class="flex flex-column justify-content-center align-items-center product-illustration"
+  >
+  <i class="bi bi-bookmark-fill align-self-end text-xl"></i>
+    <img
+      class="product-image"
+      src="https://mmkfoods.pe/wp-content/uploads/2020/06/LECHE-EVAPORADA-GLORIA-AZUL-LATA-400G-600x600.png"
+      alt=""
+    />
+  </div>
+  <mat-card-title class="text-center"> {{ product.name }} </mat-card-title>
+  <mat-card-content>
+    <div class="text-center">
+      <p class="medium-text">Price: $/.{{ product.price }}</p>
+    </div>
+  </mat-card-content>
+  <mat-card-footer
+    class="flex justify-content-center gap-2 m-0"
+    style="height: max-content"
+  >
+    <button mat-raised-button color="warn" (click)="openDeleteDialog(product.id)" >Delete Item</button>
+    <button mat-raised-button color="primary" (click)="openDialogUpdate(product)">Edit Item</button>
+  </mat-card-footer>
+</mat-card>

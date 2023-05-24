@@ -68,6 +68,8 @@ import { WholesalerProductsDialogUpdateComponent } from './pages/wholesaler-prod
 import { HomeNavbarComponent } from './components/home-navbar/home-navbar.component';
 import { WholesaleProfileViewDialogUpdateComponent } from './pages/wholesaler-profile-view/wholesale-profile-view-dialog-update/wholesale-profile-view-dialog-update.component';
 import { WholesalerNavbarComponent } from './components/wholesaler-navbar/wholesaler-navbar.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ProductShowCardComponent } from './components/products/product-show-card/product-show-card.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +100,9 @@ import { WholesalerNavbarComponent } from './components/wholesaler-navbar/wholes
     WholesalerProductsDialogUpdateComponent,
     WholesaleProfileViewDialogUpdateComponent,
     WholesalerNavbarComponent,
-    WholesalerProfileViewComponent
+    WholesalerProfileViewComponent,
+    ToolbarComponent,
+    ProductShowCardComponent
   ],
   imports: [
     ToastrModule.forRoot({
