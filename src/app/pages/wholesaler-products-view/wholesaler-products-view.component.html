@@ -20,48 +20,7 @@
 
     </div>
     <div class="flex justify-content-between mx-7">
-      <div class="filter">
-        <h2><i class="bi bi-filter"></i> Filter</h2>
-        <ul class="flex flex-column gap-4">
-          <li>
-            <div class="text-container">
-              <h3>Precio</h3>
-              <p>Seleciona un rango de precio para filtrar tu busqueda.</p>
-              <mat-slider [(ngModel)]="priceSelected" (change)="onSliderChange($event)" min="0" max="120" step="1"
-                showTickMarks>
-                <input matSliderThumb>
-              </mat-slider>
-              <span>{{ priceSelected }}</span>
-            </div>
-          </li>
-          <li>
-            <div class="text-container">
-              <h3>Empresa</h3>
-              <p>Seleciona un rango de precio para filtrar tu busqueda.</p>
-              <div class="flex flex-column">
-                <mat-checkbox *ngFor="let option of companyOptions" class="example-margin" [checked]="true"
-                  [color]="'primary'">
-                  {{ option }}
-                </mat-checkbox>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="text-container">
-              <h3>Tipo de producto</h3>
-              <p>Seleciona un rango de precio para filtrar tu busqueda.</p>
-              <div class="flex flex-column">
-                <mat-checkbox *ngFor="let option of typeOptions" class="example-margin" [checked]="true"
-                  [color]="'primary'">
-                  {{ option }}
-                </mat-checkbox>
-              </div>
-            </div>
-          </li>
-        </ul>
-
-      </div>
-      <div [ngStyle]="{ 'display': productsData.length != 0? 'none':'flex'}" class="justify-content-center align-items-center" style="width:80vw;">
+      <div [ngStyle]="{ 'display': productsData.length != 0? 'none':'flex'}" >
         <div class="no-products flex flex-column align-items-center gap-2">
           <i class="bi bi-exclamation-octagon "></i>
           <p>There is <strong>NO</strong> products. Add one please.</p>

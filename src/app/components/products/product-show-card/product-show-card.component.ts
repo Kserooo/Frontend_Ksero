@@ -4,11 +4,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 // Models
 import { Product } from "../../../models/product";
 import { MatDialog } from '@angular/material/dialog';
-import { WholesaleProfileViewDialogUpdateComponent } from 'src/app/pages/wholesaler-profile-view/wholesale-profile-view-dialog-update/wholesale-profile-view-dialog-update.component';
+
+
 import { ProductsService } from 'src/app/services/products/products.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { WholesalerProductsDialogDeleteComponent } from 'src/app/pages/wholesaler-products-view/wholesaler-products-dialog-delete/wholesaler-products-dialog-delete.component';
+import { WholesalerProductsDialogUpdateComponent } from 'src/app/pages/wholesaler-products-view/wholesaler-products-dialog-update/wholesaler-products-dialog-update.component';
 
 @Component({
   selector: 'app-product-show-card',
@@ -39,7 +41,7 @@ export class ProductShowCardComponent implements OnInit {
 
   // Update
   openDialogUpdate(data: Product): void{
-    const dialogRef=this.dialog.open(WholesaleProfileViewDialogUpdateComponent,{
+    const dialogRef=this.dialog.open(WholesalerProductsDialogUpdateComponent,{
       data:{...data}
     });
 

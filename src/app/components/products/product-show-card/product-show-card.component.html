@@ -1,6 +1,7 @@
-<mat-card class="overflow-hidden flex flex-column">
+<mat-card class="overflow-hidden flex flex-column justify-content-between">
   <div
     class="flex flex-column justify-content-center align-items-center product-illustration"
+    style="height: 100%"
   >
   <i class="bi bi-bookmark-fill align-self-end text-xl"></i>
     <img
@@ -9,17 +10,21 @@
       alt=""
     />
   </div>
-  <mat-card-title class="text-center"> {{ product.name }} </mat-card-title>
-  <mat-card-content>
-    <div class="text-center">
-      <p class="medium-text">Price: $/.{{ product.price }}</p>
+  <mat-card-title class="text-center"> {{ product.name.slice(0, 12) }} </mat-card-title>
+  <div class="flex flex-column">
+    <div class="flex flex-column justify-content-between ">
+      <mat-card-content>
+        <div class="text-center">
+          <p class="medium-text">Price: S/. {{ product.price }}</p>
+        </div>
+      </mat-card-content>
+      <mat-card-footer
+        class="flex justify-content-center gap-2 m-0"
+        style="height: max-content"
+      >
+        <button mat-raised-button color="warn" (click)="openDeleteDialog(product.id)" >Delete Item</button>
+        <button mat-raised-button color="primary" (click)="openDialogUpdate(product)">Edit Item</button>
+      </mat-card-footer>
     </div>
-  </mat-card-content>
-  <mat-card-footer
-    class="flex justify-content-center gap-2 m-0"
-    style="height: max-content"
-  >
-    <button mat-raised-button color="warn" (click)="openDeleteDialog(product.id)" >Delete Item</button>
-    <button mat-raised-button color="primary" (click)="openDialogUpdate(product)">Edit Item</button>
-  </mat-card-footer>
+  </div>
 </mat-card>

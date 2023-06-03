@@ -22,7 +22,7 @@ import { RetailSellerPaymentComponent } from './retail-seller/retail-seller-paym
 import { WholesalerOrdersComponent } from './wholesaler/wholesaler-orders/wholesaler-orders.component';
 import { RetailSellerShoppingCarComponent } from './retail-seller/retail-seller-shopping-car/retail-seller-shopping-car.component';
 import { RouterModule } from '@angular/router';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatToolbarModule } from "@angular/material/toolbar"
 import { RetailSellerNavbarComponent } from './retail-seller/retail-seller-navbar/retail-seller-navbar.component';
 import { ProductsService } from './services/products/products.service';
 import { WholesalersService } from './services/wholesalers/wholesalers.service';
