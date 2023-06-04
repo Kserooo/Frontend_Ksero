@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit  {
         console.log(response);
         localStorage.setItem('token',response.token);
         this.retailSellerService.getByUsername(response.username).subscribe((response3: any)=>{
+          console.log(response3);
           this.toastr.success('Login As Retail Seller Successful','Success');
           this.route.navigate(['/retail-seller',response3.id,'profile']);
         })

@@ -29,10 +29,19 @@
       Description is <strong>required</strong>
     </mat-error>
   </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Photo Image URL</mat-label>
+    <textarea matInput formControlName="photoImageUrl"></textarea>
+    <mat-error
+      *ngIf="productFormGroup.get('photoImageUrl')?.hasError('required')"
+    >
+      photoImageUrl is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
 </form>
 
 <div mat-dialog-actions>
 
   <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>
-  <button mat-raised-button color="accent" [mat-dialog-close]="productFormGroup.value" [disabled]="productFormGroup.invalid" cdkFocusInitial>Ok</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="productFormGroup.value" [disabled]="productFormGroup.invalid" cdkFocusInitial>Ok</button>
 </div>

@@ -17,7 +17,8 @@ export class WholesalerProductsDialogUpdateComponent{
   productFormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required])
+    price: new FormControl('', [Validators.required]),
+    photoImageUrl: new FormControl('', [Validators.required])
   });
 
   constructor(
@@ -27,7 +28,8 @@ export class WholesalerProductsDialogUpdateComponent{
     this.productFormGroup.setValue({
       name: data.name,
       description: data.description,
-      price: data.price
+      price: data.price,
+      photoImageUrl: data.photoImageUrl
     })
   }
 

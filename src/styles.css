@@ -27,15 +27,13 @@ li {
   list-style: none !important;
 }
 
-.grid {
-  display: grid;
-}
-
 .p-cols-2 {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .p-cols-3 {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -57,4 +55,10 @@ li {
 
 .big-text {
   font-size: var(--big-text);
+}
+
+
+.white-field .mat-form-field-wrapper {
+  background-color: white !important;
+  padding: 0;
 }

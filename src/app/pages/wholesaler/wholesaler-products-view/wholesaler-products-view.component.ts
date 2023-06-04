@@ -68,6 +68,7 @@ export class WholesalerProductViewComponent implements OnInit {
         productModel.name = result.name;
         productModel.description = result.description;
         productModel.price = result.price;
+        productModel.photoImageUrl = result.photoImageUrl;
         this.productsService.create(productModel).subscribe((response:any)=>{
           this.updateProductsData();
           this.toastr.success('Product added','Success');
@@ -111,8 +112,10 @@ export class WholesalerProductViewComponent implements OnInit {
         data.name = result.name;
         data.description = result.description;
         data.price = result.price;
+        data.photoImageUrl = result.photoImageUrl
 
         this.productsService.update(data.id,data).subscribe(response=>{
+          console.log(response);
           this.updateProductsData();
           this.toastr.success('Product Edited','Success');
           console.log("Updated");

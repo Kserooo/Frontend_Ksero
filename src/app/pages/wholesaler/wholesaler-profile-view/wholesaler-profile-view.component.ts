@@ -41,7 +41,6 @@ export class WholesalerProfileViewComponent implements OnInit {
       Validators.pattern(this.emailRegexp),
     ]),
     address: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
   });
 
@@ -78,9 +77,6 @@ export class WholesalerProfileViewComponent implements OnInit {
         address: this.wholesalerActual.address
           ? this.wholesalerActual.address
           : '',
-        password: this.wholesalerActual.password
-          ? this.wholesalerActual.password
-          : '',
         description: this.wholesalerActual.description
           ? this.wholesalerActual.description
           : '',
@@ -99,8 +95,6 @@ export class WholesalerProfileViewComponent implements OnInit {
       this.wholesalerActual.phone = this.userFormGroup.get('phone')?.value;
       this.wholesalerActual.email = this.userFormGroup.get('email')?.value;
       this.wholesalerActual.address = this.userFormGroup.get('address')?.value;
-      this.wholesalerActual.password =
-        this.userFormGroup.get('password')?.value;
       this.wholesalerActual.description =
         this.userFormGroup.get('description')?.value;
       const dialogRef = this.dialog.open(
@@ -111,10 +105,12 @@ export class WholesalerProfileViewComponent implements OnInit {
       );
 
       dialogRef.afterClosed().subscribe((result) => {
+        console.log(this.wholesalerActual);
         if (result != undefined) {
           this.wholesalersService
             .update(Number(this.id), this.wholesalerActual)
             .subscribe((response) => {
+              console.log(response);
               this.toastr.success('Information Saved', 'Success');
               this.getActualData();
             });

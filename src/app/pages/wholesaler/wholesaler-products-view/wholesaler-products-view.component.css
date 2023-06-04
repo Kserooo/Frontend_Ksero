@@ -87,3 +87,9 @@ mat-slider {
 mat-form-field {
   width: 400px
 }
+
+.add-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

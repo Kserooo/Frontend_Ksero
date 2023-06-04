@@ -16,69 +16,64 @@
   </div>
   <div class="flex flex-column justify-content-center align-items-center">
     <h1 class="align-self-start mb-5 ml-4">Account Settings</h1>
-    <form [formGroup]="userFormGroup" class="grid p-cols-2 justify-items-center">
-      <mat-form-field appearance="outline">
-        <mat-label>First Name</mat-label>
-        <input matInput formControlName="firstName">
-        <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('required')">
-          First name is <strong>required</strong>
-        </mat-error>
-        <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('pattern')">
-          First name must only contain characters from a to z or A to Z, and spaces but not only spaces
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Last Name</mat-label>
-        <input matInput formControlName="lastName">
-        <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('required')">
-          Last name is <strong>required</strong>
-        </mat-error>
-        <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('pattern')">
-          Last name must only contain characters from a to z or A to Z, and spaces but not only spaces
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email">
-        <mat-error *ngIf="userFormGroup.get('email')?.hasError('required')">
-          Email is <strong>required</strong>
-        </mat-error>
-        <mat-error *ngIf="userFormGroup.get('email')?.hasError('pattern')">
-          This is not a valid <strong>email</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password">
-        <mat-error *ngIf="userFormGroup.get('password')?.hasError('required')">
-          Password is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Phone</mat-label>
-        <input matInput formControlName="phone">
-        <mat-error *ngIf="userFormGroup.get('phone')?.hasError('required')">
-          Phone is <strong>required</strong>
-        </mat-error>
-        <mat-error *ngIf="userFormGroup.get('phone')?.hasError('pattern')">
-          Phone number must have exactly 9 digits and start with 9
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="address">
-        <mat-error *ngIf="userFormGroup.get('address')?.hasError('required')">
-          Address is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Birthday</mat-label>
-        <input matInput type="date" formControlName="birthday">
-        <mat-error *ngIf="userFormGroup.get('birthday')?.hasError('required')">
-          Birthday is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
+    <form [formGroup]="userFormGroup" class="flex flex-column align-content-center" style="width: 100%; max-width: 800px;">
+      <div class="grid">
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+          <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('required')">
+            First name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('firstName')?.hasError('pattern')">
+            First name must only contain characters from a to z or A to Z, and spaces but not only spaces
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+          <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('required')">
+            Last name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('lastName')?.hasError('pattern')">
+            Last name must only contain characters from a to z or A to Z, and spaces but not only spaces
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-error *ngIf="userFormGroup.get('email')?.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('email')?.hasError('pattern')">
+            This is not a valid <strong>email</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone">
+          <mat-error *ngIf="userFormGroup.get('phone')?.hasError('required')">
+            Phone is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('phone')?.hasError('pattern')">
+            Phone number must have exactly 9 digits and start with 9
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address">
+          <mat-error *ngIf="userFormGroup.get('address')?.hasError('required')">
+            Address is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>Birthday</mat-label>
+          <input matInput type="date" formControlName="birthday">
+          <mat-error *ngIf="userFormGroup.get('birthday')?.hasError('required')">
+            Birthday is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" class="align-self-center w-12">
         <mat-label>Description</mat-label>
         <textarea matInput formControlName="description"></textarea>
         <mat-error *ngIf="userFormGroup.get('description')?.hasError('required')">
