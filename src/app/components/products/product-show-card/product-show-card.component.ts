@@ -9,8 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
-import { WholesalerProductsDialogDeleteComponent } from 'src/app/pages/wholesaler-products-view/wholesaler-products-dialog-delete/wholesaler-products-dialog-delete.component';
-import { WholesalerProductsDialogUpdateComponent } from 'src/app/pages/wholesaler-products-view/wholesaler-products-dialog-update/wholesaler-products-dialog-update.component';
+import { WholesalerProductsDialogDeleteComponent } from 'src/app/pages/wholesaler/wholesaler-products-view/wholesaler-products-dialog-delete/wholesaler-products-dialog-delete.component';
+import { WholesalerProductsDialogUpdateComponent } from 'src/app/pages/wholesaler/wholesaler-products-view/wholesaler-products-dialog-update/wholesaler-products-dialog-update.component';
 
 @Component({
   selector: 'app-product-show-card',

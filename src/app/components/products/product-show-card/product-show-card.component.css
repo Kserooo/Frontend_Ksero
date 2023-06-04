@@ -1,5 +1,6 @@
 .product-image {
-  width: 120px;
+  height: 180px;
+  object-fit: contain;
 }
 
 mat-card {

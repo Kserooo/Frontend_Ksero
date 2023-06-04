@@ -55,18 +55,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // Views
-import { WholesalerProductViewComponent } from './pages/wholesaler-products-view/wholesaler-products-view.component';
-import { WholesalerProfileViewComponent } from './pages/wholesaler-profile-view/wholesaler-profile-view.component';
+import { WholesalerProductViewComponent } from './pages/wholesaler/wholesaler-products-view/wholesaler-products-view.component';
+import { WholesalerProfileViewComponent } from './pages/wholesaler/wholesaler-profile-view/wholesaler-profile-view.component';
 
 
-// Components from view
-import { WholesalerProductsDialogAddComponent } from './pages/wholesaler-products-view/wholesaler-products-dialog-add/wholesaler-products-dialog-add.component';
-import { WholesalerProductsDialogDeleteComponent } from './pages/wholesaler-products-view/wholesaler-products-dialog-delete/wholesaler-products-dialog-delete.component';
-import { WholesalerProductsDialogUpdateComponent } from './pages/wholesaler-products-view/wholesaler-products-dialog-update/wholesaler-products-dialog-update.component';
+// Components from Wholesaler
+import { WholesalerProductsDialogAddComponent } from './pages/wholesaler/wholesaler-products-view/wholesaler-products-dialog-add/wholesaler-products-dialog-add.component';
+import { WholesalerProductsDialogDeleteComponent } from './pages/wholesaler/wholesaler-products-view/wholesaler-products-dialog-delete/wholesaler-products-dialog-delete.component';
+import { WholesalerProductsDialogUpdateComponent } from './pages/wholesaler/wholesaler-products-view/wholesaler-products-dialog-update/wholesaler-products-dialog-update.component';
 
 // Components
 import { HomeNavbarComponent } from './components/home-navbar/home-navbar.component';
-import { WholesaleProfileViewDialogUpdateComponent } from './pages/wholesaler-profile-view/wholesale-profile-view-dialog-update/wholesale-profile-view-dialog-update.component';
+import { WholesaleProfileViewDialogUpdateComponent } from './pages/wholesaler/wholesaler-profile-view/wholesale-profile-view-dialog-update/wholesale-profile-view-dialog-update.component';
 import { WholesalerNavbarComponent } from './components/wholesaler-navbar/wholesaler-navbar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ProductShowCardComponent } from './components/products/product-show-card/product-show-card.component';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WholesalersService } from '../../services/wholesalers/wholesalers.service';
+import { WholesalersService } from '../../../services/wholesalers/wholesalers.service';
 import { ActivatedRoute } from '@angular/router';
-import { Wholesaler } from '../../models/wholesaler';
+import { Wholesaler } from '../../../models/wholesaler';
 import { MatDialog } from '@angular/material/dialog';
 import { WholesaleProfileViewDialogUpdateComponent } from './wholesale-profile-view-dialog-update/wholesale-profile-view-dialog-update.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

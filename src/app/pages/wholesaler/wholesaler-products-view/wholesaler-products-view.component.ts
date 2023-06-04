@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../../models/product";
+import {Product} from "../../../models/product";
 import {ActivatedRoute} from "@angular/router";
-import {ProductsService} from "../../services/products/products.service";
+import {ProductsService} from "../../../services/products/products.service";
 import {MatDialog} from "@angular/material/dialog";
 import {
   WholesalerProductsDialogAddComponent
