@@ -51,6 +51,7 @@ export class WholesalerProfileViewComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.id = this.route.snapshot.paramMap.get('id')!;
+    console.log(this.id);
     this.wholesalerActual = {} as Wholesaler;
     this.name = '';
   }

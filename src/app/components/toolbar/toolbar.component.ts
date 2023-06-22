@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DataTransferService } from 'src/app/utils/data-transfer.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,8 +12,13 @@ export class ToolbarComponent implements OnInit {
   // Attributes
   id:string;
 
-  constructor(private route:ActivatedRoute, private router: Router) {
-    this.id=this.route.snapshot.paramMap.get('id')!;
+  constructor(
+    private route:ActivatedRoute,
+    private router: Router,
+    private dataTransferService: DataTransferService
+    ) {
+    this.id=this.dataTransferService.userId;
+    console.log("Wholesaler navbar with id", this.id);
   }
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import { DataTransferService } from 'src/app/utils/data-transfer.service';
 
 @Component({
   selector: 'app-wholesaler-navbar',
@@ -9,8 +10,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class WholesalerNavbarComponent implements OnInit {
 
   id:string;
-  constructor(private route:ActivatedRoute, private router: Router) {
-    this.id=this.route.snapshot.paramMap.get('id')!;
+  constructor(
+    private route:ActivatedRoute,
+    private router: Router,
+    private dataTransferService: DataTransferService
+    ) {
+    this.id=this.dataTransferService.userId;
   }
 
   ngOnInit(): void {

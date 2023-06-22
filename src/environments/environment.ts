@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-   serviceBasePath: "https://backendkseroapi-1682979685313.azurewebsites.net",
-  // serviceBasePath: "http://localhost:8080"
+  // serviceBasePath: "https://backendkseroapi-1682979685313.azurewebsites.net",
+  serviceBasePath: "http://localhost:8090"
 };
 
 /*
