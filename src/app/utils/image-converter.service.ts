@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 export type BaseG4Image = string | ArrayBuffer | null;
 /**
  * @author: @Miguel445Ar
- * @description: This service converts an html5 image input and converts it to a base 64 format;
+ * @description: This service converts an html5 image input and converts it 
+ * to a base 64 format and other formats in future versions.
  */
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ImageConverterService {
   constructor() { 
     this.imageBaseG4 = null;
   }
-  public processImage(imageInput: any): void {
+  public convertToBase64(imageInput: any): void {
     const file: File = imageInput.files[0];
     const reader: FileReader = new FileReader();
     reader.readAsDataURL(file);
