@@ -3,4 +3,6 @@ export interface Order {
   quantity: number;
   retailSellerId: number;
   productId: number;
+  operationCode?: string;
+  isPaid?: boolean;
 }

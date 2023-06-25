@@ -12,6 +12,7 @@ import {
 } from "./retail-seller-shopping-car-dialog-submit/retail-seller-shopping-car-dialog-submit.component";
 import { ToastrService } from "ngx-toastr";
 import {ShoppingCarOrder} from "../../models/shopping-car-order";
+import { PurchaseData } from './model/purchase-data.model';
 
 @Component({
   selector: 'app-retail-seller-shopping-car',
@@ -61,11 +62,16 @@ export class RetailSellerShoppingCarComponent implements OnInit {
 
   openDialogSubmit(): void {
     if(this.productsData.length>0){
+      const purchaseData: PurchaseData = {
+        totalAmount: this.sumProducts,
+        productsToPurchase: [...this.productsData]
+      }
       const dialogRef=this.dialog.open(RetailSellerShoppingCarDialogSubmitComponent,{
-        data:this.sumProducts
+        data: purchaseData
       });
 
-      dialogRef.afterClosed().subscribe((result :any) =>{
+      dialogRef.afterClosed().subscribe((result : PurchaseData) =>{
+        console.log(result);
         if(result!=undefined){
           let i=0;
           for(let product of this.productsData){
@@ -73,6 +79,7 @@ export class RetailSellerShoppingCarComponent implements OnInit {
             this.orderActual.retailSellerId=Number(this.id);
             this.orderActual.productId=product.id;
             this.orderActual.quantity=this.shoppingCarOrder[i].quantity;
+            this.orderActual.operationCode=result.operationCode;
             this.wholesalerOrdersService.create(this.orderActual).subscribe((response: any)=>{
               this.toastr.success('Order Submitted','Success');
             });

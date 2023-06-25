@@ -53,6 +53,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { JwtInterceptor } from './auth/jwt-interceptor';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatDividerModule} from '@angular/material/divider';
 
 // Views
 import { WholesalerProductViewComponent } from './pages/wholesaler/wholesaler-products-view/wholesaler-products-view.component';
@@ -70,6 +71,7 @@ import { WholesaleProfileViewDialogUpdateComponent } from './pages/wholesaler/wh
 import { WholesalerNavbarComponent } from './components/wholesaler-navbar/wholesaler-navbar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ProductShowCardComponent } from './components/products/product-show-card/product-show-card.component';
+import { OnlyNumberDirective } from './only-number.directive';
 
 @NgModule({
   declarations: [
@@ -102,7 +104,8 @@ import { ProductShowCardComponent } from './components/products/product-show-car
     WholesalerNavbarComponent,
     WholesalerProfileViewComponent,
     ToolbarComponent,
-    ProductShowCardComponent
+    ProductShowCardComponent,
+    OnlyNumberDirective
   ],
   imports: [
     ToastrModule.forRoot({
@@ -133,6 +136,7 @@ import { ProductShowCardComponent } from './components/products/product-show-car
     ReactiveFormsModule,
     MatCheckboxModule,
     MatAutocompleteModule,
+    MatDividerModule
   ],
   providers: [
     CookieService,

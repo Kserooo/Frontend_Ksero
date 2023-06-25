@@ -1,8 +1,28 @@
 <h1 mat-dialog-title>Purchase</h1>
 <div mat-dialog-content>
-  <p>Would you like to pay {{data}} for these items?</p>
+  <p>Would you like to pay {{ data.totalAmount }} for these items?</p>
+  <p>If you want to pay you must enter the operation codes after pay to this accounts</p>
+  <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="purchaseFormGroup">
+    <mat-card *ngFor="let value of getBindedWholesalerData; index as i">
+      <mat-card-header class="form-card-header">
+        <p><strong>Visa Account:</strong> {{value.creditCardNumber}}</p>
+      </mat-card-header>
+      <mat-card-header>
+        <p><strong>Amount to pay:</strong> {{value.totalAmount}}</p>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="form-field" style="margin-left: 2rem; margin-top: 2rem;">
+          <mat-label>Operation Code</mat-label>
+          <input matInput placeholder="operationCode" onlyNumber autocomplete="off" formControlName="operationCode" type="text">
+          <mat-error *ngIf="purchaseFormGroup.get('operationCode')?.hasError('required')">
+          Operation Code is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </form>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>
-  <button mat-raised-button color="accent" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button *ngIf="purchaseFormGroup.valid" (click)="data.operationCode = purchaseFormGroup.get('operationCode')?.value" mat-raised-button color="accent" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>

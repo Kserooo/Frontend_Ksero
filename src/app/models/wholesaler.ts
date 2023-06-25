@@ -1,5 +1,5 @@
 export interface Wholesaler {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   birthday: string;
@@ -9,4 +9,5 @@ export interface Wholesaler {
   description: string;
   username: string;
   password: string;
+  creditCardNumber: string;
 }

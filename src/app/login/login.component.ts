@@ -72,8 +72,10 @@ export class LoginComponent implements OnInit  {
           this.route.navigate(['/retail-seller',response3.id,'profile']);
         })
         this.wholesalerService.getByUsername(response.username).subscribe((response3: any)=>{
+          console.log(response3);
           if(response3.id) {
             this.dataTransferService.userId = response3.id.toString();
+            this.dataTransferService.wholeSalerCreditCardNumber = response3.creditCardNumber;
           }
           this.toastr.success('Login As Wholesaler Successful','Success');
           this.route.navigate(['/wholesaler',response3.id,'profile']);

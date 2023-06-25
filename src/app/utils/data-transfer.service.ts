@@ -8,5 +8,7 @@ export class DataTransferService {
 
   userId: string = "";
 
+  wholeSalerCreditCardNumber: string = "";
+
   constructor() { }
 }
