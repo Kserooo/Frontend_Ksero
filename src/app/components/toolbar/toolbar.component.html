@@ -1,13 +1,20 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="bg-purple-primary text-white">
   <div class="logo flex align-items-center gap-2">
-    <h1>Ksero</h1> <img src="https://cdn-icons-png.flaticon.com/512/6203/6203085.png" alt="">
+    <h1>Ksero</h1> <i class="bi bi-cart-fill text-3xl"></i>
   </div>
   <div class="mat-spacer"></div>
   <!-- App Options -->
 
-  <a mat-button [routerLink]="['/wholesaler',id,'profile']">Profile</a>
-  <a mat-button [routerLink]="['/wholesaler',id,'products']">Products</a>
-  <a mat-button [routerLink]="['/wholesaler',id,'orders']">Orders</a>
+  <a mat-button *ngIf="userType == userTypes.WholeSaler" [routerLink]="['/wholesaler',id,'profile']">Profile</a>
+  <a mat-button *ngIf="userType == userTypes.WholeSaler" [routerLink]="['/wholesaler',id,'products']">Products</a>
+  <a mat-button *ngIf="userType == userTypes.WholeSaler" [routerLink]="['/wholesaler',id,'orders']">Orders</a>
+
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'profile']">Profile</a>
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'products']">Products</a>
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'payment']">Payment</a>
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'shopping-car']">Shopping
+    Car</a>
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'orders']">Orders</a>
   <a mat-button (click)="Logout()">Logout</a>
 
 </mat-toolbar>

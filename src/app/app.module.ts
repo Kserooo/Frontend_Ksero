@@ -22,8 +22,7 @@ import { RetailSellerPaymentComponent } from './retail-seller/retail-seller-paym
 import { WholesalerOrdersComponent } from './wholesaler/wholesaler-orders/wholesaler-orders.component';
 import { RetailSellerShoppingCarComponent } from './retail-seller/retail-seller-shopping-car/retail-seller-shopping-car.component';
 import { RouterModule } from '@angular/router';
-import { MatToolbarModule } from "@angular/material/toolbar"
-import { RetailSellerNavbarComponent } from './retail-seller/retail-seller-navbar/retail-seller-navbar.component';
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { ProductsService } from './services/products/products.service';
 import { WholesalersService } from './services/wholesalers/wholesalers.service';
 import { RetailSellerProductsDialogComponent } from './retail-seller/retail-seller-products/retail-seller-products-dialog/retail-seller-products-dialog.component';
@@ -92,7 +91,6 @@ import { OnlyNumberDirective } from './only-number.directive';
     RetailSellerPaymentComponent,
     WholesalerOrdersComponent,
     RetailSellerShoppingCarComponent,
-    RetailSellerNavbarComponent,
     FilterPipe,
     RetailSellerOrdersComponent,
     HomeNavbarComponent,

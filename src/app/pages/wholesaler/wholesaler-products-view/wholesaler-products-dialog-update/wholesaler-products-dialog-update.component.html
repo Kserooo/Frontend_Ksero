@@ -29,15 +29,10 @@
       Description is <strong>required</strong>
     </mat-error>
   </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Photo Image URL</mat-label>
-    <textarea matInput formControlName="photoImageUrl"></textarea>
-    <mat-error
-      *ngIf="productFormGroup.get('photoImageUrl')?.hasError('required')"
-    >
-      photoImageUrl is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
+  <div class="flex flex-column gap-2">
+    <label for="">Upload Image</label>
+    <input type="file" (change)="onFileSelected($event)">
+  </div>
 </form>
 
 <div mat-dialog-actions>

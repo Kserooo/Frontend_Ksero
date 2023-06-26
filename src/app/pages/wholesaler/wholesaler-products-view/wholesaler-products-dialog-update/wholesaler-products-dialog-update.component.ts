@@ -18,7 +18,7 @@ export class WholesalerProductsDialogUpdateComponent{
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
-    photoImageUrl: new FormControl('', [Validators.required])
+    image: new FormControl('', [Validators.required])
   });
 
   constructor(
@@ -29,7 +29,7 @@ export class WholesalerProductsDialogUpdateComponent{
       name: data.name,
       description: data.description,
       price: data.price,
-      // photoImageUrl: data.photoImageUrl
+      image: data.image
     })
   }
 
@@ -37,4 +37,8 @@ export class WholesalerProductsDialogUpdateComponent{
     this.dialogRef.close();
   }
 
+  onFileSelected(event: any) {
+    console.log(event.target.files[0]);
+    this.productFormGroup.get("image")?.setValue(event.target);
+  }
 }

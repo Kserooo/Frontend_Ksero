@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataTransferService } from 'src/app/utils/data-transfer.service';
+import { UserTypes } from 'src/app/utils/user-type';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,7 +11,9 @@ import { DataTransferService } from 'src/app/utils/data-transfer.service';
 export class ToolbarComponent implements OnInit {
 
   // Attributes
-  id:string;
+  id: string;
+  userTypes = UserTypes;
+  @Input() userType!: number;
 
   constructor(
     private route:ActivatedRoute,
@@ -18,6 +21,7 @@ export class ToolbarComponent implements OnInit {
     private dataTransferService: DataTransferService
     ) {
     this.id=this.dataTransferService.userId;
+
     console.log("Wholesaler navbar with id", this.id);
   }
 

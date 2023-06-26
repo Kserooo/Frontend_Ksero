@@ -57,10 +57,26 @@ const routes: Routes = [
         component: RetailSellerProfileComponent,
         data: { name: 'retail-seller-profile' },
       },
-      { path: 'products', component: RetailSellerProductsComponent },
-      { path: 'payment', component: RetailSellerPaymentComponent },
-      { path: 'shopping-car', component: RetailSellerShoppingCarComponent },
-      { path: 'orders', component: RetailSellerOrdersComponent },
+      {
+        path: 'products',
+        data: { name: 'retail-seller-products' },
+        component: RetailSellerProductsComponent,
+      },
+      {
+        path: 'payment',
+        data: { name: 'retail-seller-payments' },
+        component: RetailSellerPaymentComponent,
+      },
+      {
+        path: 'shopping-car',
+        data: { name: 'retail-seller-shopping-cart' },
+        component: RetailSellerShoppingCarComponent,
+      },
+      {
+        path: 'orders',
+        data: { name: 'retail-seller-orders' },
+        component: RetailSellerOrdersComponent,
+      },
     ],
   },
   {
@@ -84,7 +100,7 @@ const routes: Routes = [
       {
         path: 'orders',
         component: WholesalerOrdersComponent,
-        data: { name: 'wholesale-orders' },
+        data: { name: 'wholesaler-orders' },
       },
     ],
   },
