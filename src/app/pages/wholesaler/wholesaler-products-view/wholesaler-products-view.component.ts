@@ -13,6 +13,7 @@ import {
   WholesalerProductsDialogDeleteComponent
 } from "./wholesaler-products-dialog-delete/wholesaler-products-dialog-delete.component";
 import {ToastrService} from "ngx-toastr";
+import { ImageConverterService } from 'src/app/utils/image-converter.service';
 
 @Component({
   selector: 'app-wholesaler-products-view',
@@ -30,7 +31,7 @@ export class WholesalerProductViewComponent implements OnInit {
   typeOptions: String[];
 
   constructor(private route: ActivatedRoute, private productsService: ProductsService,
-              private dialog: MatDialog, private toastr:ToastrService) {
+              private dialog: MatDialog, private toastr:ToastrService, private imageConverter: ImageConverterService) {
     this.productsData=[] as Product[];
     this.id=this.route.snapshot.paramMap.get('id')!;
     this.priceSelected = 0;
@@ -63,12 +64,13 @@ export class WholesalerProductViewComponent implements OnInit {
     const dialogRef=this.dialog.open(WholesalerProductsDialogAddComponent,{
     });
 
-    dialogRef.afterClosed().subscribe(result =>{
+    dialogRef.afterClosed().subscribe(async (result) =>{
       if(result!=undefined){
         productModel.name = result.name;
         productModel.description = result.description;
         productModel.price = result.price;
-        productModel.photoImageUrl = result.photoImageUrl;
+        productModel.image = await this.imageConverter.fileToBase64(result.image);
+        console.log(productModel.image);
         this.productsService.create(productModel).subscribe((response:any)=>{
           this.updateProductsData();
           this.toastr.success('Product added','Success');
@@ -112,7 +114,7 @@ export class WholesalerProductViewComponent implements OnInit {
         data.name = result.name;
         data.description = result.description;
         data.price = result.price;
-        data.photoImageUrl = result.photoImageUrl
+        data.image = result.image;
 
         this.productsService.update(data.id,data).subscribe(response=>{
           console.log(response);

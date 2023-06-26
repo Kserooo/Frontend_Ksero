@@ -4,5 +4,5 @@ export interface Product {
   description: string;
   wholesalerId: number; //null
   price: number;
-  photoImageUrl: string,
+  image: string,
 }

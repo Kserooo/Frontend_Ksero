@@ -1,19 +1,19 @@
 <div class="bg-gray-200">
-  <div class="grid-container" style="background-color: rgb(241, 241, 241)">
-    <div class="flex justify-content-evenly align-items-baseline">
-      <mat-form-field
-        class="example-full-width my-4 white-field"
-        appearance="outline"
-      >
+  <button class="add-button" mat-raised-button color="primary" (click)="openDialogAdd()" mat-fab>
+    <i class="bi bi-plus-circle-dotted text-2xl" style="aspect-ratio: 1;"></i>
+  </button>
+  <div class="flex justify-content-between align-items-center" style="height: calc(100vh - 64px); width: 100%;">
+    <div [ngStyle]="{ display: productsData.length != 0 ? 'none' : 'flex' }" class="justify-content-center" style="width: 100%;">
+      <div class="no-products flex flex-column align-items-center gap-2">
+        <i class="bi bi-exclamation-octagon"></i>
+        <p>There is <strong>NO</strong> products. Add one please.</p>
+      </div>
+    </div>
+    <div [ngStyle]="{ display: productsData.length == 0 ? 'none' : 'block' }" class="justify-content-center">
+      <mat-form-field class="example-full-width my-4 white-field" appearance="outline">
         <mat-label>Search</mat-label>
-        <input
-          style="background-color: white"
-          type="text"
-          placeholder="Pick one"
-          aria-label="Number"
-          matInput
-          [matAutocomplete]="auto"
-        />
+        <input style="background-color: white" type="text" placeholder="Pick one" aria-label="Number" matInput
+          [matAutocomplete]="auto" />
         <mat-icon matSuffix style="color: rgb(190, 190, 190);">search</mat-icon>
         <mat-autocomplete #auto="matAutocomplete">
           <ng-container *ngIf="typeOptions.length > 0">
@@ -23,35 +23,9 @@
           </ng-container>
         </mat-autocomplete>
       </mat-form-field>
-      <button
-        class="add-button"
-        mat-raised-button
-        color="primary"
-        (click)="openDialogAdd()"
-        mat-fab
-      >
-        <i class="bi bi-plus-circle-dotted text-2xl" style="aspect-ratio: 1;"></i>
-      </button>
-    </div>
-    <div class="flex justify-content-between mx-7">
-      <div [ngStyle]="{ display: productsData.length != 0 ? 'none' : 'flex' }">
-        <div class="no-products flex flex-column align-items-center gap-2">
-          <i class="bi bi-exclamation-octagon"></i>
-          <p>There is <strong>NO</strong> products. Add one please.</p>
-        </div>
-      </div>
-      <div
-        [ngStyle]="{ display: productsData.length == 0 ? 'none' : 'block' }"
-        class="justify-content-center"
-        style="width: 65vw"
-      >
-        <div class="products p-cols-3 gap-3">
-          <div *ngFor="let product of productsData" class="">
-            <app-product-show-card
-              (timeToUpdate)="updateProductsData()"
-              [product]="product"
-            ></app-product-show-card>
-          </div>
+      <div class="products p-cols-3 gap-3">
+        <div *ngFor="let product of productsData" class="">
+          <app-product-show-card (timeToUpdate)="updateProductsData()" [product]="product"></app-product-show-card>
         </div>
       </div>
     </div>

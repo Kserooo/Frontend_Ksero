@@ -51,7 +51,7 @@ export class ProductShowCardComponent implements OnInit {
         data.name = result.name;
         data.description = result.description;
         data.price = result.price;
-        data.photoImageUrl = result.photoImageUrl;
+        // data.photoImageUrl = result.photoImageUrl;
 
         this.productsService.update(data.id,data).subscribe(response=>{
           this.timeToUpdate.emit();

@@ -16,7 +16,7 @@ export class WholesalerProductsDialogAddComponent {
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
-    photoImageUrl: new FormControl('', [Validators.required])
+    image: new FormControl(null)
   });
 
   constructor(
@@ -25,6 +25,11 @@ export class WholesalerProductsDialogAddComponent {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onFileSelected(event: any) {
+    console.log(event.target.files[0]);
+    this.productFormGroup.get("image")?.setValue(event.target);
   }
 
 }

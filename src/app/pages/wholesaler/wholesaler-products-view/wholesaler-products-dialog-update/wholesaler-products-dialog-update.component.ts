@@ -29,7 +29,7 @@ export class WholesalerProductsDialogUpdateComponent{
       name: data.name,
       description: data.description,
       price: data.price,
-      photoImageUrl: data.photoImageUrl
+      // photoImageUrl: data.photoImageUrl
     })
   }
 
