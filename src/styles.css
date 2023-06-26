@@ -68,3 +68,9 @@ li {
 .bg-purple-primary {
   background-color: var(--primary-purple) !important;
 }
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1 !important;
+}

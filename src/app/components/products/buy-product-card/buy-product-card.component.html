@@ -1,0 +1,39 @@
+<mat-card class="overflow-hidden flex flex-column justify-content-between">
+  <div
+    class="flex flex-column justify-content-center align-items-center product-illustration"
+    style="height: 100%"
+  >
+    <i class="bi bi-bookmark-fill align-self-end text-xl"></i>
+    <img class="product-image my-3" [src]="product.image" alt="" />
+  </div>
+
+  <mat-card-title class="text-center">
+    <h5>{{ product.name.slice(0, 12) }}</h5>
+  </mat-card-title>
+  <div class="flex flex-column">
+    <div class="flex flex-column justify-content-between">
+      <mat-card-content>
+        <div class="text-center">
+          <p class="medium-text">Price: S/. {{ product.price }}</p>
+        </div>
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Value</mat-label>
+          <input matInput type="number" [(ngModel)]="value" :min="0"/>
+          <!-- -->
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-footer
+        class="flex justify-content-center gap-2 m-0"
+        style="height: max-content"
+      >
+        <button
+          mat-raised-button
+          color="warn"
+          [disabled]="value <= 0"
+        >
+          Buy
+        </button>
+      </mat-card-footer>
+    </div>
+  </div>
+</mat-card>

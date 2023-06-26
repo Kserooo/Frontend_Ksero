@@ -16,12 +16,13 @@ import { ImageConverterService } from 'src/app/utils/image-converter.service';
 })
 export class WholesalerProductViewComponent implements OnInit {
 
+  //
   priceSelected: number;
   id: string;
   productsData: Product[];
   searchKey!: string;
 
-  //Options
+  // Options
   companyOptions: String[];
   typeOptions: String[];
 

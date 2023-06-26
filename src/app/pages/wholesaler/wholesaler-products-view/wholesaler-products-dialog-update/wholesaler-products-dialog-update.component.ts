@@ -17,7 +17,7 @@ export class WholesalerProductsDialogUpdateComponent{
   productFormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required, Validators.min(0)]),
     image: new FormControl('', [Validators.required])
   });
 

@@ -13,6 +13,13 @@
   bottom: 15px;
 }
 
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  justify-items: center;
+}
+
 .more-button {
   position: absolute;
   top: 5px;
@@ -64,7 +71,7 @@ span{
   text-align: center;
 }
 
-/deep/ .mat-slide-toggle-content{
+/* /deep/ .mat-slide-toggle-content{
   font-family: 'Press Start 2P', cursive;
 }
 
@@ -74,7 +81,7 @@ span{
 
 /deep/ .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #f44336;
-}
+} */
 .dashboard-card {
   position: absolute;
   top: 15px;

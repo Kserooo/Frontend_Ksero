@@ -14,7 +14,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline" style="width: 50%;">
       <mat-label>Price</mat-label>
-      <input matInput type="number" formControlName="price" :min="0"/>
+      <input matInput type="number" formControlName="price" :min="0" :max="120"/>
       <mat-error *ngIf="productFormGroup.get('price')?.hasError('required')">
         Price is <strong>required</strong>
       </mat-error>

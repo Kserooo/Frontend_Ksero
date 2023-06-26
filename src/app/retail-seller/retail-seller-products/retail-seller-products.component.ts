@@ -49,26 +49,31 @@ export class RetailSellerProductsComponent implements OnInit ,AfterViewInit {
     this.productsQuantity = [] as number[];
   }
 
-  ngOnInit(): void {
-    this.productsService.getAll().subscribe((response:any)=>{
-      this.productsData=response;
-      for(let product of this.productsData){
-        this.sliderValue.push(1);
-        this.isSliderToggleChecked.push(true);
-        if(this.senderService.shoppingCarOrders.find(x=>x.productId==product.id)){
-          this.productsQuantity.push(this.senderService.shoppingCarOrders.find(x=>x.productId==product.id)!.quantity);
-        }
-        else{
-          this.productsQuantity.push(0);
-        }
-        console.log(product.wholesalerId);
-        this.wholesalersService.getById(product.wholesalerId).subscribe((response2: any)=>{
-          this.wholesalersData.push(response2);
-        })
-      }
+  ngOnInit() {
+    // this.productsService.getAll().subscribe((response:any)=>{
+    //   this.productsData=response;
+    //   for(let product of this.productsData){
+    //     this.sliderValue.push(1);
+    //     this.isSliderToggleChecked.push(true);
+    //     if(this.senderService.shoppingCarOrders.find(x=>x.productId==product.id)){
+    //       this.productsQuantity.push(this.senderService.shoppingCarOrders.find(x=>x.productId==product.id)!.quantity);
+    //     }
+    //     else{
+    //       this.productsQuantity.push(0);
+    //     }
+    //     console.log(product.wholesalerId);
+    //     this.wholesalersService.getById(product.wholesalerId).subscribe((response2: any)=>{
+    //       this.wholesalersData.push(response2);
+    //     })
+    //   }
+    // });
+    this.productsService.getAll().subscribe((res : any) => {
+      console.log(res);
+      this.productsData = res as Product[];
     });
 
   }
+
   ngAfterViewInit() {}
 
 

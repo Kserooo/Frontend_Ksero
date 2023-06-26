@@ -71,6 +71,7 @@ import { WholesalerNavbarComponent } from './components/wholesaler-navbar/wholes
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ProductShowCardComponent } from './components/products/product-show-card/product-show-card.component';
 import { OnlyNumberDirective } from './only-number.directive';
+import { BuyProductCardComponent } from './components/products/buy-product-card/buy-product-card.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { OnlyNumberDirective } from './only-number.directive';
     WholesalerProfileViewComponent,
     ToolbarComponent,
     ProductShowCardComponent,
-    OnlyNumberDirective
+    OnlyNumberDirective,
+    BuyProductCardComponent
   ],
   imports: [
     ToastrModule.forRoot({
