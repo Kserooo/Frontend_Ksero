@@ -35,7 +35,7 @@ export class WholesalerProductViewComponent implements OnInit {
   ) {
     this.productsData = [] as Product[];
     this.searchKey = '';
-    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.id= JSON.parse(localStorage.getItem("user")!).id;
     this.priceSelected = 0;
     this.companyOptions = ['Gloria', 'Nestle', 'ALICORP', 'Coca Cola'];
     this.typeOptions = ['Lacteos', 'Fideos', 'Bebidas'];

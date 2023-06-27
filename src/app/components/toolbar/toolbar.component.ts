@@ -6,30 +6,27 @@ import { UserTypes } from 'src/app/utils/user-type';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  styleUrls: ['./toolbar.component.css'],
 })
 export class ToolbarComponent implements OnInit {
-
   // Attributes
   id: string;
   userTypes = UserTypes;
   @Input() userType!: number;
 
   constructor(
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router,
     private dataTransferService: DataTransferService
-    ) {
-    this.id=this.dataTransferService.userId;
+  ) {
+    this.id = JSON.parse(localStorage.getItem('user')!).id;
 
-    console.log("Wholesaler navbar with id", this.id);
+    console.log('Wholesaler navbar with id', this.id);
   }
 
-  ngOnInit(): void {
-  }
-  Logout(): void{
+  ngOnInit(): void {}
+  Logout(): void {
     this.router.navigate(['']);
-    localStorage.setItem('token','');
+    localStorage.removeItem('user');
   }
-
 }

@@ -50,7 +50,7 @@ export class WholesalerProfileViewComponent implements OnInit {
     private dialog: MatDialog,
     private toastr: ToastrService
   ) {
-    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.id= JSON.parse(localStorage.getItem("user")!).id;
     console.log(this.id);
     this.wholesalerActual = {} as Wholesaler;
     this.name = '';

@@ -27,7 +27,7 @@ export class RetailSellerPaymentComponent implements OnInit {
   constructor(private retailSellersService: RetailSellersService, private route: ActivatedRoute,
               private dialog: MatDialog, private toastr: ToastrService) {
     this.retailSeller= {} as RetailSeller;
-    this.id=route.snapshot.paramMap.get('id')!;
+    this.id= JSON.parse(localStorage.getItem("user")!).id;
     this.paymentCardNumberEncrypted= '';
   }
 

@@ -49,7 +49,6 @@ import { WholesalerOrdersDialogRejectComponent } from './wholesaler/wholesaler-o
 import { RetailSellerOrdersService } from './services/retail-seller-orders/retail-seller-orders.service';
 import { RetailSellerOrdersComponent } from './retail-seller/retail-seller-orders/retail-seller-orders.component';
 import { CookieService } from 'ngx-cookie-service';
-import { JwtInterceptor } from './auth/jwt-interceptor';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatDividerModule} from '@angular/material/divider';
@@ -143,12 +142,6 @@ import { PendingOrderComponent } from './components/pending-order/pending-order.
     MatDividerModule
   ],
   providers: [
-    CookieService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true,
-    },
     RetailSellerOrdersService,
     ProductsService,
     WholesalersService,

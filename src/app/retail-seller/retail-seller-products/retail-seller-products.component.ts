@@ -43,7 +43,7 @@ export class RetailSellerProductsComponent implements OnInit ,AfterViewInit {
     this.sliderValue = [] as number [];
     this.productsData = [] as Product[];
     this.wholesalersData = [] as Wholesaler[];
-    this.id=this.route.snapshot.paramMap.get('id')!;
+    this.id= JSON.parse(localStorage.getItem("user")!).id;
     this.retailSellerActual = {} as RetailSeller;
     this.isSliderToggleChecked = [] as boolean[];
     this.productsQuantity = [] as number[];

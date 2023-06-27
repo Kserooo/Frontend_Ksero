@@ -29,7 +29,7 @@ export class RetailSellerShoppingCarComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private productsService: ProductsService, private wholesalerOrdersService: WholesalerOrdersService,
               private senderService: SenderService, private dialog: MatDialog, private toastr: ToastrService) {
-    this.id=this.route.snapshot.paramMap.get('id')!;
+    this.id= JSON.parse(localStorage.getItem("user")!).id;
     this.orderActual={} as Order;
     this.shopingCart= [] as ShoppingCarOrder[];
     this.productsData=[] as Product[];

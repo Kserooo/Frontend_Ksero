@@ -11,9 +11,9 @@ import { RetailSellerShoppingCarComponent } from './retail-seller/retail-seller-
 import { WholesalerProductViewComponent } from './pages/wholesaler/wholesaler-products-view/wholesaler-products-view.component';
 import { WholesalerOrdersComponent } from './wholesaler/wholesaler-orders/wholesaler-orders.component';
 import { RetailSellerOrdersComponent } from './retail-seller/retail-seller-orders/retail-seller-orders.component';
-import { RetailSellerGuard } from './auth/guards/retail-seller/retail-seller.guard';
-import { WholesalerGuard } from './auth/guards/wholesaler/wholesaler.guard';
-import { NoAuthGuard } from './auth/guards/no-auth/no-auth.guard';
+import { AuthGuard } from './auth/auth.guard';
+import { NoAuthGuard } from './auth/no-auth.guard';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,8 +23,6 @@ const routes: Routes = [
     data: {
       name: 'home',
     },
-    canActivate: [NoAuthGuard],
-    canActivateChild: [NoAuthGuard],
     children: [
       {
         path: '',
@@ -32,19 +30,17 @@ const routes: Routes = [
         pathMatch: 'full',
         data: { name: 'home' },
       },
-      { path: 'register', component: RegisterComponent },
+      { path: 'register', component: RegisterComponent, canActivate: [NoAuthGuard]},
       { path: 'home', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
+      { path: 'login', component: LoginComponent, canActivate: [NoAuthGuard]},
     ],
   },
 
   {
-    path: 'retail-seller/:id',
+    path: 'retail-seller',
     data: {
       name: 'retail-seller',
     },
-    canActivate: [RetailSellerGuard],
-    canActivateChild: [RetailSellerGuard],
     children: [
       {
         path: '',
@@ -54,11 +50,13 @@ const routes: Routes = [
       },
       {
         path: 'profile',
+        canActivate: [AuthGuard],
         component: RetailSellerProfileComponent,
         data: { name: 'retail-seller-profile' },
       },
       {
         path: 'products',
+        canActivate: [AuthGuard],
         data: { name: 'retail-seller-products' },
         component: RetailSellerProductsComponent,
       },
@@ -69,36 +67,39 @@ const routes: Routes = [
       },
       {
         path: 'shopping-car',
+        canActivate: [AuthGuard],
         data: { name: 'retail-seller-shopping-cart' },
         component: RetailSellerShoppingCarComponent,
       },
       {
         path: 'orders',
+        canActivate: [AuthGuard],
         data: { name: 'retail-seller-orders' },
         component: RetailSellerOrdersComponent,
       },
     ],
   },
   {
-    path: 'wholesaler/:id',
+    path: 'wholesaler',
     data: {
       name: 'wholesaler',
     },
-    canActivate: [WholesalerGuard],
-    canActivateChild: [WholesalerGuard],
     children: [
       {
         path: 'profile',
+        canActivate: [AuthGuard],
         component: WholesalerProfileViewComponent,
         data: { name: 'wholesaler-profile' },
       },
       {
         path: 'products',
+        canActivate: [AuthGuard],
         component: WholesalerProductViewComponent,
         data: { name: 'wholesaler-products' },
       },
       {
         path: 'orders',
+        canActivate: [AuthGuard],
         component: WholesalerOrdersComponent,
         data: { name: 'wholesaler-orders' },
       },

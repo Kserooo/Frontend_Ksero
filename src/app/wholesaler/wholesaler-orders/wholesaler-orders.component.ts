@@ -47,7 +47,7 @@ export class WholesalerOrdersComponent implements OnInit {
     this.productsAccepted = [] as Product[];
     this.acceptedOrders = [] as Order[];
     this.searchKey = '';
-    this.id=this.route.snapshot.paramMap.get('id')!;
+    this.id= JSON.parse(localStorage.getItem("user")!).id;
   }
 
   ngOnInit(): void {

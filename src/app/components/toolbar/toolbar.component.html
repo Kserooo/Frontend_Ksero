@@ -5,16 +5,16 @@
   <div class="mat-spacer"></div>
   <!-- App Options -->
 
-  <a mat-button *ngIf="userType == userTypes.WholeSaler" [routerLink]="['/wholesaler',id,'profile']">Profile</a>
-  <a mat-button *ngIf="userType == userTypes.WholeSaler" [routerLink]="['/wholesaler',id,'products']">Products</a>
-  <a mat-button *ngIf="userType == userTypes.WholeSaler" [routerLink]="['/wholesaler',id,'orders']">Orders</a>
+  <a mat-button *ngIf="userType == userTypes.WholeSaler" [routerLink]="['/wholesaler','profile']">Profile</a>
+  <a mat-button *ngIf="userType == userTypes.WholeSaler" [routerLink]="['/wholesaler','products']">Products</a>
+  <a mat-button *ngIf="userType == userTypes.WholeSaler" [routerLink]="['/wholesaler','orders']">Orders</a>
 
-  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'profile']">Profile</a>
-  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'products']">Products</a>
-  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'payment']">Payment</a>
-  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'shopping-car']">Shopping
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller','profile']">Profile</a>
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller','products']">Products</a>
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller','payment']">Payment</a>
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller','shopping-car']">Shopping
     Car</a>
-  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller',id,'orders']">Orders</a>
+  <a mat-button *ngIf="userType == userTypes.RetailSaler" [routerLink]="['/retail-seller','orders']">Orders</a>
   <a mat-button (click)="Logout()">Logout</a>
 
 </mat-toolbar>
