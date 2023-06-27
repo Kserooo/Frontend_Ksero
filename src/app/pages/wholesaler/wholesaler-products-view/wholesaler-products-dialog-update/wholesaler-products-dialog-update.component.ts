@@ -2,6 +2,7 @@ import {Component, Inject} from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Product} from "../../../../models/product";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { ImageConverterService } from "src/app/utils/image-converter.service";
 
 
 @Component({
@@ -24,12 +25,13 @@ export class WholesalerProductsDialogUpdateComponent{
   constructor(
     public dialogRef: MatDialogRef<WholesalerProductsDialogUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Product,
+    private imageConverter: ImageConverterService
   ) {
     this.productFormGroup.setValue({
       name: data.name,
       description: data.description,
       price: data.price,
-      image: data.image
+      image: ""
     })
   }
 
@@ -37,8 +39,10 @@ export class WholesalerProductsDialogUpdateComponent{
     this.dialogRef.close();
   }
 
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
+    console.log("File selected!");
     console.log(event.target.files[0]);
-    this.productFormGroup.get("image")?.setValue(event.target);
+    var base64Image = await this.imageConverter.fileToBase64(event.target);
+    this.productFormGroup.get("image")?.setValue(base64Image);
   }
 }

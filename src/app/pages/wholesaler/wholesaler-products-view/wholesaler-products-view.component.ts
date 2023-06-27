@@ -70,12 +70,12 @@ export class WholesalerProductViewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(async (result) => {
       if (result != undefined) {
-        productModel.name = result.name;
-        productModel.description = result.description;
-        productModel.price = result.price;
         productModel.image = await this.imageConverter.fileToBase64(
           result.image
         );
+        productModel.name = result.name;
+        productModel.description = result.description;
+        productModel.price = result.price;
         console.log(productModel.image);
         this.productsService.create(productModel).subscribe((response: any) => {
           this.updateProductsData();
@@ -123,10 +123,14 @@ export class WholesalerProductViewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result != undefined) {
+        console.log(result.image);
+        console.log("Wat!", result.image);
         data.name = result.name;
         data.description = result.description;
         data.price = result.price;
-        data.image = result.image;
+        if (result.image) {
+          data.image = result.image;
+        }
 
         this.productsService.update(data.id, data).subscribe((response) => {
           console.log(response);

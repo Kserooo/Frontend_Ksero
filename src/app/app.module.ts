@@ -72,6 +72,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ProductShowCardComponent } from './components/products/product-show-card/product-show-card.component';
 import { OnlyNumberDirective } from './only-number.directive';
 import { BuyProductCardComponent } from './components/products/buy-product-card/buy-product-card.component';
+import { AceptedOrderComponent } from './components/acepted-order/acepted-order.component';
+import { PendingOrderComponent } from './components/pending-order/pending-order.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +107,9 @@ import { BuyProductCardComponent } from './components/products/buy-product-card/
     ToolbarComponent,
     ProductShowCardComponent,
     OnlyNumberDirective,
-    BuyProductCardComponent
+    BuyProductCardComponent,
+    AceptedOrderComponent,
+    PendingOrderComponent
   ],
   imports: [
     ToastrModule.forRoot({

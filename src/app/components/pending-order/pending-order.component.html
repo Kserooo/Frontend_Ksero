@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-content class="flex gap-2">
+    <div class="flex align-items-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/6203/6203085.png" alt="Photo of Shopping Cart">
+    </div>
+    <div>
+      <strong>Pedido #{{index+1}}</strong>
+      <p>Pedido #{{index+1}}</p>
+      <p>Estado: Entregada</p>
+      <p>Monto: ${{ordersData[index].quantity*product.price}}</p>
+      <p>Product Name: {{product.name}}</p>
+      <p>Operation Code: {{ordersData[index].operationCode}}</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="flex">
+    <button  mat-raised-button color="primary" style="width:50%;" (click)="openRejectDialog(productsData.indexOf(product))"
+    >Reject Order</button>
+    <button  mat-raised-button color="primary" style="width: 50%;" (click)="openAcceptDialog(productsData.indexOf(product))"
+    >Accept Order</button>
+  </mat-card-actions>
+</mat-card>

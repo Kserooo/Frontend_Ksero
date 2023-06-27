@@ -1,31 +1,23 @@
-<div class="everything">
-  <div class="search">
-    <mat-form-field class="lg:w-full" appearance="fill" >
+<div class="p-5">
+  <div>
+    <mat-form-field class="lg:w-4" appearance="fill">
       <mat-label class="name_search">Search</mat-label>
       <input matInput [(ngModel)]="searchKey">
     </mat-form-field>
   </div>
-  <h2 class="spacing" style="margin-left: 40px">Acepted Orders</h2>
-  <mat-grid-list cols="2" rowHeight="7:2">
-    <mat-grid-tile *ngFor="let acceptedOrder of acceptedOrders | filter: searchKey:'name'">
-      <mat-card class="example-card">
-        <mat-card-content class="example-card-content">
-          <img mat-card-image src="https://cdn-icons-png.flaticon.com/512/6203/6203085.png" alt="Photo of Shopping Cart">
-          <div>
-            <p>Pedido #{{acceptedOrders.indexOf(acceptedOrder)+1}}</p>
-            <p>Estado: Entregada</p>
-            <p *ngIf="productsAccepted[acceptedOrders.indexOf(acceptedOrder)]">Monto: ${{productsAccepted[acceptedOrders.indexOf(acceptedOrder)].price*acceptedOrder.quantity}}</p>
-            <p *ngIf="productsAccepted[acceptedOrders.indexOf(acceptedOrder)]">Product Name: {{productsAccepted[acceptedOrders.indexOf(acceptedOrder)].name}}</p>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <h2 class="mb-3">Acepted Orders</h2>
+  <div class="orders mb-5 gap-3">
+    <div *ngFor="let acceptedOrder of acceptedOrders | filter: searchKey:'name'">
+      <app-acepted-order [index]="acceptedOrders.indexOf(acceptedOrder)" [acceptedOrder]="acceptedOrder"
+        [productsAccepted]="productsAccepted">
+      </app-acepted-order>
+    </div>
+  </div>
 
-  <h2 class="spacing" style="margin-left: 40px">Pending Orders</h2>
-  <mat-grid-list cols="2" rowHeight="7:2">
-    <mat-grid-tile *ngFor="let product of productsData | filter: searchKey:'name'">
-      <mat-card class="example-card">
+  <h2 class="mb-3">Pending Orders</h2>
+  <div class="orders mb-5 gap-3">
+    <div *ngFor="let product of productsData | filter: searchKey:'name'">
+      <!-- <mat-card class="example-card">
         <mat-card-content class="example-card-content">
           <img mat-card-image src="https://cdn-icons-png.flaticon.com/512/6203/6203085.png" alt="Photo of Shopping Cart">
           <div>
@@ -42,7 +34,14 @@
           <button  mat-raised-button color="primary" style="width: 50%;" (click)="openAcceptDialog(productsData.indexOf(product))"
           >Accept Order</button>
         </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+      </mat-card> -->
+      <app-pending-order
+        [product]="product"
+        [index]="productsData.indexOf(product)"
+        [ordersData]="ordersData"
+        [productsData]="productsData"
+      >
+      </app-pending-order>
+    </div>
+  </div>
 </div>

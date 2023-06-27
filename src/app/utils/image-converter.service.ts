@@ -35,7 +35,6 @@ export class ImageConverterService {
       // Event when loaded is end.
       reader.onloadend = (event: ProgressEvent<FileReader>) => {
         const base64Data: string = reader.result as string;
-        console.log(base64Data);
         resolve(base64Data);
       };
 
