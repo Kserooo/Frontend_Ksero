@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-content class="flex gap-3">
+    <div class="flex align-items-center">
+      <img [src]="productsAccepted[index].image" alt="Photo of Shopping Cart">
+    </div>
+    <div>
+      <strong>Pedido #{{index+1}}</strong>
+      <p> <strong>Estado:</strong> Entregada</p>
+      <p *ngIf="productsAccepted[index]"><strong>Monto:</strong> ${{productsAccepted[index].price*acceptedOrder.quantity}}</p>
+      <p *ngIf="productsAccepted[index]"><strong>Product Name:</strong> {{productsAccepted[index].name}}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
