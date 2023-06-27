@@ -8,10 +8,10 @@
           <mat-card class="card-order" *ngFor="let product of productsData; index as i">
             <mat-card-content class="card-order-content flex gap-2 justify-content-center align-items-center">
               <div class="quantity">
-                <input matInput type="number" min="1" max="9" step="1" value="{{shoppingCarOrder[i].quantity}}">
+                <input matInput type="number" min="1" max="9" step="1" value="{{shopingCart[i].quantity}}">
               </div>
               <div class="flex justify-content-start gap-4">
-                <img class="w-2" src="https://www.gloria.com.pe/images/lataa.png" alt="gloria">
+                <img class="w-2" [src]="product.image" alt="gloria">
                 <div class="flex flex-column gap-2 justify-content-center">Nombre: {{product.name}} <br>
                   Marca: {{product.description}} <br>
                   Precio: ${{product.price}}.00 <br>

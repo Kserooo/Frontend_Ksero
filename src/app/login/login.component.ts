@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators} from "@angular/forms";
 import {first} from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { DataTransferService } from '../utils/data-transfer.service';
+import { ShoppingCarOrder } from '../models/shopping-car-order';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit  {
   });
   id: number;
   retailSellerFound: RetailSeller;
-
+  orders: ShoppingCarOrder[] = [];
   wholesalerFound: Wholesaler;
 
   constructor(
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit  {
         console.log(response);
         console.log(roles);
         localStorage.setItem('token',response.token);
+        localStorage.setItem('shopingCart', JSON.stringify(this.orders));
         this.retailSellerService.getByUsername(response.username).subscribe((response3: any)=>{
           console.log(response3);
           if(response3.id) {

@@ -25,13 +25,13 @@ export class RetailSellerShoppingCarComponent implements OnInit {
   productsData: Product[];
   counter: number;
   sumProducts: number;
-  shoppingCarOrder: ShoppingCarOrder[];
+  shopingCart: ShoppingCarOrder[];
   constructor(private route: ActivatedRoute,
               private productsService: ProductsService, private wholesalerOrdersService: WholesalerOrdersService,
               private senderService: SenderService, private dialog: MatDialog, private toastr: ToastrService) {
     this.id=this.route.snapshot.paramMap.get('id')!;
     this.orderActual={} as Order;
-    this.shoppingCarOrder= [] as ShoppingCarOrder[];
+    this.shopingCart= [] as ShoppingCarOrder[];
     this.productsData=[] as Product[];
     this.sumProducts=0;
     this.counter = 0;
@@ -44,8 +44,8 @@ export class RetailSellerShoppingCarComponent implements OnInit {
   retrieveData(){
     this.productsData = [];
     this.sumProducts = 0;
-    this.shoppingCarOrder = this.senderService.shoppingCarOrders;
-    for(let order of this.senderService.shoppingCarOrders){
+    this.shopingCart = JSON.parse(localStorage.getItem("shopingCart")!) as ShoppingCarOrder[];
+    for(let order of this.shopingCart){
       this.productsService.getById(order.productId).subscribe((response: any)=>{
         this.productsData.push(response);
         console.log(response);
@@ -78,7 +78,7 @@ export class RetailSellerShoppingCarComponent implements OnInit {
             this.orderActual.id=0;
             this.orderActual.retailSellerId=Number(this.id);
             this.orderActual.productId=product.id;
-            this.orderActual.quantity=this.shoppingCarOrder[i].quantity;
+            this.orderActual.quantity=this.shopingCart[i].quantity;
             this.orderActual.operationCode=result.operationCode;
             this.wholesalerOrdersService.create(this.orderActual).subscribe((response: any)=>{
               this.toastr.success('Order Submitted','Success');

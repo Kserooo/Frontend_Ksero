@@ -12,69 +12,6 @@
       </div>
     </div>
     <div class="products">
-      <!-- <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title class="name_of_product">
-              <span>Name: </span>{{product.name}}
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="dashboard-card-content">
-            <div class="product-data">
-              <div>
-                <p><span><strong>Description:</strong></span> {{product.description}}</p>
-              </div>
-              <div *ngIf="wholesalersData[productsData.indexOf(product)]">
-                <p><span><strong>Wholesaler:</strong></span> {{wholesalersData[productsData.indexOf(product)].username}}
-                </p>
-              </div>
-              <div>
-                <p><span><strong>Unit Price:</strong></span> $/.{{product.price}}</p>
-              </div>
-              <div>
-                <p><span><strong>Selected Price:</strong></span>
-                  $/.{{product.price*sliderValue[productsData.indexOf(product)]}}</p>
-              </div>
-              <div>
-                <p><span><strong>Products Added:</strong></span> {{productsQuantity[productsData.indexOf(product)]}}
-                  (S/.{{productsQuantity[productsData.indexOf(product)]*product.price}})</p>
-              </div>
-            </div>
-            <div class="about-add">
-              <div class="product-form">
-                <mat-form-field class="value-form" appearance="fill">
-                  <mat-label>Value</mat-label>
-                  <input matInput type="number" class="input-product"
-                    [(ngModel)]="sliderValue[productsData.indexOf(product)]">
-                </mat-form-field>
-              </div>
-              <div class="product-slider">
-                <mat-slider [(ngModel)]="sliderValue[productsData.indexOf(product)]" thumbLabel step="1" min="0"
-                  [color]="isSliderToggleChecked[productsData.indexOf(product)]?'primary':'warn'"
-                  [max]="isSliderToggleChecked[productsData.indexOf(product)]?100:productsQuantity[productsData.indexOf(product)]"
-                  aria-label="units"></mat-slider>
-              </div>
-            </div>
-            <br>
-            <mat-slide-toggle color="primary"
-              (change)="slideToggleChange($event, product, productsData.indexOf(product))"
-              [(ngModel)]="isSliderToggleChecked[productsData.indexOf(product)]">
-              {{isSliderToggleChecked[productsData.indexOf(product)]?"Add Products":"Delete
-              Products"}}</mat-slide-toggle>
-            <br>
-            <br>
-            <br>
-            <div class="buttons">
-              <button mat-raised-button color="warn" *ngIf="!isSliderToggleChecked[productsData.indexOf(product)]"
-                (click)="openDialogDeleteOfCar(product, sliderValue[productsData.indexOf(product)], productsData.indexOf(product))"
-                [disabled]="sliderValue[productsData.indexOf(product)]>0?false:true">Delete
-                {{sliderValue[productsData.indexOf(product)]}} products</button>
-              <button mat-raised-button color="primary" *ngIf="isSliderToggleChecked[productsData.indexOf(product)]"
-                (click)="openDialogAddToCar(product, sliderValue[productsData.indexOf(product)], productsData.indexOf(product))"
-                [disabled]="sliderValue[productsData.indexOf(product)]>0?false:true">Add
-                {{sliderValue[productsData.indexOf(product)]}} products</button>
-            </div>
-          </mat-card-content>
-        </mat-card> -->
       <div *ngFor="let product of productsData | filter:searchKey:'name';" class="">
         <app-buy-product-card [product]="product"></app-buy-product-card>
       </div>

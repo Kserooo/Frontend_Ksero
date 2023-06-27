@@ -30,8 +30,17 @@
           mat-raised-button
           color="warn"
           [disabled]="value <= 0"
+          (click)="addToCartEvent.emit()"
         >
-          Buy
+          Remove
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="value <= 0"
+          (click)="openDialogAddToCart(product, value)"
+        >
+          Add to cart
         </button>
       </mat-card-footer>
     </div>
