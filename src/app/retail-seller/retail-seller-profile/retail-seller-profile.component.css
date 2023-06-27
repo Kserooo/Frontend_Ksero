@@ -43,7 +43,7 @@ button.btn-section {
 }
 
 button.btn-section:hover {
-  background-color: var(--primary-purple);
+  background-color: white;
   border: none;
   border: 1px solid transparent;
   color: white;

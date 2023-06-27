@@ -1,7 +1,11 @@
+.everything{
+  background-color: white;
+}
+
 
 .grid-container {
   padding: 20px;
-  background-color: hsl(245, 100%, 90%);
+  background-color: white;
   /* background: url("https://wallpaper.dog/large/5524984.png") ;*/
 }
 
@@ -33,10 +37,10 @@
   padding: 1rem 0rem 0rem 2rem;
 }
 .mat-h1{
-  color:white;
+  color:black;
 }
 .name_search{
-  color:white;
+  color:black ;
 }
 
 .value-form{

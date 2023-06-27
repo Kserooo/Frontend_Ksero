@@ -1,3 +1,13 @@
 mat-card img {
   height: 80px;
 }
+
+.rejectbutton{
+  background-color: mediumpurple;
+  color: white;
+}
+
+.acceptbutton{
+  background-color: mediumpurple;
+  color: white;
+}
