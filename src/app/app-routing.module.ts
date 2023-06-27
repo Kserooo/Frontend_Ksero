@@ -61,11 +61,6 @@ const routes: Routes = [
         component: RetailSellerProductsComponent,
       },
       {
-        path: 'payment',
-        data: { name: 'retail-seller-payments' },
-        component: RetailSellerPaymentComponent,
-      },
-      {
         path: 'shopping-car',
         canActivate: [AuthGuard],
         data: { name: 'retail-seller-shopping-cart' },

@@ -70,9 +70,6 @@ export class RegisterComponent implements OnInit , AfterViewInit{
         password: this.userFormGroup.get('password')?.value
       }
       ).subscribe((response2: any)=>{
-        if(response2.id) {
-          this.dataTransferService.userId = response.id.toString();
-        }
         console.log(response2);
         localStorage.setItem('token',response2.token);
         this.retailSellerService.create({
@@ -92,6 +89,10 @@ export class RegisterComponent implements OnInit , AfterViewInit{
           paymentExpirationDate: "",
           paymentCVV: ""
         }).subscribe((response3: any)=>{
+          if(response3.id) {
+            this.dataTransferService.userId = response3.id.toString();
+            localStorage.setItem('retailsellerId',response3.id.toString());
+          }
           this.toastr.success('Account successfully registered', 'Success');
           this.route.navigate(['/retail-seller',response3.id,'profile']);
         })
@@ -122,10 +123,6 @@ export class RegisterComponent implements OnInit , AfterViewInit{
         username: this.userFormGroup.get('username')?.value,
         password: this.userFormGroup.get('password')?.value
       }).subscribe((response2: any)=>{
-        if(response2.id) {
-          this.dataTransferService.userId = response2.id.toString();
-          this.dataTransferService.wholeSalerCreditCardNumber = response2.creditCardNumber;
-        }
         console.log(response2);
         localStorage.setItem('token',response2.token);
         const wholesaverObj: Wholesaler =
@@ -143,6 +140,11 @@ export class RegisterComponent implements OnInit , AfterViewInit{
           };
         console.log(wholesaverObj);
         this.wholesalerService.create(wholesaverObj).subscribe((response3: any)=>{
+          if(response3.id) {
+            this.dataTransferService.userId = response3.id.toString();
+            this.dataTransferService.wholeSalerCreditCardNumber = response3.creditCardNumber;
+            localStorage.setItem('wholesalerId',response3.id.toString());
+          }
           this.toastr.success('Account successfully registered', 'Success');
           this.route.navigate(['/wholesaler',response3.id,'profile']);
           console.log(response3);

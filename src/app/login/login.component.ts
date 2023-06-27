@@ -68,7 +68,8 @@ export class LoginComponent implements OnInit  {
         this.retailSellerService.getByUsername(response.username).subscribe((response3: any)=>{
           console.log(response3);
           if(response3.id) {
-            this.dataTransferService.userId = response.id.toString();
+            this.dataTransferService.userId = response3.id.toString();
+            localStorage.setItem('retailsellerId',response3.id.toString());
           }
           this.toastr.success('Login As Retail Seller Successful','Success');
           this.route.navigate(['/retail-seller','profile']);
@@ -78,6 +79,7 @@ export class LoginComponent implements OnInit  {
           if(response3.id) {
             this.dataTransferService.userId = response3.id.toString();
             this.dataTransferService.wholeSalerCreditCardNumber = response3.creditCardNumber;
+            localStorage.setItem('wholesalerId',response3.id.toString());
           }
           this.toastr.success('Login As Wholesaler Successful','Success');
           this.route.navigate(['/wholesaler','profile']);

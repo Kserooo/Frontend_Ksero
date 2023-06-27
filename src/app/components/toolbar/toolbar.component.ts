@@ -27,6 +27,6 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {}
   Logout(): void {
     this.router.navigate(['']);
-    localStorage.removeItem('user');
+    localStorage.clear();
   }
 }

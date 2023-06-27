@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
   availableRoutesForRetailSalerToolbar: string[] = [
     'retail-seller-profile',
     'retail-seller-orders',
-    'retail-seller-payments',
     'retail-seller-products',
     'retail-seller-shopping-cart'
   ];

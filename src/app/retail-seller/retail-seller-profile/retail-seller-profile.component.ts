@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RetailSellerProfileDialogUpdateComponent } from './retail-seller-profile-dialog-update/retail-seller-profile-dialog-update.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { DataTransferService } from 'src/app/utils/data-transfer.service';
 
 @Component({
   selector: 'app-retail-seller-profile',
@@ -47,9 +48,14 @@ export class RetailSellerProfileComponent implements OnInit {
     private retailSellersService: RetailSellersService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dataTransferService: DataTransferService
   ) {
-    this.id = JSON.parse(localStorage.getItem('user')!).id;
+    if(this.dataTransferService.userId === "") {
+      this.dataTransferService.userId = localStorage.getItem('retailsellerId') as string;
+    }
+    this.id = this.dataTransferService.userId;
+    console.log(this.id);
     this.retailSellerActual = {} as RetailSeller;
   }
 
@@ -60,6 +66,7 @@ export class RetailSellerProfileComponent implements OnInit {
   getActualData(): void {
     this.retailSellersService.getById(this.id).subscribe((response: any) => {
       this.retailSellerActual = response;
+      console.log(response);
       this.userFormGroup.setValue({
         firstName: this.retailSellerActual.firstName
           ? this.retailSellerActual.firstName

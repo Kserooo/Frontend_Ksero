@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { WholesalerOrdersService } from '../../services/wholesaler-orders/wholesaler-orders.service';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products/products.service';
+import { DataTransferService } from 'src/app/utils/data-transfer.service';
 
 @Component({
   selector: 'app-retail-seller-orders',
@@ -24,9 +25,13 @@ export class RetailSellerOrdersComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private wholesalerOrdersService: WholesalerOrdersService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private dataTransferService: DataTransferService
   ) {
-    this.id = JSON.parse(localStorage.getItem('user')!).id;
+    if(this.dataTransferService.userId === "") {
+      this.dataTransferService.userId = localStorage.getItem('retailsellerId') as string;
+    }
+    this.id = this.dataTransferService.userId;
     this.acceptedOrders = [] as Order[];
     this.pendingOrders = [] as Order[];
     this.productsAccepted = [] as Product[];

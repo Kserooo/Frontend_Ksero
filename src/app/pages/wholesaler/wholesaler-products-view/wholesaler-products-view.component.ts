@@ -8,6 +8,7 @@ import { WholesalerProductsDialogUpdateComponent } from './wholesaler-products-d
 import { WholesalerProductsDialogDeleteComponent } from './wholesaler-products-dialog-delete/wholesaler-products-dialog-delete.component';
 import { ToastrService } from 'ngx-toastr';
 import { ImageConverterService } from 'src/app/utils/image-converter.service';
+import { DataTransferService } from 'src/app/utils/data-transfer.service';
 
 @Component({
   selector: 'app-wholesaler-products-view',
@@ -31,11 +32,15 @@ export class WholesalerProductViewComponent implements OnInit {
     private productsService: ProductsService,
     private dialog: MatDialog,
     private toastr: ToastrService,
-    private imageConverter: ImageConverterService
+    private imageConverter: ImageConverterService,
+    private dataTransferService: DataTransferService
   ) {
     this.productsData = [] as Product[];
     this.searchKey = '';
-    this.id= JSON.parse(localStorage.getItem("user")!).id;
+    if(this.dataTransferService.userId === "") {
+      this.dataTransferService.userId = localStorage.getItem('wholesalerId') as string;
+    }
+    this.id= this.dataTransferService.userId;
     this.priceSelected = 0;
     this.companyOptions = ['Gloria', 'Nestle', 'ALICORP', 'Coca Cola'];
     this.typeOptions = ['Lacteos', 'Fideos', 'Bebidas'];

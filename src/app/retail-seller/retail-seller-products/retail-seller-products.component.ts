@@ -18,6 +18,7 @@ import {
 import {SenderService} from "../../sender.service";
 import {ToastrService} from "ngx-toastr";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
+import { DataTransferService } from 'src/app/utils/data-transfer.service';
 
 @Component({
   selector: 'app-retail-seller-products',
@@ -38,12 +39,16 @@ export class RetailSellerProductsComponent implements OnInit ,AfterViewInit {
               private wholesalersService:WholesalersService, private dialog: MatDialog,
               private retailSellersService: RetailSellersService, private route: ActivatedRoute,
               public senderService: SenderService, private toastr: ToastrService,
+              private dataTransferService: DataTransferService
               ) {
     this.searchKey = '';
     this.sliderValue = [] as number [];
     this.productsData = [] as Product[];
     this.wholesalersData = [] as Wholesaler[];
-    this.id= JSON.parse(localStorage.getItem("user")!).id;
+    if(this.dataTransferService.userId === "") {
+      this.dataTransferService.userId = localStorage.getItem('retailsellerId') as string;
+    }
+    this.id= this.dataTransferService.userId;
     this.retailSellerActual = {} as RetailSeller;
     this.isSliderToggleChecked = [] as boolean[];
     this.productsQuantity = [] as number[];

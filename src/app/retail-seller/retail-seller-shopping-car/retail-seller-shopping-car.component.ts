@@ -13,6 +13,7 @@ import {
 import { ToastrService } from "ngx-toastr";
 import {ShoppingCarOrder} from "../../models/shopping-car-order";
 import { PurchaseData } from './model/purchase-data.model';
+import { DataTransferService } from 'src/app/utils/data-transfer.service';
 
 @Component({
   selector: 'app-retail-seller-shopping-car',
@@ -28,8 +29,12 @@ export class RetailSellerShoppingCarComponent implements OnInit {
   shopingCart: ShoppingCarOrder[];
   constructor(private route: ActivatedRoute,
               private productsService: ProductsService, private wholesalerOrdersService: WholesalerOrdersService,
-              private senderService: SenderService, private dialog: MatDialog, private toastr: ToastrService) {
-    this.id= JSON.parse(localStorage.getItem("user")!).id;
+              private senderService: SenderService, private dialog: MatDialog, private toastr: ToastrService,
+              private dataTransferService: DataTransferService) {
+    if(this.dataTransferService.userId === "") {
+      this.dataTransferService.userId = localStorage.getItem('retailsellerId') as string;
+    }
+    this.id= this.dataTransferService.userId;
     this.orderActual={} as Order;
     this.shopingCart= [] as ShoppingCarOrder[];
     this.productsData=[] as Product[];

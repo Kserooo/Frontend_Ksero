@@ -23,7 +23,7 @@ export class WholesalerNavbarComponent implements OnInit {
 
   Logout(): void{
     this.router.navigate(['']);
-    localStorage.setItem('token','');
+    localStorage.clear();
   }
 
 }

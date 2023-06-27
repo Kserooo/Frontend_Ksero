@@ -19,6 +19,7 @@ import {
 } from "./wholesaler-orders-dialog-accept/wholesaler-orders-dialog-accept.component";
 import {ToastrService} from "ngx-toastr";
 import {RetailSellerOrdersService} from "../../services/retail-seller-orders/retail-seller-orders.service";
+import { DataTransferService } from 'src/app/utils/data-transfer.service';
 
 
 @Component({
@@ -40,14 +41,19 @@ export class WholesalerOrdersComponent implements OnInit {
   constructor(private retailSellerService: RetailSellersService, private productsService: ProductsService,
               private wholesalerOrdersService:WholesalerOrdersService, private route: ActivatedRoute,
               private dialog: MatDialog, private toastr: ToastrService,
-              private retailSellerOrdersService: RetailSellerOrdersService) {
+              private retailSellerOrdersService: RetailSellerOrdersService,
+              private dataTransferService: DataTransferService) {
     this.retailSellerData = [] as RetailSeller[];
     this.productsData = [] as Product[];
     this.ordersData = [] as Order[];
     this.productsAccepted = [] as Product[];
     this.acceptedOrders = [] as Order[];
     this.searchKey = '';
-    this.id= JSON.parse(localStorage.getItem("user")!).id;
+    if(this.dataTransferService.userId === "") {
+      this.dataTransferService.userId = localStorage.getItem('wholesalerId') as string;
+    }
+    this.id = this.dataTransferService.userId;
+    console.log(this.id);
   }
 
   ngOnInit(): void {
@@ -58,24 +64,29 @@ export class WholesalerOrdersComponent implements OnInit {
     this.productsData = [];
     this.retailSellerData = [];
     this.wholesalerOrdersService.getAll().subscribe((response: any) => {
+      console.log("WholeSalers orders ", response);
       for (let order of response) {
         this.productsService.getById(order.productId).subscribe((response2: any) => {
           if (response2.wholesalerId == this.id) {
-            this.ordersData.push(order);
-            this.productsData.push(response2);
+            this.ordersData = [...this.ordersData, order];
+            this.productsData = [...this.productsData, response2];
             this.retailSellerService.getById(order.retailSellerId).subscribe((response3: any) => {
-              this.retailSellerData.push(response3);
+              this.retailSellerData = [...this.retailSellerData, response3];
             })
           }
         })
       }
     })
     this.retailSellerOrdersService.getAll().subscribe((response3: any) => {
+      console.log("Retailseller orders: ", response3);
       for (let order1 of response3) {
         this.productsService.getById(order1.productId).subscribe((response4: any) => {
+          console.log(response4.wholesalerId);
+          console.log(this.dataTransferService.userId);
+          console.log(this.id);
           if (response4.wholesalerId == this.id) {
-            this.acceptedOrders.push(order1);
-            this.productsAccepted.push(response4);
+            this.acceptedOrders = [...this.acceptedOrders, order1];
+            this.productsAccepted = [...this.productsAccepted, response4];
           }
         })
       }
@@ -91,6 +102,7 @@ export class WholesalerOrdersComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(result);
       if(result!=undefined){
         this.wholesalerOrdersService.delete(this.ordersData[index].id).subscribe(response=>{
           this.toastr.success('Order Rejected','Success');
@@ -102,7 +114,7 @@ export class WholesalerOrdersComponent implements OnInit {
   }
 
   openAcceptDialog(index: number){
-
+    console.log(index);
     const dialogRef=this.dialog.open(WholesalerOrdersDialogAcceptComponent,{
       data: {
         quantity: this.ordersData[index].quantity,
@@ -111,13 +123,17 @@ export class WholesalerOrdersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(result);
       if(result!=undefined){
         this.wholesalerOrdersService.delete(this.ordersData[index].id).subscribe(response=>{
-          this.ordersData[index].id = 0;
+          console.log(this.ordersData[index]);
+          this.ordersData = this.ordersData.filter( (order: Order) => order.id !== this.ordersData[index].id);
           this.retailSellerOrdersService.create(this.ordersData[index]).subscribe(response2=>{
+            console.log(response2);
+            this.acceptedOrders = [...this.acceptedOrders, response2];
+            this.toastr.success('Order Accepted','Success');
+            this.retrieveData();
           })
-          this.toastr.success('Order Accepted','Success');
-          this.retrieveData();
         });
       }
     });
