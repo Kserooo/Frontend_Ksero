@@ -1,41 +1,46 @@
-<div class="everything">
-  <div class="search">
-    <mat-form-field class="lg:w-full" appearance="fill" >
+<div class="p-5">
+  <div class="">
+    <mat-form-field class="lg:w-4" appearance="fill">
       <mat-label class="name_search">Search</mat-label>
       <input matInput [(ngModel)]="searchKey">
     </mat-form-field>
   </div>
-  <h2 class="spacing">Acepted Orders</h2>
-  <mat-grid-list cols="2" rowHeight="7:2">
-    <mat-grid-tile *ngFor="let acceptedOrder of acceptedOrders | filter: searchKey:'name'">
-      <mat-card class="example-card">
-        <mat-card-content class="example-card-content">
-          <img mat-card-image src="https://cdn-icons-png.flaticon.com/512/6203/6203085.png" alt="Photo of Shopping Cart">
+  <h2 class="mb-3">Current Accepted Order</h2>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr);" class="mb-5">
+    <div *ngFor="let acceptedOrder of acceptedOrders | filter: searchKey:'name'">
+      <mat-card class="">
+        <mat-card-content class="flex">
+          <img style="width: 120px;" [src]="productsAccepted[acceptedOrders.indexOf(acceptedOrder)].image"
+            alt="Photo of Shopping Cart">
           <div>
             <p>Pedido #{{acceptedOrders.indexOf(acceptedOrder)+1}}</p>
             <p>Estado: Entregada</p>
-            <p *ngIf="productsAccepted[acceptedOrders.indexOf(acceptedOrder)]">Monto: ${{productsAccepted[acceptedOrders.indexOf(acceptedOrder)].price*acceptedOrder.quantity}}</p>
-            <p *ngIf="productsAccepted[acceptedOrders.indexOf(acceptedOrder)]">Product Name: {{productsAccepted[acceptedOrders.indexOf(acceptedOrder)].name}}</p>
+            <p *ngIf="productsAccepted[acceptedOrders.indexOf(acceptedOrder)]">Monto:
+              ${{productsAccepted[acceptedOrders.indexOf(acceptedOrder)].price*acceptedOrder.quantity}}</p>
+            <p *ngIf="productsAccepted[acceptedOrders.indexOf(acceptedOrder)]">Product Name:
+              {{productsAccepted[acceptedOrders.indexOf(acceptedOrder)].name}}</p>
           </div>
         </mat-card-content>
       </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-
-  <h2 class="spacing">Pending Orders</h2>
-  <mat-grid-list cols="2" rowHeight="7:2">
-    <mat-grid-tile *ngFor="let pendingOrder of pendingOrders">
-      <mat-card class="example-card">
-        <mat-card-content class="example-card-content">
-          <img mat-card-image src="https://cdn-icons-png.flaticon.com/512/6203/6203085.png" alt="Photo of Shopping Cart">
-          <div>
-            <p>Pedido #{{pendingOrders.indexOf(pendingOrder)+1}}</p>
-            <p>Estado: Pending</p>
-            <p *ngIf="productsAccepted[pendingOrders.indexOf(pendingOrder)]">Monto: ${{productsAccepted[pendingOrders.indexOf(pendingOrder)].price*pendingOrder.quantity}}</p>
-            <p *ngIf="productsAccepted[pendingOrders.indexOf(pendingOrder)]">Product Name: {{productsAccepted[pendingOrders.indexOf(pendingOrder)].name}}</p>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+    </div>
+  </div>
+    <h2 class="mb-3">Pending Orders</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+      <div *ngFor="let pendingOrder of pendingOrders">
+        <mat-card>
+          <mat-card-content class="flex">
+            <img style="width: 120px;" [src]="productsPending[pendingOrders.indexOf(pendingOrder)].image"
+              alt="Photo of Shopping Cart">
+            <div>
+              <p>Pedido #{{pendingOrders.indexOf(pendingOrder)+1}}</p>
+              <p>Estado: Pending</p>
+              <p *ngIf="productsPending[pendingOrders.indexOf(pendingOrder)]">Monto:
+                ${{productsPending[pendingOrders.indexOf(pendingOrder)].price*pendingOrder.quantity}}</p>
+              <p *ngIf="productsPending[pendingOrders.indexOf(pendingOrder)]">Product Name:
+                {{productsPending[pendingOrders.indexOf(pendingOrder)].name}}</p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>

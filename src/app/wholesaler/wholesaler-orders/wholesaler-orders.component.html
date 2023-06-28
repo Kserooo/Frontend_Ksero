@@ -5,7 +5,7 @@
       <input matInput [(ngModel)]="searchKey">
     </mat-form-field>
   </div>
-  <h2 class="mb-3">Acepted Orders</h2>
+  <h2 class="mb-3">Current Acepted Order</h2>
   <div class="orders mb-5 gap-3">
     <div *ngFor="let acceptedOrder of acceptedOrders | filter: searchKey:'name'">
       <app-acepted-order [index]="acceptedOrders.indexOf(acceptedOrder)" [acceptedOrder]="acceptedOrder"
